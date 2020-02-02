@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace GrodHotelBackend.Models
         public DateTime EntryDate { get; set; }
         [DataType(DataType.Date)]
         public DateTime LeavingDate { get; set; }
+        [Column(TypeName = "Money")]
         public decimal TotalPrice { get; set; }
         public int AdultNumbers { get; set; }
         public int MinorNumbers { get; set; }

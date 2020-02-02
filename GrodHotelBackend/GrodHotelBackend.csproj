@@ -1,8 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200202141312_Testing money annotation on bookings.cs" />
+    <Compile Remove="Migrations\20200202141312_Testing money annotation on bookings.Designer.cs" />
+    <Compile Remove="Migrations\20200202141855_Testing money annotation on bookings.cs" />
+    <Compile Remove="Migrations\20200202141855_Testing money annotation on bookings.Designer.cs" />
+    <Compile Remove="Migrations\20200202143528_Testing date format in clients.cs" />
+    <Compile Remove="Migrations\20200202143528_Testing date format in clients.Designer.cs" />
+    <Compile Remove="Migrations\20200202174916_Testing string length.cs" />
+    <Compile Remove="Migrations\20200202174916_Testing string length.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.0" />
@@ -11,6 +22,33 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Content\css\style.css" />
+    <None Include="wwwroot\Content\css\style.min.css" />
+    <None Include="wwwroot\Content\fonts\JuliusSansOne-Regular.ttf" />
+    <None Include="wwwroot\Content\fonts\SulphurPoint-Regular.ttf" />
+    <None Include="wwwroot\Content\img\beach_resort.jpg" />
+    <None Include="wwwroot\Content\img\favicon-32x32.png" />
+    <None Include="wwwroot\Content\img\hotel-1831072_1280.jpg" />
+    <None Include="wwwroot\Content\img\hotel-1831072_640.jpg" />
+    <None Include="wwwroot\Content\img\hotel-room-1280x853.jpg" />
+    <None Include="wwwroot\Content\img\hotel-room-640x426.jpg" />
+    <None Include="wwwroot\Content\img\huan_user.png" />
+    <None Include="wwwroot\Content\img\logo-150px.png" />
+    <None Include="wwwroot\Content\img\logo-350px.png" />
+    <None Include="wwwroot\Content\img\pedro_sanchez.png" />
+    <None Include="wwwroot\Content\img\ship-105596_1280.jpg" />
+    <None Include="wwwroot\Content\img\ship-105596_640.jpg" />
+    <None Include="wwwroot\Content\img\singapore-1132358_1280.jpg" />
+    <None Include="wwwroot\Content\img\singapore-1132358_640.jpg" />
+    <None Include="wwwroot\Content\img\the-palm-962785_1280.jpg" />
+    <None Include="wwwroot\Content\img\the-palm-962785_640.jpg" />
+    <None Include="wwwroot\Content\img\valid-css.gif" />
+    <None Include="wwwroot\Content\img\valid-html5.png" />
   </ItemGroup>
 
 

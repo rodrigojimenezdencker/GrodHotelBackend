@@ -10,7 +10,9 @@ namespace GrodHotelBackend.Models
     {
         public int Id { get; set; }
         public virtual ICollection<Bookings> Bookings { get; set; }
+        [StringLength(20)]
         public string Name { get; set; }
+        [StringLength(40)]
         public string Surname { get; set; }
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
