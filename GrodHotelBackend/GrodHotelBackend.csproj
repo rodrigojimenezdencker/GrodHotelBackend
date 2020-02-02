@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20200202143528_Testing date format in clients.Designer.cs" />
     <Compile Remove="Migrations\20200202174916_Testing string length.cs" />
     <Compile Remove="Migrations\20200202174916_Testing string length.Designer.cs" />
+    <Compile Remove="Migrations\20200202215242_Modified string length and decimal type of models.cs" />
+    <Compile Remove="Migrations\20200202215242_Modified string length and decimal type of models.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
