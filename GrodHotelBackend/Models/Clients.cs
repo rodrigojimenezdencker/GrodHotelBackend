@@ -16,9 +16,12 @@ namespace GrodHotelBackend.Models
         public string Surname { get; set; }
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
+        [StringLength(8)]
         public string Dni { get; set; }
+        [StringLength(50)]
         public string Email { get; set; }
         public bool Subscribed { get; set; }
+        [StringLength(200)]
         public string Comments { get; set; }
     }
 }
