@@ -21,7 +21,7 @@ namespace GrodHotelBackend.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "GROD Hotel";
-            ViewBag.PageName = "Index";
+            ViewBag.PageName = "index";
             return View();
         }
 
