@@ -10,14 +10,17 @@ namespace GrodHotelBackend.Models
     public class Rooms
     {
         public int Id { get; set; }
+        [Required]
         public int HotelsId { get; set; }
         public Hotels Hotels { get; set; }
         [Column(TypeName = "Money")]
         public decimal Dimensions { get; set; }
+        [Required]
         [Column(TypeName = "Money")]
         public decimal Price { get; set; }
         [StringLength(250)]
         public string Description { get; set; }
+        [Required]
         public bool Availability { get; set; }
     }
 }
