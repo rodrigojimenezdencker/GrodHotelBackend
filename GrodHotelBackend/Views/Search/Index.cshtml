@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFront.cshtml";
+}
+
+<main id="layout_main">
+        <div>
+            <h2>Search</h2>
+            <form>
+                <fieldset>
+                    <label for="search"></label>
+                    <input id="search" type="text" name="first" required />
+                    <svg class="form_icon" aria-label="Search">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-search" />
+                    </svg>
+                </fieldset>
+            </form>
+        </div>
+
+        <div>
+            <h2>Results</h2>
+            <ul class="unordered_list text_tab">
+                <li><a href="Room">Single Room</a></li>
+                <li><a href="Room">Double Room</a></li>
+            </ul>
+        </div>
+    </main>
+

@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GROD_Hotel_Backend.Controllers
 {
-    public class HomeController : Controller
+    public class BookingInProcessController : Controller
     {
+        // GET: BookingInProcess
         public ActionResult Index()
         {
-            ViewBag.Title = "GROD Hotel";
-            ViewBag.PageName = "index";
+            ViewBag.Title = "Booking in Process";
+            ViewBag.PageName = "booking-in-process";
             return View();
         }
     }

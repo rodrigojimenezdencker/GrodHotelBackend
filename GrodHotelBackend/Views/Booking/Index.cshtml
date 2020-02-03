@@ -1,0 +1,136 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFront.cshtml";
+}
+
+<main id="layout_main">
+    <div>
+        <div class="table_responsive">
+            <table class="custom_table">
+                <caption>Services and Room</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Services</th>
+                        <th scope="col">Prices</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- data-label is used to show "column header" on mobile devices (less than 700px) -->
+                    <tr>
+                        <td data-label="Service">Dinner</td>
+                        <td data-label="Price">15€</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Breakfast</td>
+                        <td data-label="Price">10€</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Massage</td>
+                        <td data-label="Price">50€</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">SPA</td>
+                        <td data-label="Price">30€</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Views of the city</td>
+                        <td data-label="Price">10€</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Total Services:</td>
+                        <td data-label="Price">115€</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Total Room:</td>
+                        <td data-label="Price">420€</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Total</th>
+                        <td data-label="Price">535€</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <h2>Booking</h2>
+        <form action="BookingInProcess" data-widget="booking_form" method="POST">
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="entry_date">Entry date</label>
+                    <input type="date" data-hook="entry_date" id="entry_date" required />
+                    <svg class="form_icon" aria-label="Entry Date">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-calendar" />
+                    </svg>
+                </fieldset>
+                <fieldset>
+                    <label for="leaving_date">Leaving date</label>
+                    <input type="date" data-hook="leaving_date" id="leaving_date" required />
+                    <svg class="form_icon" aria-label="Leaving Date">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-calendar" />
+                    </svg>
+                </fieldset>
+            </div>
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="numberAdults">Number of adults</label>
+                    <input id="numberAdults" type="number" min=1 max=10 data-hook="numberAdults" name="numberAdults"
+                           value="2" required />
+                    <svg class="form_icon" aria-label="Number of adults">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-man" />
+                    </svg>
+                </fieldset>
+                <fieldset>
+                    <label for="numberMinors">Number of minors</label>
+                    <input id="numberMinors" type="number" min=0 max=10 data-hook="numberMinors" name="numberMinors"
+                           value="0" required />
+                    <svg class="form_icon" aria-label="Number of minors">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-child" />
+                    </svg>
+                </fieldset>
+            </div>
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="name">Your name</label>
+                    <input id="name" type="text" data-hook="name" minlength="1" maxlength="30" name="name"
+                           required />
+                    <svg class="form_icon" aria-label="Your name">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-user" />
+                    </svg>
+                </fieldset>
+                <fieldset>
+                    <label for="surname">Your surname</label>
+                    <input id="surname" type="text" name="surname" minlength="1" maxlength="50" data-hook="surname"
+                           required />
+                    <svg class="form_icon" aria-label="Your surname">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-user" />
+                    </svg>
+                </fieldset>
+            </div>
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="dni">DNI</label>
+                    <input id="dni" type="text" data-hook="dni" name="dni" required />
+                    <svg class="form_icon" aria-label="DNI">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-pass" />
+                    </svg>
+                </fieldset>
+                <fieldset>
+                    <label for="email">Your Email</label>
+                    <input id="email" type="email" data-hook="email" name="email" required />
+                    <svg class="form_icon" aria-label="Your Email">
+                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-mail" />
+                    </svg>
+                </fieldset>
+            </div>
+            <fieldset>
+                <label for="comments">Comments</label>
+                <textarea id="comments" maxlength="500" data-hook="comments"></textarea>
+            </fieldset>
+            <fieldset>
+                <button data-hook="send" class="send_button">Reserve</button>
+            </fieldset>
+        </form>
+    </div>
+</main>
+
