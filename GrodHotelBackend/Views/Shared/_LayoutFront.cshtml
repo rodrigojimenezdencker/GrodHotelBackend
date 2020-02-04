@@ -36,9 +36,7 @@
     @RenderBody()
 
     <a href="#head">
-        <svg class="arrow_up" data-widget="scroll_to_top" aria-label="facebook">
-            <use xlink:href="~/Content/svg/symbol-defs.svg#icon-navigate-up-arrow" />
-        </svg>
+        <img src="~/Content/svg/navigate-up-arrow.svg" data-widget="scroll_to_top" class="arrow_up" />
     </a>
 
     <footer>
@@ -58,13 +56,12 @@
                 <h3>Subscribe to our Newsletter!</h3>
                 <div class="newsletter_input_container">
                     <input placeholder="Your e-mail" id="email" type="email" maxlength="50" name="email" required />
-                    <svg class="form_icon" aria-label="Your Email">
-                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-mail" />
-                    </svg>
+                    <img src="~/Content/svg/mail.svg" class="form_icon" alt="email" />
                     <button class="send_button">Subscribe!</button>
                 </div>
             </form>
         </div>
+
         <div class="footer_container">
             <div>
                 <p>
@@ -93,30 +90,24 @@
                 <ul id="social_icon_list">
                     <li>
                         <a href="#">
-                            <svg class="footer_icon" aria-label="facebook">
-                                <use xlink:href="~/Content/svg/symbol-defs.svg#icon-facebook" />
-                            </svg>
+                            <img src="~/Content/svg/facebook.svg" class="footer_icon" alt="facebook" />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <svg class="footer_icon" aria-label="twitter">
-                                <use xlink:href="~/Content/svg/symbol-defs.svg#icon-twitter" />
-                            </svg>
+                            <img src="~/Content/svg/twitter.svg" class="footer_icon" alt="twitter" />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <svg class="footer_icon" aria-label="instagram">
-                                <use xlink:href="~/Content/svg/symbol-defs.svg#icon-instagram" />
-                            </svg>
+                            <img src="~/Content/svg/instagram.svg" class="footer_icon" alt="instagram" />
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </footer>
-    <script src="~/Content/js/script.min.js"></script>
+    <script src="~/Content/js/script.js"></script>
 </body>
 
 </html>

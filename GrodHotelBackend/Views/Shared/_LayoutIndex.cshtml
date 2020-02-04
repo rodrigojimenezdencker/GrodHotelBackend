@@ -38,16 +38,12 @@
                 <fieldset>
                     <label for="entry_date">Entry date</label>
                     <input type="date" data-hook="entry_date" id="entry_date" required />
-                    <svg class="form_icon" aria-label="Entry Date">
-                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-calendar"></use>
-                    </svg>
+                    <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Entry Date" />
                 </fieldset>
                 <fieldset>
                     <label for="leaving_date">Leaving date</label>
                     <input type="date" data-hook="leaving_date" id="leaving_date" required />
-                    <svg class="form_icon" aria-label="Leaving Date">
-                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-calendar"></use>
-                    </svg>
+                    <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Leaving Date" />
                 </fieldset>
             </div>
             <div class="input_group_container">
@@ -55,17 +51,13 @@
                     <label for="numberAdults">Number of adults</label>
                     <input id="numberAdults" type="number" data-hook="numberAdults" min="1" max="10" name="numberAdults"
                            value="2" />
-                    <svg class="form_icon" aria-label="Number of adults">
-                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-man"></use>
-                    </svg>
+                    <img src="~/Content/svg/man.svg" class="form_icon" alt="Number of Adults" />
                 </fieldset>
                 <fieldset>
                     <label for="numberMinors">Number of minors</label>
                     <input id="numberMinors" type="number" data-hook="numberMinors" min="0" max="10" name="numberMinors"
                            value="0">
-                    <svg class="form_icon" aria-label="Number of minors">
-                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-child"></use>
-                    </svg>
+                    <img src="~/Content/svg/child.svg" class="form_icon" alt="Number of Minors" />
                 </fieldset>
             </div>
             <fieldset>
@@ -90,9 +82,7 @@
     @RenderBody()
 
     <a href="#head">
-        <svg class="arrow_up" data-widget="scroll_to_top" aria-label="facebook">
-            <use xlink:href="~/Content/svg/symbol-defs.svg#icon-navigate-up-arrow" />
-        </svg>
+        <img src="~/Content/svg/navigate-up-arrow.svg" data-widget="scroll_to_top" class="arrow_up" />
     </a>
 
     <footer>
@@ -112,9 +102,7 @@
                 <h3>Subscribe to our Newsletter!</h3>
                 <div class="newsletter_input_container">
                     <input placeholder="Your e-mail" id="email" type="email" maxlength="50" name="email" required />
-                    <svg class="form_icon" aria-label="Your Email">
-                        <use xlink:href="~/Content/svg/symbol-defs.svg#icon-mail" />
-                    </svg>
+                    <img src="~/Content/svg/mail.svg" class="form_icon" alt="email" />
                     <button class="send_button">Subscribe!</button>
                 </div>
             </form>
@@ -148,30 +136,24 @@
                 <ul id="social_icon_list">
                     <li>
                         <a href="#">
-                            <svg class="footer_icon" aria-label="facebook">
-                                <use xlink:href="~/Content/svg/symbol-defs.svg#icon-facebook" />
-                            </svg>
+                            <img src="~/Content/svg/facebook.svg" class="footer_icon" alt="facebook" />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <svg class="footer_icon" aria-label="twitter">
-                                <use xlink:href="~/Content/svg/symbol-defs.svg#icon-twitter" />
-                            </svg>
+                            <img src="~/Content/svg/twitter.svg" class="footer_icon" alt="twitter" />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <svg class="footer_icon" aria-label="instagram">
-                                <use xlink:href="~/Content/svg/symbol-defs.svg#icon-instagram" />
-                            </svg>
+                            <img src="~/Content/svg/instagram.svg" class="footer_icon" alt="instagram" />
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </footer>
-    <script src="~/Content/js/script.min.js"></script>
+    <script src="~/Content/js/script.js"></script>
 </body>
 
 </html>
