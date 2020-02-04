@@ -1,6 +1,16 @@
-﻿@{
-    ViewBag.Title = "_LayoutBack";
-}
+﻿<!DOCTYPE html>
+    <html lang="en" data-page="@ViewBag.PageName" class="page-@ViewBag.PageName">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>@ViewBag.Title | GROD Hotel</title>
+        <link rel="shortcut icon" href="~/Content/img/favicon-32x32.png" type="image/png" />
+        <link rel="stylesheet" href="~/Content/css/style.min.css">
+    </head>
+    <body>
+        @RenderBody()
 
-<h2>_LayoutBack</h2>
-
+        <script src="~/Content/js/script.js"></script>
+    </body>
+</html>
