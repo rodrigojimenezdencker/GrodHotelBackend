@@ -9,23 +9,22 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class HotelServicesDashboardController : Controller
+    public class ServicesDashboardController : Controller
     {
         private readonly Context _context;
 
-        public HotelServicesDashboardController(Context context)
+        public ServicesDashboardController(Context context)
         {
             _context = context;
         }
 
-        // GET: HotelServicesDashboard
+        // GET: ServicesDashboard
         public async Task<IActionResult> Index()
         {
-            var context = _context.HotelServices.Include(h => h.Hotels).Include(h => h.Services);
-            return View(await context.ToListAsync());
+            return View(await _context.Services.ToListAsync());
         }
 
-        // GET: HotelServicesDashboard/Details/5
+        // GET: ServicesDashboard/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,45 +32,39 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var hotelServices = await _context.HotelServices
-                .Include(h => h.Hotels)
-                .Include(h => h.Services)
+            var services = await _context.Services
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (hotelServices == null)
+            if (services == null)
             {
                 return NotFound();
             }
 
-            return View(hotelServices);
+            return View(services);
         }
 
-        // GET: HotelServicesDashboard/Create
+        // GET: ServicesDashboard/Create
         public IActionResult Create()
         {
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name");
-            ViewData["ServicesId"] = new SelectList(_context.Services, "Id", "Name");
             return View();
         }
 
-        // POST: HotelServicesDashboard/Create
+        // POST: ServicesDashboard/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HotelsId,ServicesId,Price,Availability")] HotelServices hotelServices)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Services services)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hotelServices);
+                _context.Add(services);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name", hotelServices.HotelsId);
-            ViewData["ServicesId"] = new SelectList(_context.Services, "Id", "Name", hotelServices.ServicesId);
-            return View(hotelServices);
+            return View(services);
         }
 
-        // GET: HotelServicesDashboard/Edit/5
+        // GET: ServicesDashboard/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,24 +72,22 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var hotelServices = await _context.HotelServices.FindAsync(id);
-            if (hotelServices == null)
+            var services = await _context.Services.FindAsync(id);
+            if (services == null)
             {
                 return NotFound();
             }
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name", hotelServices.HotelsId);
-            ViewData["ServicesId"] = new SelectList(_context.Services, "Id", "Name", hotelServices.ServicesId);
-            return View(hotelServices);
+            return View(services);
         }
 
-        // POST: HotelServicesDashboard/Edit/5
+        // POST: ServicesDashboard/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsId,ServicesId,Price,Availability")] HotelServices hotelServices)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Services services)
         {
-            if (id != hotelServices.Id)
+            if (id != services.Id)
             {
                 return NotFound();
             }
@@ -105,12 +96,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             {
                 try
                 {
-                    _context.Update(hotelServices);
+                    _context.Update(services);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HotelServicesExists(hotelServices.Id))
+                    if (!ServicesExists(services.Id))
                     {
                         return NotFound();
                     }
@@ -121,12 +112,10 @@ namespace GrodHotelBackend.Controllers.CRUD
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name", hotelServices.HotelsId);
-            ViewData["ServicesId"] = new SelectList(_context.Services, "Id", "Name", hotelServices.ServicesId);
-            return View(hotelServices);
+            return View(services);
         }
 
-        // GET: HotelServicesDashboard/Delete/5
+        // GET: ServicesDashboard/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,32 +123,30 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var hotelServices = await _context.HotelServices
-                .Include(h => h.Hotels)
-                .Include(h => h.Services)
+            var services = await _context.Services
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (hotelServices == null)
+            if (services == null)
             {
                 return NotFound();
             }
 
-            return View(hotelServices);
+            return View(services);
         }
 
-        // POST: HotelServicesDashboard/Delete/5
+        // POST: ServicesDashboard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var hotelServices = await _context.HotelServices.FindAsync(id);
-            _context.HotelServices.Remove(hotelServices);
+            var services = await _context.Services.FindAsync(id);
+            _context.Services.Remove(services);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HotelServicesExists(int id)
+        private bool ServicesExists(int id)
         {
-            return _context.HotelServices.Any(e => e.Id == id);
+            return _context.Services.Any(e => e.Id == id);
         }
     }
 }
