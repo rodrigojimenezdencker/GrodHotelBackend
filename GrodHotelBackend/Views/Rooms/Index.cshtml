@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFront.cshtml";
+}
+
+<main id="layout_main">
+    <div>
+        <h2>Room</h2>
+        <blockquote>
+            <p>
+                This room from <a href="Hotel">GROD Hotel</a> is especially bright and very spacious. From the
+                bed you can enjoy a large arched window with original mouldings, and through it some fantastic views
+                of the city. Decorated with modern furniture that will cautivate the costumers of this room.
+            </p>
+        </blockquote>
+        <figure>
+            <picture>
+                <source media="(min-width: 700px)" srcset="~/Content/img/hotel-room-1280x853.jpg">
+                <img src="~/Content/img/hotel-room-640x426.jpg" alt="Hotel room">
+            </picture>
+            <figcaption>
+                <cite>GROD Hotel suite</cite>. Photo from <a href="https://pixabay.com/es/photos/habitaci%C3%B3n-de-hotel-cama-almohadas-1447201/"
+                                                             title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Olichel</a>.
+            </figcaption>
+        </figure>
+        <table class="custom_table">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2">
+                        <p>It contains...</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>24 m² bedroom</td>
+                    <td>350€</td>
+                </tr>
+                <tr>
+                    <td>Room service</td>
+                    <td>45€</td>
+                </tr>
+                <tr>
+                    <td>Bathroom containing a bathtub as well as a shower</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <td>Hairdryer</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <td>Free Wi-Fi</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <td>King-size double bed (180 x 200 cm) with Egyptian cotton sheets</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <td>Satellite television</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <td>Minibar</td>
+                    <td>25€</td>
+                </tr>
+                <tr>
+                    <td>Toiletry supplies by L’Occitane</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <td>Bathrobe and slippers</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <th scope="col">
+                        <p>TOTAL</p>
+                    </th>
+                    <td>420€</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2>Reserve this room</h2>
+        <form action="Booking" data-widget="room_form" method="POST">
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="entry_date">Entry date</label>
+                    <input type="date" data-hook="entry_date" id="entry_date" required />
+                    <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Entry date" />
+                </fieldset>
+                <fieldset>
+                    <label for="leaving_date">Leaving date</label>
+                    <input type="date" data-hook="leaving_date" id="leaving_date" required />
+                    <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Leaving date" />
+                </fieldset>
+            </div>
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="numberAdults">Number of adults</label>
+                    <input id="numberAdults" data-hook="numberAdults" type="number" name="numberAdults" value="2" required />
+                    <img src="~/Content/svg/man.svg" class="form_icon" alt="Number of adults" />
+                </fieldset>
+                <fieldset>
+                    <label for="numberMinors">Number of minors</label>
+                    <input id="numberMinors" data-hook="numberMinors" type="number" name="numberMinors" value="0" required />
+                    <img src="~/Content/svg/child.svg" class="form_icon" alt="Number of minors" />
+                </fieldset>
+            </div>
+            <fieldset>
+                <button class="send_button">See availability</button>
+            </fieldset>
+        </form>
+    </div>
+</main>
+
