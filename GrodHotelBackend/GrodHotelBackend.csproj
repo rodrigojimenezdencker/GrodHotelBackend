@@ -18,6 +18,83 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Assets\doc\github-git-cheat-sheet-spanish.pdf" />
+    <Content Remove="wwwroot\Assets\doc\github-git-cheat-sheet.pdf" />
+    <Content Remove="wwwroot\Assets\doc\Producte 2.pdf" />
+    <Content Remove="wwwroot\Assets\doc\Producte 3.pdf" />
+    <Content Remove="wwwroot\Assets\doc\Style Guide.odt" />
+    <Content Remove="wwwroot\Assets\npm\gulpfile.js" />
+    <Content Remove="wwwroot\Assets\page\about\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\about\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\bookingCompleted\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\bookingCompleted\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\bookingInProcess\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\bookingInProcess\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\booking\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\booking\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\contact\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\contact\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\cookieUsage\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\cookieUsage\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\hotel\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\hotel\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\index\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\index\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\personalDataUsage\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\personalDataUsage\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\room\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\room\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\search\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\search\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\thanksForContactingUs\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\thanksForContactingUs\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\thanksForSubscribing\css\style.css" />
+    <Content Remove="wwwroot\Assets\page\thanksForSubscribing\js\script.js" />
+    <Content Remove="wwwroot\Assets\shared\css\bootstrap.css" />
+    <Content Remove="wwwroot\Assets\shared\css\layout.css" />
+    <Content Remove="wwwroot\Assets\shared\css\style_guide.css" />
+    <Content Remove="wwwroot\Assets\shared\css\sweetalert2.css" />
+    <Content Remove="wwwroot\Assets\shared\fonts\JuliusSansOne-Regular.ttf" />
+    <Content Remove="wwwroot\Assets\shared\fonts\SulphurPoint-Regular.ttf" />
+    <Content Remove="wwwroot\Assets\shared\img\beach_resort.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\favicon-32x32.png" />
+    <Content Remove="wwwroot\Assets\shared\img\hotel-1831072_1280.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\hotel-1831072_640.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\hotel-room-1280x853.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\hotel-room-640x426.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\huan_user.png" />
+    <Content Remove="wwwroot\Assets\shared\img\logo-150px.png" />
+    <Content Remove="wwwroot\Assets\shared\img\logo-350px.png" />
+    <Content Remove="wwwroot\Assets\shared\img\pedro_sanchez.png" />
+    <Content Remove="wwwroot\Assets\shared\img\ship-105596_1280.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\ship-105596_640.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\singapore-1132358_1280.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\singapore-1132358_640.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\the-palm-962785_1280.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\the-palm-962785_640.jpg" />
+    <Content Remove="wwwroot\Assets\shared\img\valid-css.gif" />
+    <Content Remove="wwwroot\Assets\shared\img\valid-html5.png" />
+    <Content Remove="wwwroot\Assets\shared\js\general-head.js" />
+    <Content Remove="wwwroot\Assets\shared\js\general-tail.js" />
+    <Content Remove="wwwroot\Assets\shared\js\jquery.js" />
+    <Content Remove="wwwroot\Assets\shared\js\moment.min.js" />
+    <Content Remove="wwwroot\Assets\shared\js\sweetalert2.all.js" />
+    <Content Remove="wwwroot\Assets\shared\svg\calendar.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\child.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\facebook.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\instagram.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\mail.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\man.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\navigate-up-arrow.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\pass.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\search.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\symbol-defs.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\twitter.svg" />
+    <Content Remove="wwwroot\Assets\shared\svg\user.svg" />
+    <Content Remove="wwwroot\Assets\shared\video\hotel.mp4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
@@ -30,6 +107,80 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Assets\doc\github-git-cheat-sheet-spanish.pdf" />
+    <None Include="wwwroot\Assets\doc\github-git-cheat-sheet.pdf" />
+    <None Include="wwwroot\Assets\doc\Producte 2.pdf" />
+    <None Include="wwwroot\Assets\doc\Producte 3.pdf" />
+    <None Include="wwwroot\Assets\doc\Style Guide.odt" />
+    <None Include="wwwroot\Assets\npm\gulpfile.js" />
+    <None Include="wwwroot\Assets\page\about\css\style.css" />
+    <None Include="wwwroot\Assets\page\about\js\script.js" />
+    <None Include="wwwroot\Assets\page\bookingCompleted\css\style.css" />
+    <None Include="wwwroot\Assets\page\bookingCompleted\js\script.js" />
+    <None Include="wwwroot\Assets\page\bookingInProcess\css\style.css" />
+    <None Include="wwwroot\Assets\page\bookingInProcess\js\script.js" />
+    <None Include="wwwroot\Assets\page\booking\css\style.css" />
+    <None Include="wwwroot\Assets\page\booking\js\script.js" />
+    <None Include="wwwroot\Assets\page\contact\css\style.css" />
+    <None Include="wwwroot\Assets\page\contact\js\script.js" />
+    <None Include="wwwroot\Assets\page\cookieUsage\css\style.css" />
+    <None Include="wwwroot\Assets\page\cookieUsage\js\script.js" />
+    <None Include="wwwroot\Assets\page\hotel\css\style.css" />
+    <None Include="wwwroot\Assets\page\hotel\js\script.js" />
+    <None Include="wwwroot\Assets\page\index\css\style.css" />
+    <None Include="wwwroot\Assets\page\index\js\script.js" />
+    <None Include="wwwroot\Assets\page\personalDataUsage\css\style.css" />
+    <None Include="wwwroot\Assets\page\personalDataUsage\js\script.js" />
+    <None Include="wwwroot\Assets\page\room\css\style.css" />
+    <None Include="wwwroot\Assets\page\room\js\script.js" />
+    <None Include="wwwroot\Assets\page\search\css\style.css" />
+    <None Include="wwwroot\Assets\page\search\js\script.js" />
+    <None Include="wwwroot\Assets\page\thanksForContactingUs\css\style.css" />
+    <None Include="wwwroot\Assets\page\thanksForContactingUs\js\script.js" />
+    <None Include="wwwroot\Assets\page\thanksForSubscribing\css\style.css" />
+    <None Include="wwwroot\Assets\page\thanksForSubscribing\js\script.js" />
+    <None Include="wwwroot\Assets\shared\css\bootstrap.css" />
+    <None Include="wwwroot\Assets\shared\css\layout.css" />
+    <None Include="wwwroot\Assets\shared\css\style_guide.css" />
+    <None Include="wwwroot\Assets\shared\css\sweetalert2.css" />
+    <None Include="wwwroot\Assets\shared\fonts\JuliusSansOne-Regular.ttf" />
+    <None Include="wwwroot\Assets\shared\fonts\SulphurPoint-Regular.ttf" />
+    <None Include="wwwroot\Assets\shared\img\beach_resort.jpg" />
+    <None Include="wwwroot\Assets\shared\img\favicon-32x32.png" />
+    <None Include="wwwroot\Assets\shared\img\hotel-1831072_1280.jpg" />
+    <None Include="wwwroot\Assets\shared\img\hotel-1831072_640.jpg" />
+    <None Include="wwwroot\Assets\shared\img\hotel-room-1280x853.jpg" />
+    <None Include="wwwroot\Assets\shared\img\hotel-room-640x426.jpg" />
+    <None Include="wwwroot\Assets\shared\img\huan_user.png" />
+    <None Include="wwwroot\Assets\shared\img\logo-150px.png" />
+    <None Include="wwwroot\Assets\shared\img\logo-350px.png" />
+    <None Include="wwwroot\Assets\shared\img\pedro_sanchez.png" />
+    <None Include="wwwroot\Assets\shared\img\ship-105596_1280.jpg" />
+    <None Include="wwwroot\Assets\shared\img\ship-105596_640.jpg" />
+    <None Include="wwwroot\Assets\shared\img\singapore-1132358_1280.jpg" />
+    <None Include="wwwroot\Assets\shared\img\singapore-1132358_640.jpg" />
+    <None Include="wwwroot\Assets\shared\img\the-palm-962785_1280.jpg" />
+    <None Include="wwwroot\Assets\shared\img\the-palm-962785_640.jpg" />
+    <None Include="wwwroot\Assets\shared\img\valid-css.gif" />
+    <None Include="wwwroot\Assets\shared\img\valid-html5.png" />
+    <None Include="wwwroot\Assets\shared\js\general-head.js" />
+    <None Include="wwwroot\Assets\shared\js\general-tail.js" />
+    <None Include="wwwroot\Assets\shared\js\jquery.js" />
+    <None Include="wwwroot\Assets\shared\js\moment.min.js" />
+    <None Include="wwwroot\Assets\shared\js\sweetalert2.all.js" />
+    <None Include="wwwroot\Assets\shared\svg\calendar.svg" />
+    <None Include="wwwroot\Assets\shared\svg\child.svg" />
+    <None Include="wwwroot\Assets\shared\svg\facebook.svg" />
+    <None Include="wwwroot\Assets\shared\svg\instagram.svg" />
+    <None Include="wwwroot\Assets\shared\svg\mail.svg" />
+    <None Include="wwwroot\Assets\shared\svg\man.svg" />
+    <None Include="wwwroot\Assets\shared\svg\navigate-up-arrow.svg" />
+    <None Include="wwwroot\Assets\shared\svg\pass.svg" />
+    <None Include="wwwroot\Assets\shared\svg\search.svg" />
+    <None Include="wwwroot\Assets\shared\svg\symbol-defs.svg" />
+    <None Include="wwwroot\Assets\shared\svg\twitter.svg" />
+    <None Include="wwwroot\Assets\shared\svg\user.svg" />
+    <None Include="wwwroot\Assets\shared\video\hotel.mp4" />
     <None Include="wwwroot\Content\css\style.css" />
     <None Include="wwwroot\Content\css\style.min.css" />
     <None Include="wwwroot\Content\fonts\JuliusSansOne-Regular.ttf" />
@@ -52,6 +203,15 @@
     <None Include="wwwroot\Content\img\the-palm-962785_640.jpg" />
     <None Include="wwwroot\Content\img\valid-css.gif" />
     <None Include="wwwroot\Content\img\valid-html5.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Assets\npm\package-lock.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Assets\npm\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 
