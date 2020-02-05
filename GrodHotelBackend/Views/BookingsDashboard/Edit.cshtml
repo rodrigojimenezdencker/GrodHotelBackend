@@ -1,0 +1,67 @@
+﻿@model GrodHotelBackend.Models.Bookings
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Bookings</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ClientsId" class="control-label"></label>
+                <select asp-for="ClientsId" class="form-control" asp-items="ViewBag.ClientsId"></select>
+                <span asp-validation-for="ClientsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomsId" class="control-label"></label>
+                <select asp-for="RoomsId" class="form-control" asp-items="ViewBag.RoomsId"></select>
+                <span asp-validation-for="RoomsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntryDate" class="control-label"></label>
+                <input asp-for="EntryDate" class="form-control" />
+                <span asp-validation-for="EntryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeavingDate" class="control-label"></label>
+                <input asp-for="LeavingDate" class="form-control" />
+                <span asp-validation-for="LeavingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdultNumbers" class="control-label"></label>
+                <input asp-for="AdultNumbers" class="form-control" />
+                <span asp-validation-for="AdultNumbers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinorNumbers" class="control-label"></label>
+                <input asp-for="MinorNumbers" class="form-control" />
+                <span asp-validation-for="MinorNumbers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmationDate" class="control-label"></label>
+                <input asp-for="ConfirmationDate" class="form-control" />
+                <span asp-validation-for="ConfirmationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

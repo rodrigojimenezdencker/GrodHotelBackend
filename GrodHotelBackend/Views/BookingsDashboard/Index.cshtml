@@ -1,0 +1,78 @@
+﻿@model IEnumerable<GrodHotelBackend.Models.Bookings>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeavingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdultNumbers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinorNumbers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clients.Dni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rooms.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeavingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdultNumbers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinorNumbers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmationDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
