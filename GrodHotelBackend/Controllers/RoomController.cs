@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GrodHotelBackend.Controllers
 {
-    public class RoomsController : Controller
+    public class RoomController : Controller
     {
         public IActionResult Index()
         {
