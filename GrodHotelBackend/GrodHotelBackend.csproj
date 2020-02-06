@@ -36,6 +36,7 @@
     <Content Remove="wwwroot\Assets\page\contact\js\script.js" />
     <Content Remove="wwwroot\Assets\page\cookieUsage\css\style.css" />
     <Content Remove="wwwroot\Assets\page\cookieUsage\js\script.js" />
+    <Content Remove="wwwroot\Assets\page\dashboard\js\script.js" />
     <Content Remove="wwwroot\Assets\page\hotel\css\style.css" />
     <Content Remove="wwwroot\Assets\page\hotel\js\script.js" />
     <Content Remove="wwwroot\Assets\page\index\css\style.css" />
@@ -125,6 +126,7 @@
     <None Include="wwwroot\Assets\page\contact\js\script.js" />
     <None Include="wwwroot\Assets\page\cookieUsage\css\style.css" />
     <None Include="wwwroot\Assets\page\cookieUsage\js\script.js" />
+    <None Include="wwwroot\Assets\page\dashboard\js\script.js" />
     <None Include="wwwroot\Assets\page\hotel\css\style.css" />
     <None Include="wwwroot\Assets\page\hotel\js\script.js" />
     <None Include="wwwroot\Assets\page\index\css\style.css" />
