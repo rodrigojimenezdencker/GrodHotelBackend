@@ -10,22 +10,23 @@ namespace GrodHotelBackend.Models
     {
         public int Id { get; set; }
         public virtual ICollection<Bookings> Bookings { get; set; }
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Name is empty!")]
+        [StringLength(20, ErrorMessage = "The name has the capacity for 20 characters or less!")]
         public string Name { get; set; }
-        [StringLength(40)]
+        [Required(ErrorMessage = "Surname is empty!")]
+        [StringLength(40, ErrorMessage = "The surname has the capacity for 40 characters or less!")]
         public string Surname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "BirthDate is empty!")]
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "DNI is empty!")]
+        [StringLength(9, ErrorMessage = "The DNI has the capacity for 9 characters or less!")]
         public string Dni { get; set; }
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "The email has the capacity for 50 characters or less!")]
         public string Email { get; set; }
         [Required]
         public bool Subscribed { get; set; }
-        [StringLength(200)]
+        [StringLength(200, ErrorMessage = "The comment has the capacity for 200 characters or less!")]
         public string Comments { get; set; }
     }
 }
