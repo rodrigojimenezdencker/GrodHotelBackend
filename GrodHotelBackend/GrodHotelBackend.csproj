@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Content\css\**" />
+    <Content Remove="wwwroot\Content\css\**" />
+    <EmbeddedResource Remove="wwwroot\Content\css\**" />
+    <None Remove="wwwroot\Content\css\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20200202141312_Testing money annotation on bookings.cs" />
     <Compile Remove="Migrations\20200202141312_Testing money annotation on bookings.Designer.cs" />
     <Compile Remove="Migrations\20200202141855_Testing money annotation on bookings.cs" />
@@ -183,8 +190,6 @@
     <None Include="wwwroot\Assets\shared\svg\twitter.svg" />
     <None Include="wwwroot\Assets\shared\svg\user.svg" />
     <None Include="wwwroot\Assets\shared\video\hotel.mp4" />
-    <None Include="wwwroot\Content\css\style.css" />
-    <None Include="wwwroot\Content\css\style.min.css" />
     <None Include="wwwroot\Content\fonts\JuliusSansOne-Regular.ttf" />
     <None Include="wwwroot\Content\fonts\SulphurPoint-Regular.ttf" />
     <None Include="wwwroot\Content\img\beach_resort.jpg" />
