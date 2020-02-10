@@ -1,25 +1,29 @@
 ﻿$(document).ready(function () {
     $('[data-widget="new_client_form"], [data-widget="edit_client_form"]').submit(function (event) {
-        event.preventDefault();
         if (validateUsername($('[data-hook="username"]').val())) {
+            event.preventDefault();
             return;
         }
         if (validateSurname($('[data-hook="surname"]').val())) {
+            event.preventDefault();
             return;
         }
         if (validateBirthdate($('[data-hook="birthdate"]').val())) {
+            event.preventDefault();
             return;
         }
         if (validateDNI($('[data-hook="dni"]').val())) {
+            event.preventDefault();
             return;
         }
         if (validateEmail($('[data-hook="email"]').val())) {
+            event.preventDefault();
             return;
         }
         if (validateComments($('[data-hook="comments"]').val())) {
+            event.preventDefault();
             return;
         }
-        event.submit();
     });
 
     function validateUsername(username) {
