@@ -53,7 +53,7 @@ namespace GrodHotelBackend.Controllers.CRUD
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,BirthDate,Dni,Email,Subscribed,Comments")] Clients clients)
+        public async Task<IActionResult> Create([Bind("Id,Name,Surname,BirthDate,Dni,Email,Comments")] Clients clients)
         {
             if (ModelState.IsValid)
             {
