@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<GrodHotelBackend.Models.Hotels>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Hotels";
     Layout = "~/Views/Shared/_LayoutBack.cshtml";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a class="btn btn-info" asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -56,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Availability)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
