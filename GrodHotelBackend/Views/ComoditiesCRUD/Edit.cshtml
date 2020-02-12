@@ -1,13 +1,14 @@
 ﻿@model GrodHotelBackend.Models.Comodities
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit commodity";
     Layout = "~/Views/Shared/_LayoutBack.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Comodities</h4>
+<p class="display-4">@ViewData["Title"]</p>
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,8 +26,3 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
