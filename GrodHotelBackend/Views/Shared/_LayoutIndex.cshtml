@@ -16,17 +16,17 @@
             <input type="checkbox" id="nav_check" />
             <!-- Hamburger menu on mobile version -->
             <div id="mobile_nav_button">
-                <label aria-label="To ggle main menu" for="nav_check">
+                <label aria-label="Toggle main menu" for="nav_check">
                     <!-- Lines of hamburger icon -->
                     &Congruent;
                 </label>
             </div>
             <ul id="nav_links">
-                <li><a href="Home">Home</a></li>
-                <li><a href="Search">Search</a></li>
-                <li><a href="About">About</a></li>
-                <li><a href="Contact">Contact</a></li>
-                <li><a href="Dashboard">Dashboard</a></li>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Search" asp-action="Index">Search</a></li>
+                <li><a asp-controller="About" asp-action="Index">About</a></li>
+                <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+                <li><a asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
             </ul>
         </nav>
         <img id="img_logo" src="~/Content/img/logo-350px.png" alt="GROD Hotel" />
@@ -88,7 +88,7 @@
         <div class="cookies_warning" data-widget="cookies_warning">
             <p>
                 This site uses cookies to personalise content and adverts, to provide social media features and to
-                analyse traffic. <a href="CookieUsage">More info</a>.
+                analyse traffic. <a asp-controller="CookieUsage" asp-action="Index">More info</a>.
             </p>
             <div>
                 <button data-hook="accept_cookie" class="send_button">Accept cookies</button>
@@ -123,10 +123,10 @@
                 <h3>Useful Links</h3>
                 <ul>
                     <li>
-                        <a href="CookieUsage">Cookie Usage</a>
+                        <a asp-controller="CookieUsage" asp-action="Index">Cookie Usage</a>
                     </li>
                     <li>
-                        <a href="PersonalDataUsage">Personal Data Usage</a>
+                        <a asp-controller="PersonalDataUsage" asp-action="Index">Personal Data Usage</a>
                     </li>
                 </ul>
             </div>

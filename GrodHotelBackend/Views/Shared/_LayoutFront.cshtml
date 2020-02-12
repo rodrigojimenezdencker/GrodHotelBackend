@@ -15,7 +15,7 @@
         <nav>
             <input type="checkbox" id="nav_check" />
             <div id="logo_container">
-                <a href="Home"><img id="main_logo" src="~/Content/img/logo-150px.png" alt="GROD Hotel" /></a>
+                <a asp-controller="Home" asp-action="Index"><img id="main_logo" src="~/Content/img/logo-150px.png" alt="GROD Hotel" /></a>
             </div>
             <!-- Hamburger menu on mobile version -->
             <div id="mobile_nav_button">
@@ -25,10 +25,10 @@
                 </label>
             </div>
             <div id="nav_links">
-                <a href="Home">Home</a>
-                <a href="Search">Search</a>
-                <a href="About">About</a>
-                <a href="Contact">Contact</a>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="Search" asp-action="Index">Search</a>
+                <a asp-controller="About" asp-action="Index">About</a>
+                <a asp-controller="Contact" asp-action="Index">Contact</a>
             </div>
         </nav>
     </header>
@@ -41,7 +41,7 @@
         <div class="cookies_warning" data-widget="cookies_warning">
             <p>
                 This site uses cookies to personalise content and adverts, to provide social media features and to
-                analyse traffic. <a href="CookieUsage">More info</a>.
+                analyse traffic. <a asp-controller="CookieUsage" asp-action="Index">More info</a>.
             </p>
             <div>
                 <button data-hook="accept_cookie" class="send_button">Accept cookies</button>
@@ -76,10 +76,10 @@
                 <h3>Useful Links</h3>
                 <ul>
                     <li>
-                        <a href="CookieUsage">Cookie Usage</a>
+                        <a asp-controller="CookieUsage" asp-action="Index">Cookie Usage</a>
                     </li>
                     <li>
-                        <a href="PersonalDataUsage">Personal Data Usage</a>
+                        <a asp-controller="PersonalDataUsage" asp-action="Index">Personal Data Usage</a>
                     </li>
                 </ul>
             </div>
