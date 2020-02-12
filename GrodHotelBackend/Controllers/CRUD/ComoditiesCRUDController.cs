@@ -9,22 +9,22 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class ClientsDashboardController : Controller
+    public class ComoditiesCRUDController : Controller
     {
         private readonly Context _context;
 
-        public ClientsDashboardController(Context context)
+        public ComoditiesCRUDController(Context context)
         {
             _context = context;
         }
 
-        // GET: ClientsDashboard
+        // GET: ComoditiesDashboard
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Clients.ToListAsync());
+            return View(await _context.Comodities.ToListAsync());
         }
 
-        // GET: ClientsDashboard/Details/5
+        // GET: ComoditiesDashboard/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var clients = await _context.Clients
+            var comodities = await _context.Comodities
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (clients == null)
+            if (comodities == null)
             {
                 return NotFound();
             }
 
-            return View(clients);
+            return View(comodities);
         }
 
-        // GET: ClientsDashboard/Create
+        // GET: ComoditiesDashboard/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ClientsDashboard/Create
+        // POST: ComoditiesDashboard/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,BirthDate,Dni,Email,Comments")] Clients clients)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Comodities comodities)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(clients);
+                _context.Add(comodities);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(clients);
+            return View(comodities);
         }
 
-        // GET: ClientsDashboard/Edit/5
+        // GET: ComoditiesDashboard/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var clients = await _context.Clients.FindAsync(id);
-            if (clients == null)
+            var comodities = await _context.Comodities.FindAsync(id);
+            if (comodities == null)
             {
                 return NotFound();
             }
-            return View(clients);
+            return View(comodities);
         }
 
-        // POST: ClientsDashboard/Edit/5
+        // POST: ComoditiesDashboard/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,BirthDate,Dni,Email,Subscribed,Comments")] Clients clients)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Comodities comodities)
         {
-            if (id != clients.Id)
+            if (id != comodities.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             {
                 try
                 {
-                    _context.Update(clients);
+                    _context.Update(comodities);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClientsExists(clients.Id))
+                    if (!ComoditiesExists(comodities.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace GrodHotelBackend.Controllers.CRUD
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(clients);
+            return View(comodities);
         }
 
-        // GET: ClientsDashboard/Delete/5
+        // GET: ComoditiesDashboard/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var clients = await _context.Clients
+            var comodities = await _context.Comodities
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (clients == null)
+            if (comodities == null)
             {
                 return NotFound();
             }
 
-            return View(clients);
+            return View(comodities);
         }
 
-        // POST: ClientsDashboard/Delete/5
+        // POST: ComoditiesDashboard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var clients = await _context.Clients.FindAsync(id);
-            _context.Clients.Remove(clients);
+            var comodities = await _context.Comodities.FindAsync(id);
+            _context.Comodities.Remove(comodities);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClientsExists(int id)
+        private bool ComoditiesExists(int id)
         {
-            return _context.Clients.Any(e => e.Id == id);
+            return _context.Comodities.Any(e => e.Id == id);
         }
     }
 }

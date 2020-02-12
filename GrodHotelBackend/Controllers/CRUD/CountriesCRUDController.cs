@@ -9,23 +9,22 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class CitiesDashboardController : Controller
+    public class CountriesCRUDController : Controller
     {
         private readonly Context _context;
 
-        public CitiesDashboardController(Context context)
+        public CountriesCRUDController(Context context)
         {
             _context = context;
         }
 
-        // GET: CitiesDashboard
+        // GET: CountriesDashboard
         public async Task<IActionResult> Index()
         {
-            var context = _context.Cities.Include(c => c.Countries);
-            return View(await context.ToListAsync());
+            return View(await _context.Countries.ToListAsync());
         }
 
-        // GET: CitiesDashboard/Details/5
+        // GET: CountriesDashboard/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +32,39 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var cities = await _context.Cities
-                .Include(c => c.Countries)
+            var countries = await _context.Countries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cities == null)
+            if (countries == null)
             {
                 return NotFound();
             }
 
-            return View(cities);
+            return View(countries);
         }
 
-        // GET: CitiesDashboard/Create
+        // GET: CountriesDashboard/Create
         public IActionResult Create()
         {
-            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name");
             return View();
         }
 
-        // POST: CitiesDashboard/Create
+        // POST: CountriesDashboard/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CountriesId,Name")] Cities cities)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Countries countries)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cities);
+                _context.Add(countries);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", cities.CountriesId);
-            return View(cities);
+            return View(countries);
         }
 
-        // GET: CitiesDashboard/Edit/5
+        // GET: CountriesDashboard/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +72,22 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var cities = await _context.Cities.FindAsync(id);
-            if (cities == null)
+            var countries = await _context.Countries.FindAsync(id);
+            if (countries == null)
             {
                 return NotFound();
             }
-            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", cities.CountriesId);
-            return View(cities);
+            return View(countries);
         }
 
-        // POST: CitiesDashboard/Edit/5
+        // POST: CountriesDashboard/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CountriesId,Name")] Cities cities)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Countries countries)
         {
-            if (id != cities.Id)
+            if (id != countries.Id)
             {
                 return NotFound();
             }
@@ -101,12 +96,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             {
                 try
                 {
-                    _context.Update(cities);
+                    _context.Update(countries);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CitiesExists(cities.Id))
+                    if (!CountriesExists(countries.Id))
                     {
                         return NotFound();
                     }
@@ -117,11 +112,10 @@ namespace GrodHotelBackend.Controllers.CRUD
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", cities.CountriesId);
-            return View(cities);
+            return View(countries);
         }
 
-        // GET: CitiesDashboard/Delete/5
+        // GET: CountriesDashboard/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +123,30 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var cities = await _context.Cities
-                .Include(c => c.Countries)
+            var countries = await _context.Countries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cities == null)
+            if (countries == null)
             {
                 return NotFound();
             }
 
-            return View(cities);
+            return View(countries);
         }
 
-        // POST: CitiesDashboard/Delete/5
+        // POST: CountriesDashboard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cities = await _context.Cities.FindAsync(id);
-            _context.Cities.Remove(cities);
+            var countries = await _context.Countries.FindAsync(id);
+            _context.Countries.Remove(countries);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CitiesExists(int id)
+        private bool CountriesExists(int id)
         {
-            return _context.Cities.Any(e => e.Id == id);
+            return _context.Countries.Any(e => e.Id == id);
         }
     }
 }

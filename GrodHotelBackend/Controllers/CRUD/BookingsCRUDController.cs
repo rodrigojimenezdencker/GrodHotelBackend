@@ -9,22 +9,23 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class CountriesDashboardController : Controller
+    public class BookingsCRUDController : Controller
     {
         private readonly Context _context;
 
-        public CountriesDashboardController(Context context)
+        public BookingsCRUDController(Context context)
         {
             _context = context;
         }
 
-        // GET: CountriesDashboard
+        // GET: BookingsDashboard
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Countries.ToListAsync());
+            var context = _context.Bookings.Include(b => b.Clients).Include(b => b.Rooms);
+            return View(await context.ToListAsync());
         }
 
-        // GET: CountriesDashboard/Details/5
+        // GET: BookingsDashboard/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,45 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var countries = await _context.Countries
+            var bookings = await _context.Bookings
+                .Include(b => b.Clients)
+                .Include(b => b.Rooms)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (countries == null)
+            if (bookings == null)
             {
                 return NotFound();
             }
 
-            return View(countries);
+            return View(bookings);
         }
 
-        // GET: CountriesDashboard/Create
+        // GET: BookingsDashboard/Create
         public IActionResult Create()
         {
+            ViewData["ClientsId"] = new SelectList(_context.Clients, "Id", "Dni");
+            ViewData["RoomsId"] = new SelectList(_context.Rooms, "Id", "Id");
             return View();
         }
 
-        // POST: CountriesDashboard/Create
+        // POST: BookingsDashboard/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Countries countries)
+        public async Task<IActionResult> Create([Bind("Id,ClientsId,RoomsId,EntryDate,LeavingDate,TotalPrice,AdultNumbers,MinorNumbers,ConfirmationDate")] Bookings bookings)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(countries);
+                _context.Add(bookings);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(countries);
+            ViewData["ClientsId"] = new SelectList(_context.Clients, "Id", "Dni", bookings.ClientsId);
+            ViewData["RoomsId"] = new SelectList(_context.Rooms, "Id", "Id", bookings.RoomsId);
+            return View(bookings);
         }
 
-        // GET: CountriesDashboard/Edit/5
+        // GET: BookingsDashboard/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +79,24 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var countries = await _context.Countries.FindAsync(id);
-            if (countries == null)
+            var bookings = await _context.Bookings.FindAsync(id);
+            if (bookings == null)
             {
                 return NotFound();
             }
-            return View(countries);
+            ViewData["ClientsId"] = new SelectList(_context.Clients, "Id", "Dni", bookings.ClientsId);
+            ViewData["RoomsId"] = new SelectList(_context.Rooms, "Id", "Id", bookings.RoomsId);
+            return View(bookings);
         }
 
-        // POST: CountriesDashboard/Edit/5
+        // POST: BookingsDashboard/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Countries countries)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClientsId,RoomsId,EntryDate,LeavingDate,TotalPrice,AdultNumbers,MinorNumbers,ConfirmationDate")] Bookings bookings)
         {
-            if (id != countries.Id)
+            if (id != bookings.Id)
             {
                 return NotFound();
             }
@@ -96,12 +105,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             {
                 try
                 {
-                    _context.Update(countries);
+                    _context.Update(bookings);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CountriesExists(countries.Id))
+                    if (!BookingsExists(bookings.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +121,12 @@ namespace GrodHotelBackend.Controllers.CRUD
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(countries);
+            ViewData["ClientsId"] = new SelectList(_context.Clients, "Id", "Dni", bookings.ClientsId);
+            ViewData["RoomsId"] = new SelectList(_context.Rooms, "Id", "Id", bookings.RoomsId);
+            return View(bookings);
         }
 
-        // GET: CountriesDashboard/Delete/5
+        // GET: BookingsDashboard/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +134,32 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var countries = await _context.Countries
+            var bookings = await _context.Bookings
+                .Include(b => b.Clients)
+                .Include(b => b.Rooms)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (countries == null)
+            if (bookings == null)
             {
                 return NotFound();
             }
 
-            return View(countries);
+            return View(bookings);
         }
 
-        // POST: CountriesDashboard/Delete/5
+        // POST: BookingsDashboard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var countries = await _context.Countries.FindAsync(id);
-            _context.Countries.Remove(countries);
+            var bookings = await _context.Bookings.FindAsync(id);
+            _context.Bookings.Remove(bookings);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CountriesExists(int id)
+        private bool BookingsExists(int id)
         {
-            return _context.Countries.Any(e => e.Id == id);
+            return _context.Bookings.Any(e => e.Id == id);
         }
     }
 }

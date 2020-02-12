@@ -9,23 +9,22 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class RoomsDashboardController : Controller
+    public class HotelsChainCRUDController : Controller
     {
         private readonly Context _context;
 
-        public RoomsDashboardController(Context context)
+        public HotelsChainCRUDController(Context context)
         {
             _context = context;
         }
 
-        // GET: RoomsDashboard
+        // GET: HotelsChainDashboard
         public async Task<IActionResult> Index()
         {
-            var context = _context.Rooms.Include(r => r.Hotels);
-            return View(await context.ToListAsync());
+            return View(await _context.HotelsChain.ToListAsync());
         }
 
-        // GET: RoomsDashboard/Details/5
+        // GET: HotelsChainDashboard/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +32,39 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var rooms = await _context.Rooms
-                .Include(r => r.Hotels)
+            var hotelsChain = await _context.HotelsChain
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (rooms == null)
+            if (hotelsChain == null)
             {
                 return NotFound();
             }
 
-            return View(rooms);
+            return View(hotelsChain);
         }
 
-        // GET: RoomsDashboard/Create
+        // GET: HotelsChainDashboard/Create
         public IActionResult Create()
         {
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name");
             return View();
         }
 
-        // POST: RoomsDashboard/Create
+        // POST: HotelsChainDashboard/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HotelsId,Dimensions,Price,Description,Availability")] Rooms rooms)
+        public async Task<IActionResult> Create([Bind("Id,Name,Availability")] HotelsChain hotelsChain)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rooms);
+                _context.Add(hotelsChain);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name", rooms.HotelsId);
-            return View(rooms);
+            return View(hotelsChain);
         }
 
-        // GET: RoomsDashboard/Edit/5
+        // GET: HotelsChainDashboard/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +72,22 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var rooms = await _context.Rooms.FindAsync(id);
-            if (rooms == null)
+            var hotelsChain = await _context.HotelsChain.FindAsync(id);
+            if (hotelsChain == null)
             {
                 return NotFound();
             }
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name", rooms.HotelsId);
-            return View(rooms);
+            return View(hotelsChain);
         }
 
-        // POST: RoomsDashboard/Edit/5
+        // POST: HotelsChainDashboard/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsId,Dimensions,Price,Description,Availability")] Rooms rooms)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Availability")] HotelsChain hotelsChain)
         {
-            if (id != rooms.Id)
+            if (id != hotelsChain.Id)
             {
                 return NotFound();
             }
@@ -101,12 +96,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             {
                 try
                 {
-                    _context.Update(rooms);
+                    _context.Update(hotelsChain);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RoomsExists(rooms.Id))
+                    if (!HotelsChainExists(hotelsChain.Id))
                     {
                         return NotFound();
                     }
@@ -117,11 +112,10 @@ namespace GrodHotelBackend.Controllers.CRUD
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name", rooms.HotelsId);
-            return View(rooms);
+            return View(hotelsChain);
         }
 
-        // GET: RoomsDashboard/Delete/5
+        // GET: HotelsChainDashboard/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +123,30 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var rooms = await _context.Rooms
-                .Include(r => r.Hotels)
+            var hotelsChain = await _context.HotelsChain
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (rooms == null)
+            if (hotelsChain == null)
             {
                 return NotFound();
             }
 
-            return View(rooms);
+            return View(hotelsChain);
         }
 
-        // POST: RoomsDashboard/Delete/5
+        // POST: HotelsChainDashboard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var rooms = await _context.Rooms.FindAsync(id);
-            _context.Rooms.Remove(rooms);
+            var hotelsChain = await _context.HotelsChain.FindAsync(id);
+            _context.HotelsChain.Remove(hotelsChain);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RoomsExists(int id)
+        private bool HotelsChainExists(int id)
         {
-            return _context.Rooms.Any(e => e.Id == id);
+            return _context.HotelsChain.Any(e => e.Id == id);
         }
     }
 }

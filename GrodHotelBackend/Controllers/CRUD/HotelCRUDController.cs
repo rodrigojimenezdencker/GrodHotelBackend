@@ -9,11 +9,11 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class HotelDashboardController : Controller
+    public class HotelCRUDController : Controller
     {
         private readonly Context _context;
 
-        public HotelDashboardController(Context context)
+        public HotelCRUDController(Context context)
         {
             _context = context;
         }

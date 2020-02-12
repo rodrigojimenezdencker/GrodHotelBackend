@@ -9,22 +9,23 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class ComoditiesDashboardController : Controller
+    public class CitiesCRUDController : Controller
     {
         private readonly Context _context;
 
-        public ComoditiesDashboardController(Context context)
+        public CitiesCRUDController(Context context)
         {
             _context = context;
         }
 
-        // GET: ComoditiesDashboard
+        // GET: CitiesDashboard
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Comodities.ToListAsync());
+            var context = _context.Cities.Include(c => c.Countries);
+            return View(await context.ToListAsync());
         }
 
-        // GET: ComoditiesDashboard/Details/5
+        // GET: CitiesDashboard/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,42 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var comodities = await _context.Comodities
+            var cities = await _context.Cities
+                .Include(c => c.Countries)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (comodities == null)
+            if (cities == null)
             {
                 return NotFound();
             }
 
-            return View(comodities);
+            return View(cities);
         }
 
-        // GET: ComoditiesDashboard/Create
+        // GET: CitiesDashboard/Create
         public IActionResult Create()
         {
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name");
             return View();
         }
 
-        // POST: ComoditiesDashboard/Create
+        // POST: CitiesDashboard/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Comodities comodities)
+        public async Task<IActionResult> Create([Bind("Id,CountriesId,Name")] Cities cities)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(comodities);
+                _context.Add(cities);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(comodities);
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", cities.CountriesId);
+            return View(cities);
         }
 
-        // GET: ComoditiesDashboard/Edit/5
+        // GET: CitiesDashboard/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +76,23 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var comodities = await _context.Comodities.FindAsync(id);
-            if (comodities == null)
+            var cities = await _context.Cities.FindAsync(id);
+            if (cities == null)
             {
                 return NotFound();
             }
-            return View(comodities);
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", cities.CountriesId);
+            return View(cities);
         }
 
-        // POST: ComoditiesDashboard/Edit/5
+        // POST: CitiesDashboard/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Comodities comodities)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CountriesId,Name")] Cities cities)
         {
-            if (id != comodities.Id)
+            if (id != cities.Id)
             {
                 return NotFound();
             }
@@ -96,12 +101,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             {
                 try
                 {
-                    _context.Update(comodities);
+                    _context.Update(cities);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ComoditiesExists(comodities.Id))
+                    if (!CitiesExists(cities.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +117,11 @@ namespace GrodHotelBackend.Controllers.CRUD
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(comodities);
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", cities.CountriesId);
+            return View(cities);
         }
 
-        // GET: ComoditiesDashboard/Delete/5
+        // GET: CitiesDashboard/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +129,31 @@ namespace GrodHotelBackend.Controllers.CRUD
                 return NotFound();
             }
 
-            var comodities = await _context.Comodities
+            var cities = await _context.Cities
+                .Include(c => c.Countries)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (comodities == null)
+            if (cities == null)
             {
                 return NotFound();
             }
 
-            return View(comodities);
+            return View(cities);
         }
 
-        // POST: ComoditiesDashboard/Delete/5
+        // POST: CitiesDashboard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comodities = await _context.Comodities.FindAsync(id);
-            _context.Comodities.Remove(comodities);
+            var cities = await _context.Cities.FindAsync(id);
+            _context.Cities.Remove(cities);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ComoditiesExists(int id)
+        private bool CitiesExists(int id)
         {
-            return _context.Comodities.Any(e => e.Id == id);
+            return _context.Cities.Any(e => e.Id == id);
         }
     }
 }
