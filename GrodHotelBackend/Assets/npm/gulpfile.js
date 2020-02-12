@@ -30,10 +30,26 @@ function css(done) {
 			'../shared/css/bootstrap.css'
 		])
 		.pipe(concat('style.css'))
-		.pipe(gulp.dest('../../public/css'))
+		.pipe(gulp.dest('../../wwwroot/Content/css'))
 		.pipe(rename('style.min.css'))
 		.pipe(uglifyCss())
-		.pipe(gulp.dest('../../public/css'))
+		.pipe(gulp.dest('../../wwwroot/Content/css'))
+		;
+
+	done();
+}
+
+function css_back(done) {
+	gulp
+		.src([
+			'../shared/css/bootstrap.css',
+			'../'
+		])
+		.pipe(concat('style_back.css'))
+		.pipe(gulp.dest('../../wwwroot/Content/css'))
+		.pipe(rename('style_back.min.css'))
+		.pipe(uglifyCss())
+		.pipe(gulp.dest('../../wwwroot/Content/css'))
 		;
 
 	done();
@@ -44,7 +60,7 @@ function font(done) {
 		.src([
 			'../shared/fonts/**'
 		])
-		.pipe(gulp.dest('../../public/fonts'))
+		.pipe(gulp.dest('../../wwwroot/Content/fonts'))
 		;
 
 	done();
@@ -55,7 +71,7 @@ function img(done) {
 		.src([
 			'../shared/img/**'
 		])
-		.pipe(gulp.dest('../../public/img'))
+		.pipe(gulp.dest('../../wwwroot/Content/img'))
 		;
 
 	done();
@@ -66,7 +82,7 @@ function svg(done) {
 		.src([
 			'../shared/svg/**'
 		])
-		.pipe(gulp.dest('../../public/svg'))
+		.pipe(gulp.dest('../../wwwroot/Content/svg'))
 		;
 
 	done();
@@ -77,7 +93,7 @@ function video(done) {
 		.src([
 			'../shared/video/**'
 		])
-		.pipe(gulp.dest('../../public/video'))
+		.pipe(gulp.dest('../../wwwroot/Content/video'))
 		;
 
 	done();
@@ -86,6 +102,8 @@ function video(done) {
 function js(done) {
 	gulp
 		.src([
+			'../shared/js/moment.min.js',
+			'../shared/js/sweetalert2.all.js',
 			'../shared/js/general-head.js',
 			'../page/about/js/script.js',
 			'../page/booking/js/script.js',
@@ -100,19 +118,34 @@ function js(done) {
 			'../page/search/js/script.js',
 			'../page/thanksForContactingUs/js/script.js',
 			'../page/thanksForSubscribing/js/script.js',
-			'../shared/js/general-tail.js',
-			'../shared/js/moment.min.js',
-			'../shared/js/sweetalert2.all.js',
-			'../shared/js/jquery.js'
+			'../shared/js/general-tail.js'
 		])
 		.pipe(concat('script.js'))
-		.pipe(gulp.dest('../../public/js'))
+		.pipe(gulp.dest('../../wwwroot/Content/js'))
 		.pipe(rename('script.min.js'))
 		.pipe(uglifyJs())
-		.pipe(gulp.dest('../../public/js'))
+		.pipe(gulp.dest('../../wwwroot/Content/js'))
 		;
 
 	done();
 }
 
-exports.default = gulp.parallel(css, font, img, svg, video, js);
+function js_back(done) {
+	gulp
+		.src([
+			'../shared/js/moment.min.js',
+			'../shared/js/sweetalert2.all.js',
+			'../shared/js/jquery.js',
+			'../page/clientsCRUD/js/script.js'
+		])
+		.pipe(concat('script_back.js'))
+		.pipe(gulp.dest('../../wwwroot/Content/js'))
+		.pipe(rename('script_back.min.js'))
+		.pipe(uglifyJs())
+		.pipe(gulp.dest('../../wwwroot/Content/js'))
+		;
+
+	done();
+}
+
+exports.default = gulp.parallel(css, css_back, font, img, svg, video, js, js_back);
