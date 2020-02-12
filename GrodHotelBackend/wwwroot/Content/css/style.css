@@ -688,6 +688,7 @@ body .newsletter_input_container input:hover::placeholder {
 }
 
 .arrow_up {
+    cursor: pointer;
     position: fixed;
     bottom: 10px;
     right: 0;
