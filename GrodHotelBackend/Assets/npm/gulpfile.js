@@ -43,7 +43,7 @@ function css_back(done) {
 	gulp
 		.src([
 			'../shared/css/bootstrap.css',
-			'../'
+			'../shared/css/layout_back'
 		])
 		.pipe(concat('style_back.css'))
 		.pipe(gulp.dest('../../wwwroot/Content/css'))
