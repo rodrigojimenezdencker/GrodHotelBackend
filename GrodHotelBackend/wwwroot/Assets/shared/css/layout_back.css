@@ -1,7 +1,6 @@
 /*
  * Sidebar
  */
-
 .sidebar {
   top: 0;
   bottom: 0;
@@ -20,8 +19,8 @@
 }
 
 /*
- * Content
- */
+   * Content
+   */
 
 main {
   padding-top: 48px; /* Space for fixed navbar */
