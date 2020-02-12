@@ -19,5 +19,8 @@
     "moment": "^2.24.0",
     "spain-id": "^1.0.6",
     "sweetalert2": "^9.7.0"
+  },
+  "devDependencies": {
+    "gulp-uglify-es": "^2.0.0"
   }
 }

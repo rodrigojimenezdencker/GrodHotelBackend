@@ -5,7 +5,7 @@ var
 	concat = require('gulp-concat'),
 	rename = require('gulp-rename'),
 	uglifyCss = require('gulp-csso'),
-	uglifyJs = require('gulp-uglify')
+	uglifyJs = require('gulp-uglify-es').default
 	;
 
 function css(done) {
@@ -15,7 +15,7 @@ function css(done) {
 			'../shared/css/style_guide.css',
 			'../page/about/css/style.css',
 			'../page/booking/css/style.css',
-			'../page/booking-in-process/css/style.css',
+			'../page/bookingInProcess/css/style.css',
 			'../page/bookingCompleted/css/style.css',
 			'../page/contact/css/style.css',
 			'../page/cookieUsage/css/style.css',
@@ -26,14 +26,13 @@ function css(done) {
 			'../page/search/css/style.css',
 			'../page/thanksForContactingUs/css/style.css',
 			'../page/thanksForSubscribing/css/style.css',
-			'../shared/css/sweetalert2.css',
-			'../shared/css/bootstrap.css'
+			'../shared/css/sweetalert2.css'
 		])
 		.pipe(concat('style.css'))
-		.pipe(gulp.dest('../../wwwroot/Content/css'))
+		.pipe(gulp.dest('../../Content/css'))
 		.pipe(rename('style.min.css'))
 		.pipe(uglifyCss())
-		.pipe(gulp.dest('../../wwwroot/Content/css'))
+		.pipe(gulp.dest('../../Content/css'))
 		;
 
 	done();
@@ -43,13 +42,13 @@ function css_back(done) {
 	gulp
 		.src([
 			'../shared/css/bootstrap.css',
-			'../shared/css/layout_back'
+			'../shared/css/layout_back.css'
 		])
 		.pipe(concat('style_back.css'))
-		.pipe(gulp.dest('../../wwwroot/Content/css'))
+		.pipe(gulp.dest('../../Content/css'))
 		.pipe(rename('style_back.min.css'))
 		.pipe(uglifyCss())
-		.pipe(gulp.dest('../../wwwroot/Content/css'))
+		.pipe(gulp.dest('../../Content/css'))
 		;
 
 	done();
@@ -60,7 +59,7 @@ function font(done) {
 		.src([
 			'../shared/fonts/**'
 		])
-		.pipe(gulp.dest('../../wwwroot/Content/fonts'))
+		.pipe(gulp.dest('../../Content/fonts'))
 		;
 
 	done();
@@ -71,7 +70,7 @@ function img(done) {
 		.src([
 			'../shared/img/**'
 		])
-		.pipe(gulp.dest('../../wwwroot/Content/img'))
+		.pipe(gulp.dest('../../Content/img'))
 		;
 
 	done();
@@ -82,7 +81,7 @@ function svg(done) {
 		.src([
 			'../shared/svg/**'
 		])
-		.pipe(gulp.dest('../../wwwroot/Content/svg'))
+		.pipe(gulp.dest('../../Content/svg'))
 		;
 
 	done();
@@ -93,7 +92,7 @@ function video(done) {
 		.src([
 			'../shared/video/**'
 		])
-		.pipe(gulp.dest('../../wwwroot/Content/video'))
+		.pipe(gulp.dest('../../Content/video'))
 		;
 
 	done();
@@ -102,12 +101,12 @@ function video(done) {
 function js(done) {
 	gulp
 		.src([
-			'../shared/js/moment.min.js',
+			'../shared/js/moment.js',
 			'../shared/js/sweetalert2.all.js',
 			'../shared/js/general-head.js',
 			'../page/about/js/script.js',
 			'../page/booking/js/script.js',
-			'../page/booking-in-process/js/script.js',
+			'../page/bookingInProcess/js/script.js',
 			'../page/bookingCompleted/js/script.js',
 			'../page/contact/js/script.js',
 			'../page/cookieUsage/js/script.js',
@@ -121,10 +120,10 @@ function js(done) {
 			'../shared/js/general-tail.js'
 		])
 		.pipe(concat('script.js'))
-		.pipe(gulp.dest('../../wwwroot/Content/js'))
+		.pipe(gulp.dest('../../Content/js'))
 		.pipe(rename('script.min.js'))
 		.pipe(uglifyJs())
-		.pipe(gulp.dest('../../wwwroot/Content/js'))
+		.pipe(gulp.dest('../../Content/js'))
 		;
 
 	done();
@@ -133,16 +132,16 @@ function js(done) {
 function js_back(done) {
 	gulp
 		.src([
-			'../shared/js/moment.min.js',
+			'../shared/js/moment.js',
 			'../shared/js/sweetalert2.all.js',
 			'../shared/js/jquery.js',
 			'../page/clientsCRUD/js/script.js'
 		])
 		.pipe(concat('script_back.js'))
-		.pipe(gulp.dest('../../wwwroot/Content/js'))
+		.pipe(gulp.dest('../../Content/js'))
 		.pipe(rename('script_back.min.js'))
 		.pipe(uglifyJs())
-		.pipe(gulp.dest('../../wwwroot/Content/js'))
+		.pipe(gulp.dest('../../Content/js'))
 		;
 
 	done();
