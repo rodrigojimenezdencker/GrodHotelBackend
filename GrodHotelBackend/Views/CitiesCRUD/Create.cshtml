@@ -7,7 +7,7 @@
 
 <h1 class="display-4">@ViewData["Title"]</h1>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
 </div>
 <hr />
 <div class="row">
@@ -15,7 +15,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CountriesId" class="control-label"></label>
+                <label asp-for="CountriesId" class="control-label">Country</label>
                 <select asp-for="CountriesId" class ="form-control" asp-items="ViewBag.CountriesId"></select>
             </div>
             <div class="form-group">
