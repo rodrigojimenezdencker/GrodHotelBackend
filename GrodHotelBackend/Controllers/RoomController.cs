@@ -17,14 +17,13 @@ namespace GrodHotelBackend.Controllers
         }
 
         // GET: Room
-        /* [HttpGet("/Room")]
+        [HttpGet("/Room")]
         public ActionResult Index()
         {
             ViewBag.Title = "Room";
             ViewBag.PageName = "room";
-            var hotels = _context.Room;
-            return View(await room.ToListAsync());
-        } */
+            return View();
+        } 
 
         // GET: Room
         [HttpGet("/Room/{id:int?}")]
