@@ -37,18 +37,6 @@ namespace GrodHotelBackend.Controllers
         }
 
         // GET: Hotel
-        [HttpGet("/Hotels")]
-        public ActionResult Index()
-        {
-            ViewBag.Title = "Hotel";
-            ViewBag.PageName = "hotel";
-            ViewModel mymodel = new ViewModel();
-            mymodel.Hotels = GetHotels();
-            mymodel.Clients = GetClients();
-            return View("HotelList", mymodel);
-        }
-
-        // GET: Hotel
         [HttpGet("/Hotel/{id:int?}")]
         public ActionResult Index(int id)
         {

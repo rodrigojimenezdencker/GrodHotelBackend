@@ -9,7 +9,7 @@ var route = function () {
 
 route();
 
-window.onscroll = scrollFunction();
+window.onscroll = scrollFunction;
 
 function scrollFunction() {
     if (document.body.scrollTop > 100

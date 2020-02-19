@@ -962,28 +962,6 @@ input[type="number"] {
   padding: 10px;
 }
 
-#most_liked_hotels_container img {
-  animation: 800ms;
-  transition: 400ms ease;
-}
-
-#most_liked_hotels_container img:hover {
-  transform: scale(1.04);
-}
-
-#most_liked_hotels_container .hotel1 {
-  grid-area: 1 / 1 / 4 / 4;
-}
-#most_liked_hotels_container .hotel2 {
-  grid-area: 1 / 4 / 4 / 7;
-}
-#most_liked_hotels_container .hotel3 {
-  grid-area: 4 / 1 / 7 / 4;
-}
-#most_liked_hotels_container .hotel4 {
-  grid-area: 4 / 4 / 7 / 7;
-}
-
 .page-index .user_info {
   display: flex;
   justify-content: space-between;
@@ -999,10 +977,6 @@ input[type="number"] {
     top: 18%;
     opacity: 0.85;
   }
-
-  #most_liked_hotels_container {
-    display: block;
-  }
 }
 
 @media (min-width: 700px) {
@@ -1014,18 +988,6 @@ input[type="number"] {
 
   .page-index #layout_main {
     width: 100%;
-  }
-
-  #most_liked_hotels_container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-  }
-
-  #most_liked_hotels_container img {
-    height: 450px;
   }
 }
 
