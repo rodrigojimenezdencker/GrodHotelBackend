@@ -21,5 +21,7 @@ namespace GrodHotelBackend.Models
         public string Description { get; set; }
         [Required]
         public bool Availability { get; set; }
+        public string Image { get; set; }
+        public string SmallImage { get; set; }
     }
 }

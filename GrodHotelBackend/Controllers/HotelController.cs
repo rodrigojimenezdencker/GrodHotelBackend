@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using GrodHotelBackend.Models;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
-namespace GROD_Hotel_Backend.Controllers
+namespace GrodHotelBackend.Controllers
 {
     public class HotelController : Controller
     {
@@ -16,15 +18,35 @@ namespace GROD_Hotel_Backend.Controllers
             _context = context;
         }
 
+        public class ViewModel
+        {
+            public IEnumerable<Hotels> Hotels { get; set; }
+            public IEnumerable<Clients> Clients { get; set; }
+        }
+
+        private List<Hotels> GetHotels()
+        {
+            List<Hotels> hotels = _context.Hotels.ToList();
+            return hotels;
+        }
+
+        private List<Clients> GetClients()
+        {
+            List<Clients> clients = _context.Clients.ToList();
+            return clients;
+        }
+
         // GET: Hotel
-        /* [HttpGet("/Hotels")]
+        [HttpGet("/Hotels")]
         public ActionResult Index()
         {
             ViewBag.Title = "Hotel";
             ViewBag.PageName = "hotel";
-            var hotels = _context.Hotels;
-            return View(await hotels.ToListAsync());
-        } */
+            ViewModel mymodel = new ViewModel();
+            mymodel.Hotels = GetHotels();
+            mymodel.Clients = GetClients();
+            return View("HotelList", mymodel);
+        }
 
         // GET: Hotel
         [HttpGet("/Hotel/{id:int?}")]

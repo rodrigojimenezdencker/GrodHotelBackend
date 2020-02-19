@@ -28,5 +28,6 @@ namespace GrodHotelBackend.Models
         public bool Subscribed { get; set; }
         [StringLength(200, ErrorMessage = "The comment has the capacity for 200 characters or less!")]
         public string Comments { get; set; }
+        public string Image { get; set; }
     }
 }

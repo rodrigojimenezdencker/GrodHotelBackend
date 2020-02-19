@@ -9,23 +9,23 @@ using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers.CRUD
 {
-    public class HotelCRUDController : Controller
+    public class HotelsCRUDController : Controller
     {
         private readonly Context _context;
 
-        public HotelCRUDController(Context context)
+        public HotelsCRUDController(Context context)
         {
             _context = context;
         }
 
-        // GET: HotelDashboard
+        // GET: HotelsCRUD
         public async Task<IActionResult> Index()
         {
             var context = _context.Hotels.Include(h => h.Cities).Include(h => h.HotelsChain);
             return View(await context.ToListAsync());
         }
 
-        // GET: HotelDashboard/Details/5
+        // GET: HotelsCRUD/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,7 +45,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(hotels);
         }
 
-        // GET: HotelDashboard/Create
+        // GET: HotelsCRUD/Create
         public IActionResult Create()
         {
             ViewData["CitiesId"] = new SelectList(_context.Cities, "Id", "Name");
@@ -53,12 +53,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View();
         }
 
-        // POST: HotelDashboard/Create
+        // POST: HotelsCRUD/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability")] Hotels hotels)
+        public async Task<IActionResult> Create([Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability,Image,SmallImage")] Hotels hotels)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(hotels);
         }
 
-        // GET: HotelDashboard/Edit/5
+        // GET: HotelsCRUD/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,12 +89,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(hotels);
         }
 
-        // POST: HotelDashboard/Edit/5
+        // POST: HotelsCRUD/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability")] Hotels hotels)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability,Image,SmallImage")] Hotels hotels)
         {
             if (id != hotels.Id)
             {
@@ -126,7 +126,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(hotels);
         }
 
-        // GET: HotelDashboard/Delete/5
+        // GET: HotelsCRUD/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,7 +146,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(hotels);
         }
 
-        // POST: HotelDashboard/Delete/5
+        // POST: HotelsCRUD/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

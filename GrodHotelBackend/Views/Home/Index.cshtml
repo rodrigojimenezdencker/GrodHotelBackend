@@ -1,4 +1,5 @@
-﻿@{
+﻿@model GrodHotelBackend.Controllers.HomeController.ViewModel;
+@{
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
@@ -6,87 +7,40 @@
     <div>
         <h2>Most Liked</h2>
         <div id="most_liked_hotels_container">
-            <div class="hotel1">
-                <figure>
-                    <a asp-controller="Hotel" asp-action="Index">
-                        <picture>
-                            <source media="(min-width: 700px)" srcset="~/Content/img/the-palm-962785_1280.jpg">
-                            <img src="~/Content/img/the-palm-962785_640.jpg" alt="GROD Hotel">
-                        </picture>
-                    </a>
-                    <figcaption>
-                        <cite>GROD Hotel</cite>. Photo from <a href="https://pixabay.com/es/photos/la-palma-atlantis-dubai-hotel-962785/"
-                                                               title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Free-Photos</a>.
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="hotel2">
-                <figure>
-                    <a asp-controller="Hotel" asp-action="Index">
-                        <picture>
-                            <source media="(min-width: 700px)" srcset="~/Content/img/ship-105596_1280.jpg">
-                            <img src="~/Content/img/ship-105596_640.jpg" alt="GROD Hotel 2">
-                        </picture>
-                    </a>
-                    <figcaption>
-                        <cite>GROD Hotel 2</cite>. Photo from <a href="https://pixabay.com/es/photos/barco-hainan-china-horizonte-105596/"
-                                                                 title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Anonymous</a>.
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="hotel3">
-                <figure>
-                    <a asp-controller="Hotel" asp-action="Index">
-                        <picture>
-                            <source media="(min-width: 700px)" srcset="~/Content/img/hotel-1831072_1280.jpg">
-                            <img src="~/Content/img/hotel-1831072_640.jpg" alt="GROD Hotel 3">
-                        </picture>
-                    </a>
-                    <figcaption>
-                        <cite>GROD Hotel 3</cite>. Photo from <a href="https://pixabay.com/es/photos/hotel-de-viaje-palm-de-lujo-1831072/"
-                                                                 title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">teadrinker</a>.
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="hotel4">
-                <figure>
-                    <a asp-controller="Hotel" asp-action="Index">
-                        <picture>
-                            <source media="(min-width: 700px)" srcset="~/Content/img/singapore-1132358_1280.jpg">
-                            <img src="~/Content/img/singapore-1132358_640.jpg" alt="GROD Hotel 4">
-                        </picture>
-                    </a>
-                    <figcaption>
-                        <cite>GROD Hotel 4</cite>. Photo from <a href="https://pixabay.com/es/photos/singapur-noche-marina-asia-hotel-1132358/"
-                                                                 title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">monikawl999</a>.
-                    </figcaption>
-                </figure>
-            </div>
+            @foreach (var hotel in Model.Hotels)
+            {
+                <div>
+                    <h2>@hotel.Name</h2>
+                    <figure>
+                        <a asp-controller="Hotel" asp-action="Index">
+                            <picture>
+                                <source media="(min-width: 700px)" srcset="@hotel.Image">
+                                <img src="@hotel.SmallImage" alt="@hotel.Name">
+                            </picture>
+                        </a>
+                    </figure>
+                </div>
+            }
         </div>
     </div>
 
     <div>
         <h2>Comments</h2>
         <ul>
-            <li>
-                <div class="user_info">
-                    <img src="~/Content/img/huan_user.png" alt="User image" />
-                    <p><strong>Huan</strong> 1 month ago</p>
-                </div>
-                <p>
-                    <em>
-                        I really loved this website it found the hotel I needed in seconds, I've really enjoyed
-                        it!
-                    </em>
-                </p>
-            </li>
-            <li>
-                <div class="user_info">
-                    <img src="~/Content/img/pedro_sanchez.png" alt="User image" />
-                    <p><strong>Pedro</strong> 3 months ago</p>
-                </div>
-                <p><em>My wife and I really enjoyed our stay in this hotel, we will repeat for sure.</em></p>
-            </li>
+            @foreach (var client in Model.Clients)
+            {
+                <li>
+                    <div class="user_info">
+                        <img src="@client.Image" alt="@client.Name" />
+                        <p><strong>@client.Name</strong></p>
+                    </div>
+                    <p>
+                        <em>
+                            @client.Comments
+                        </em>
+                    </p>
+                </li>
+            }
         </ul>
     </div>
 </main>

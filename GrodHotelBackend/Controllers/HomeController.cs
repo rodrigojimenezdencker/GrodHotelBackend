@@ -3,16 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using GrodHotelBackend.Models;
 
-namespace GROD_Hotel_Backend.Controllers
+namespace GrodHotelBackend.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly Context _context;
+
+        public HomeController(Context context)
+        {
+            _context = context;
+        }
+
+        public class ViewModel
+        {
+            public IEnumerable<Hotels> Hotels { get; set; }
+            public IEnumerable<Clients> Clients { get; set; }
+        }
+
+        private List<Hotels> GetHotels()
+        {
+            List<Hotels> hotels = _context.Hotels.ToList();
+            return hotels;
+        }
+
+        private List<Clients> GetClients()
+        {
+            List<Clients> clients = _context.Clients.ToList();
+            return clients;
+        }
+
         public ActionResult Index()
         {
             ViewBag.Title = "GROD Hotel";
             ViewBag.PageName = "index";
-            return View();
+            ViewModel mymodel = new ViewModel();
+            mymodel.Hotels = GetHotels();
+            mymodel.Clients = GetClients();
+            return View(mymodel);
         }
     }
 }

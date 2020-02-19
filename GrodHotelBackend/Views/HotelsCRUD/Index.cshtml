@@ -1,23 +1,23 @@
 ﻿@model IEnumerable<GrodHotelBackend.Models.Hotels>
 
 @{
-    ViewData["Title"] = "Hotels";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutBack.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Index</h1>
 
 <p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Hotels Chain
+                @Html.DisplayNameFor(model => model.HotelsChain)
             </th>
             <th>
-                City
+                @Html.DisplayNameFor(model => model.Cities)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -30,6 +30,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Availability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SmallImage)
             </th>
             <th></th>
         </tr>
@@ -56,9 +62,15 @@
                 @Html.DisplayFor(modelItem => item.Availability)
             </td>
             <td>
-                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SmallImage)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

@@ -1,14 +1,13 @@
 ﻿@model GrodHotelBackend.Models.Rooms
 
 @{
-    ViewData["Title"] = "Edit room";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_LayoutBack.cshtml";
 }
 
-<p class="display-4">@ViewData["Title"]</p>
-<div>
-    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
-</div>
+<h1>Edit</h1>
+
+<h4>Rooms</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="HotelsId" class="control-label">Hotel</label>
+                <label asp-for="HotelsId" class="control-label"></label>
                 <select asp-for="HotelsId" class="form-control" asp-items="ViewBag.HotelsId"></select>
                 <span asp-validation-for="HotelsId" class="text-danger"></span>
             </div>
@@ -41,8 +40,23 @@
                 </label>
             </div>
             <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SmallImage" class="control-label"></label>
+                <input asp-for="SmallImage" class="form-control" />
+                <span asp-validation-for="SmallImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

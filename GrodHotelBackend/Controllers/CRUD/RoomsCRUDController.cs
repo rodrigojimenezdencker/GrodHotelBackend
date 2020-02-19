@@ -18,14 +18,14 @@ namespace GrodHotelBackend.Controllers.CRUD
             _context = context;
         }
 
-        // GET: RoomsDashboard
+        // GET: RoomsCRUD
         public async Task<IActionResult> Index()
         {
             var context = _context.Rooms.Include(r => r.Hotels);
             return View(await context.ToListAsync());
         }
 
-        // GET: RoomsDashboard/Details/5
+        // GET: RoomsCRUD/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,19 +44,19 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(rooms);
         }
 
-        // GET: RoomsDashboard/Create
+        // GET: RoomsCRUD/Create
         public IActionResult Create()
         {
             ViewData["HotelsId"] = new SelectList(_context.Hotels, "Id", "Name");
             return View();
         }
 
-        // POST: RoomsDashboard/Create
+        // POST: RoomsCRUD/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HotelsId,Dimensions,Price,Description,Availability")] Rooms rooms)
+        public async Task<IActionResult> Create([Bind("Id,HotelsId,Dimensions,Price,Description,Availability,Image,SmallImage")] Rooms rooms)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(rooms);
         }
 
-        // GET: RoomsDashboard/Edit/5
+        // GET: RoomsCRUD/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,12 +85,12 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(rooms);
         }
 
-        // POST: RoomsDashboard/Edit/5
+        // POST: RoomsCRUD/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsId,Dimensions,Price,Description,Availability")] Rooms rooms)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsId,Dimensions,Price,Description,Availability,Image,SmallImage")] Rooms rooms)
         {
             if (id != rooms.Id)
             {
@@ -121,7 +121,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(rooms);
         }
 
-        // GET: RoomsDashboard/Delete/5
+        // GET: RoomsCRUD/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -140,7 +140,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             return View(rooms);
         }
 
-        // POST: RoomsDashboard/Delete/5
+        // POST: RoomsCRUD/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
