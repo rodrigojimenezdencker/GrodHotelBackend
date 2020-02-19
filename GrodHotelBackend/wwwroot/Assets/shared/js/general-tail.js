@@ -12,7 +12,8 @@ route();
 window.onscroll = scrollFunction();
 
 function scrollFunction() {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    if (document.body.scrollTop > 100
+        || document.documentElement.scrollTop > 100) {
         backToTopButton.style.display = "block";
     } else {
         backToTopButton.style.display = "none";
@@ -30,7 +31,9 @@ backToTopButton.addEventListener("click", backToTop);
 function validateEntryDate(entryDate) {
     var momentEntryDate = moment(entryDate, "YYYY-MM-DD");
     var momentToday = moment();
-    if (momentEntryDate.isBefore(momentToday) || momentEntryDate.diff(momentToday, 'months') >= 6 || momentEntryDate.format() == 'Invalid date') {
+    if (momentEntryDate.isBefore(momentToday)
+        || momentEntryDate.diff(momentToday, 'months') >= 6
+        || momentEntryDate.format() == 'Invalid date') {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -59,7 +62,10 @@ function validateLeavingDate(leavingDate) {
 }
 
 function validateNumberAdults(numberAdults) {
-    if (typeof numberAdults != 'number' || numberAdults < 0 || numberAdults > 10 || isNaN(numberAdults)) {
+    if (typeof numberAdults != 'number'
+        || numberAdults < 0
+        || numberAdults > 10
+        || isNaN(numberAdults)) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -71,7 +77,9 @@ function validateNumberAdults(numberAdults) {
 }
 
 function validateNumberMinors(numberMinors) {
-    if (typeof numberMinors != 'number' || numberMinors < 0 || numberMinors > 10) {
+    if (typeof numberMinors != 'number'
+        || numberMinors < 0
+        || numberMinors > 10) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -82,7 +90,8 @@ function validateNumberMinors(numberMinors) {
     return false;
 }
 function validateName(name) {
-    if (name.length == 0 || name.length > 30) {
+    if (name.length == 0
+        || name.length > 30) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -94,7 +103,8 @@ function validateName(name) {
 }
 
 function validateSurname(surname) {
-    if (surname.length == 0 || surname.length > 50) {
+    if (surname.length == 0
+        || surname.length > 50) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -118,7 +128,8 @@ function validateComments(comments) {
 }
 
 function validateMessage(message) {
-    if (message.length == 0 || message.length > 2000) {
+    if (message.length == 0
+        || message.length > 2000) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -130,7 +141,8 @@ function validateMessage(message) {
 }
 
 function validateCity(city) {
-    if (city.length == 0 || city.length > 20) {
+    if (city.length == 0
+        || city.length > 20) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -163,7 +175,9 @@ function validateDni(dni) {
         resul = true;
     }
 
-    if (dni == "" || dni.length != 9 || resul) {
+    if (dni == ""
+        || dni.length != 9
+        || resul) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
