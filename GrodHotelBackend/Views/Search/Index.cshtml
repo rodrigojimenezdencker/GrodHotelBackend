@@ -1,4 +1,6 @@
-﻿@{
+﻿@using GrodHotelBackend.Models;
+@model List<Hotels>
+@{
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
@@ -8,11 +10,17 @@
             <form>
                 <fieldset>
                     <label for="search"></label>
-                    <input id="search" type="text" name="first" required />
+                    <input id="search" type="text" name="hotelName" required />
                     <img src="~/Content/svg/search.svg" class="form_icon" alt="Search" />
                 </fieldset>
             </form>
         </div>
+
+        @foreach (var hotel in Model)
+        {
+            <div>Hotel: @hotel.Name</div>
+            <img src="@hotel.Image" />
+        }
 
         <div>
             <h2>Results</h2>
