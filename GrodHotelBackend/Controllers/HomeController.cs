@@ -20,6 +20,7 @@ namespace GrodHotelBackend.Controllers
         {
             public IEnumerable<Hotels> Hotels { get; set; }
             public IEnumerable<Clients> Clients { get; set; }
+            public IEnumerable<Cities> Cities { get; set; }
         }
 
         private List<Hotels> GetHotels()
@@ -33,6 +34,11 @@ namespace GrodHotelBackend.Controllers
             List<Clients> clients = _context.Clients.ToList();
             return clients;
         }
+        private List<Cities> GetCities()
+        {
+            List<Cities> cities = _context.Cities.ToList();
+            return cities;
+        }
 
         public ActionResult Index()
         {
@@ -41,6 +47,7 @@ namespace GrodHotelBackend.Controllers
             ViewModel mymodel = new ViewModel();
             mymodel.Hotels = GetHotels();
             mymodel.Clients = GetClients();
+            mymodel.Cities = GetCities();
             return View(mymodel);
         }
     }
