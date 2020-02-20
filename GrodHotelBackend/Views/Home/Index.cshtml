@@ -81,7 +81,7 @@
                     <div>
                         <h2>@hotel.Name</h2>
                         <figure>
-                            <a asp-controller="Hotel" asp-action="Index">
+                            <a asp-controller="Hotel" asp-action="@hotel.Id">
                                 <picture>
                                     <source media="(min-width: 700px)" srcset="@hotel.Image">
                                     <img src="@hotel.SmallImage" alt="@hotel.Name">
@@ -99,11 +99,18 @@
         <ul>
             @foreach (var client in Model.Clients)
             {
-                if (client.Comments != "")
+                if (client.Comments != null)
                 {
                     <li>
                         <div class="user_info">
+                            @if (client.Image == null)
+                            {
+                            <img src="~/Content/img/default_user.png" alt="@client.Name" />
+                            }
+                            else
+                            {
                             <img src="@client.Image" alt="@client.Name" />
+                            }
                             <p><strong>@client.Name</strong></p>
                         </div>
                         <p>
