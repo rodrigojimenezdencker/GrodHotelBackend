@@ -7654,7 +7654,7 @@ setuppers['booking'] = function () {
     widget.addEventListener("submit", function (event) {
         event.preventDefault();
         if (validateEntryDate(widget.querySelector('[data-hook="entry_date"]').value)
-            || validateLeavingDate(widget.querySelector('[data-hook="leaving_date"]').value)
+            || validateLeavingDate(widget.querySelector('[data-hook="entry_date"]').value, widget.querySelector('[data-hook="leaving_date"]').value)
             || validateNumberAdults(parseInt(widget.querySelector('[data-hook="numberAdults"]').value))
             || validateNumberMinors(parseInt(widget.querySelector('[data-hook="numberMinors"]').value))
             || validateName(widget.querySelector('[data-hook="name"]').value)
@@ -7700,7 +7700,7 @@ setuppers['index'] = function () {
     widget.addEventListener("submit", function (event) {
         event.preventDefault();
         if (validateEntryDate(widget.querySelector('[data-hook="entry_date"]').value)
-            || validateLeavingDate(widget.querySelector('[data-hook="leaving_date"]').value)
+            || validateLeavingDate(widget.querySelector('[data-hook="entry_date"]').value, widget.querySelector('[data-hook="leaving_date"]').value)
             || validateNumberAdults(parseInt(widget.querySelector('[data-hook="numberAdults"]').value))
             || validateNumberMinors(parseInt(widget.querySelector('[data-hook="numberMinors"]').value))
             || validateCity(widget.querySelector('[data-hook="city"]').value)) {
@@ -7781,8 +7781,12 @@ function validateEntryDate(entryDate) {
     return false
 }
 
-function validateLeavingDate(leavingDate) {
+    function validateLeavingDate(entryDate, leavingDate) {
+    var momentEntryDate = moment(entryDate, "YYYY-MM-DD");
     var momentLeavingDate = moment(leavingDate, "YYYY-MM-DD");
+    var momentToday = moment();
+    console.log(momentLeavingDate);
+    console.log(leavingDate);
     if (momentLeavingDate.isBefore(momentEntryDate)
         || momentLeavingDate.isSame(momentEntryDate)
         || momentLeavingDate.diff(momentEntryDate, 'days') == 1

@@ -44,8 +44,10 @@ function validateEntryDate(entryDate) {
     return false
 }
 
-function validateLeavingDate(leavingDate) {
+function validateLeavingDate(entryDate, leavingDate) {
+    var momentEntryDate = moment(entryDate, "YYYY-MM-DD");
     var momentLeavingDate = moment(leavingDate, "YYYY-MM-DD");
+    var momentToday = moment();
     if (momentLeavingDate.isBefore(momentEntryDate)
         || momentLeavingDate.isSame(momentEntryDate)
         || momentLeavingDate.diff(momentEntryDate, 'days') == 1
