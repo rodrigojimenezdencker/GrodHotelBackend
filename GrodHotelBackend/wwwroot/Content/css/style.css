@@ -962,9 +962,18 @@ input[type="number"] {
   padding: 10px;
 }
 
+#most_liked_hotels_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#most_liked_hotels_container div img {
+    width: 50%;
+}
+
 .page-index .user_info {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .user_info img {

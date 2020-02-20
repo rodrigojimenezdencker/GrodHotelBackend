@@ -7781,12 +7781,10 @@ function validateEntryDate(entryDate) {
     return false
 }
 
-    function validateLeavingDate(entryDate, leavingDate) {
+function validateLeavingDate(entryDate, leavingDate) {
     var momentEntryDate = moment(entryDate, "YYYY-MM-DD");
     var momentLeavingDate = moment(leavingDate, "YYYY-MM-DD");
     var momentToday = moment();
-    console.log(momentLeavingDate);
-    console.log(leavingDate);
     if (momentLeavingDate.isBefore(momentEntryDate)
         || momentLeavingDate.isSame(momentEntryDate)
         || momentLeavingDate.diff(momentEntryDate, 'days') == 1
