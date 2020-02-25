@@ -15,10 +15,11 @@ namespace GrodHotelBackend.Controllers
         {
             _context = context;
         }
-        // GET: Search
-        public ActionResult Index(string hotelName)
+        public ActionResult Index(DateTime EntyDate, DateTime LeavingDate, int AdultNumbers, int MinorNumbers, decimal MinimumPrice, decimal MaximumPrice, strng City)
         {
-            ViewBag.Title = hotelName;
+            ViewBag.Title = ciudad;
+            Filters filters = new Filters();
+            filters.AdultNumbers = 
             ViewBag.PageName = "search";
             IList<Hotels> hotel = _context.Hotels.Where(el => el.Availability == true).ToList();
             return View(hotel);
