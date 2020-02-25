@@ -1,5 +1,4 @@
-﻿@using GrodHotelBackend.Models;
-@model List<Hotels>
+﻿@model GrodHotelBackend.Controllers.SearchController.ViewModel;
 @{
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
@@ -7,16 +6,63 @@
 <main id="layout_main">
         <div>
             <h2>Search</h2>
-            <form>
+            <form action="Search" data-widget="search_form" method="POST">
+                <div class="input_group_container">
+                    <fieldset>
+                        <label for="entry_date">Entry date</label>
+                        <input type="date" data-hook="entry_date" id="entry_date" required />
+                        <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Entry Date" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="leaving_date">Leaving date</label>
+                        <input type="date" data-hook="leaving_date" id="leaving_date" required />
+                        <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Leaving Date" />
+                    </fieldset>
+                </div>
+                <div class="input_group_container">
+                    <fieldset>
+                        <label for="min_price">Min price</label>
+                        <input type="number" data-hook="min_price" id="min_price" required />
+                        <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Min Price" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="max_price">Max price</label>
+                        <input type="number" data-hook="max_price" id="max_price" required />
+                        <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Max Price" />
+                    </fieldset>
+                </div>
+                <div class="input_group_container">
+                    <fieldset>
+                        <label for="numberAdults">Number of adults</label>
+                        <input id="numberAdults" type="number" data-hook="numberAdults" min="1" max="10" name="numberAdults"
+                               value="2" />
+                        <img src="~/Content/svg/man.svg" class="form_icon" alt="Number of Adults" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="numberMinors">Number of minors</label>
+                        <input id="numberMinors" type="number" data-hook="numberMinors" min="0" max="10" name="numberMinors"
+                               value="0">
+                        <img src="~/Content/svg/child.svg" class="form_icon" alt="Number of Minors" />
+                    </fieldset>
+                </div>
                 <fieldset>
-                    <label for="search"></label>
-                    <input id="search" type="text" name="hotelName" required />
-                    <img src="~/Content/svg/search.svg" class="form_icon" alt="Search" />
+                    <label for="city">City</label>
+                    <div class="select">
+                        <select data-hook="city" id="city" required>
+                            <option value="" disabled selected>Select a city</option>
+                            @foreach (var city in Model.Cities.OrderBy(el => el.Name))
+                            {
+                                <option value="@city.Name">@city.Name</option>
+                            }
+                        </select>
+                        <div class="select_arrow"></div>
+                    </div>
                 </fieldset>
+                <button type="submit" class="send_button">Send</button>
             </form>
         </div>
 
-        @foreach (var hotel in Model)
+        @foreach (var hotel in Model.Hotels)
         {
             <div>Hotel: @hotel.Name</div>
             <img src="@hotel.Image" />
