@@ -33,13 +33,16 @@ namespace GrodHotelBackend.Controllers
             List<Cities> cities = _context.Cities.ToList();
             return cities;
         }
+
         // GET: Search
         public ActionResult Index(string hotelName)
         {
             ViewBag.Title = hotelName;
             ViewBag.PageName = "search";
-            IList<Hotels> hotel = _context.Hotels.Where(el => el.Availability == true).ToList();
-            return View(hotel);
+            ViewModel mymodel = new ViewModel();
+            mymodel.Hotels = GetHotels();
+            mymodel.Cities = GetCities();
+            return View(mymodel);
         }
     }
 }
