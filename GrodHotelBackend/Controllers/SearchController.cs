@@ -15,14 +15,34 @@ namespace GrodHotelBackend.Controllers
         {
             _context = context;
         }
-        public ActionResult Index(DateTime EntyDate, DateTime LeavingDate, int AdultNumbers, int MinorNumbers, decimal MinimumPrice, decimal MaximumPrice, strng City)
+
+        public class ViewModel
         {
-            ViewBag.Title = ciudad;
-            Filters filters = new Filters();
-            filters.AdultNumbers = 
-            ViewBag.PageName = "search";
-            IList<Hotels> hotel = _context.Hotels.Where(el => el.Availability == true).ToList();
-            return View(hotel);
+            public IEnumerable<Hotels> Hotels { get; set; }
+            public IEnumerable<Cities> Cities { get; set; }
+        }
+
+        private List<Hotels> GetHotels()
+        {
+            List<Hotels> hotels = _context.Hotels.ToList();
+            return hotels;
+        }
+
+        private List<Cities> GetCities()
+        {
+            List<Cities> cities = _context.Cities.ToList();
+            return cities;
+        }
+
+        // GET: Search
+        public ActionResult Index(string hotelName)
+        {
+            ViewBag.Title = hotelName;
+            ViewBag.PageName = "search"; 
+            ViewModel mymodel = new ViewModel();
+            mymodel.Hotels = GetHotels();
+            mymodel.Cities = GetCities();
+            return View(mymodel);
         }
     }
 }
