@@ -56,7 +56,7 @@
         <fieldset>
             <label for="city">City</label>
             <div class="select">
-                <select data-hook="city" id="city" required>
+                <select name="ciudad" data-hook="city" id="city" required>
                     <option value="" disabled selected>Select a city</option>
                     @foreach (var city in Model.Cities.OrderBy(el => el.Name))
                     {
