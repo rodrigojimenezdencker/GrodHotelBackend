@@ -15,6 +15,24 @@ namespace GrodHotelBackend.Controllers
         {
             _context = context;
         }
+
+        public class ViewModel
+        {
+            public IEnumerable<Hotels> Hotels { get; set; }
+            public IEnumerable<Cities> Cities { get; set; }
+        }
+
+        private List<Hotels> GetHotels()
+        {
+            List<Hotels> hotels = _context.Hotels.ToList();
+            return hotels;
+        }
+
+        private List<Cities> GetCities()
+        {
+            List<Cities> cities = _context.Cities.ToList();
+            return cities;
+        }
         // GET: Search
         public ActionResult Index(string hotelName)
         {
