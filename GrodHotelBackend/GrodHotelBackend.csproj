@@ -90,7 +90,6 @@
     <Content Remove="wwwroot\Assets\shared\svg\calendar.svg" />
     <Content Remove="wwwroot\Assets\shared\svg\child.svg" />
     <Content Remove="wwwroot\Assets\shared\svg\facebook.svg" />
-    <Content Remove="wwwroot\Assets\shared\svg\instagram.svg" />
     <Content Remove="wwwroot\Assets\shared\svg\mail.svg" />
     <Content Remove="wwwroot\Assets\shared\svg\man.svg" />
     <Content Remove="wwwroot\Assets\shared\svg\navigate-up-arrow.svg" />
@@ -180,7 +179,6 @@
     <None Include="wwwroot\Assets\shared\svg\calendar.svg" />
     <None Include="wwwroot\Assets\shared\svg\child.svg" />
     <None Include="wwwroot\Assets\shared\svg\facebook.svg" />
-    <None Include="wwwroot\Assets\shared\svg\instagram.svg" />
     <None Include="wwwroot\Assets\shared\svg\mail.svg" />
     <None Include="wwwroot\Assets\shared\svg\man.svg" />
     <None Include="wwwroot\Assets\shared\svg\navigate-up-arrow.svg" />
