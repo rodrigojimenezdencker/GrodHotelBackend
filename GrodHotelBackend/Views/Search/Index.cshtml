@@ -1,5 +1,6 @@
 ﻿@model GrodHotelBackend.Controllers.SearchController.ViewModel;
 @{
+    ViewBag.PageName = "search";
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
@@ -50,11 +51,11 @@
                 <fieldset>
                     <label for="city">City</label>
                     <div class="select">
-                        <select data-hook="city" id="city" required>
+                        <select data-hook="city" name="city" required>
                             <option value="" disabled selected>Select a city</option>
                             @foreach (var city in Model.Cities.OrderBy(el => el.Name))
                             {
-                                <option value="@city.Name">@city.Name</option>
+                                <option value="@city.Id">@city.Name</option>
                             }
                         </select>
                         <div class="select_arrow"></div>
@@ -64,10 +65,9 @@
             </form>
         </div>
 
-        @foreach (var hotel in Model.Hotels)
+        @foreach (var room in Model.Rooms)
         {
-            <div>Hotel: @hotel.Name</div>
-            <img src="@hotel.Image" />
+            <p>@room.Description</p>
         }
 
         <div>

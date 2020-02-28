@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using GrodHotelBackend.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace GrodHotelBackend.Controllers
 {
@@ -18,14 +19,14 @@ namespace GrodHotelBackend.Controllers
 
         public class ViewModel
         {
-            public IEnumerable<Hotels> Hotels { get; set; }
+            public IEnumerable<Rooms> Rooms { get; set; }
             public IEnumerable<Cities> Cities { get; set; }
         }
 
-        private List<Hotels> GetHotels()
+        private List<Rooms> GetRooms()
         {
-            List<Hotels> hotels = _context.Hotels.ToList();
-            return hotels;
+            List<Rooms> rooms = _context.Rooms.ToList();
+            return rooms;
         }
 
         private List<Cities> GetCities()
@@ -34,15 +35,42 @@ namespace GrodHotelBackend.Controllers
             return cities;
         }
 
-        // GET: Search
-        public ActionResult Index(string hotelName)
+        [HttpGet]
+        public ActionResult Index()
         {
-            ViewBag.Title = hotelName;
-            ViewBag.PageName = "search";
-            ViewModel mymodel = new ViewModel();
-            mymodel.Hotels = GetHotels();
-            mymodel.Cities = GetCities();
+            ViewModel mymodel = new ViewModel
+            {
+                Rooms = GetRooms(),
+                Cities = GetCities()
+            };
             return View(mymodel);
         }
+
+        [HttpPost]
+        public ActionResult Index(IFormCollection form)
+        {
+            Filters filters = new Filters();
+            filters.EntryDate = DateTime.Parse(form["entry_date"]);
+            filters.LeavingDate = DateTime.Parse(form["leaving_date"]);            
+            filters.AdultNumbers = int.Parse(form["numberAdults"]);
+            filters.MinorNumbers = int.Parse(form["numberMinors"]);
+            try
+            {
+                filters.MinimumPrice = decimal.Parse(form["MinimumPrice"]);
+                filters.MaximumPrice = decimal.Parse(form["MaximumPrice"]);
+            } catch(Exception)
+            {
+
+            }
+            filters.City = int.Parse(form["city"]);
+            Searcher searcher = new Searcher(_context);
+            ViewModel mymodel = new ViewModel
+            {
+                Rooms = searcher.Run(filters),
+                Cities = GetCities()
+            };
+            return View(mymodel);
+        }
+        
     }
 }
