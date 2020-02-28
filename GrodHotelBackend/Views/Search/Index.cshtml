@@ -68,12 +68,12 @@
         @foreach (var room in Model.Rooms)
         {
         <div>
-            <h2>@room.Description</h2>
+            <h2>@room.Name</h2>
             <figure>
                 <a asp-controller="Room" asp-action="@room.Id">
                     <picture>
                         <source media="(min-width: 700px)" srcset="@room.Image">
-                        <img src="@room.SmallImage" alt="Room @room.Id">
+                        <img src="@room.SmallImage" alt="Room @room.Name">
                     </picture>
                 </a>
             </figure>

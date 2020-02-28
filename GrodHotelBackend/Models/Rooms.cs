@@ -17,11 +17,17 @@ namespace GrodHotelBackend.Models
         [Required]
         [Column(TypeName = "Money")]
         public decimal Price { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Name { get; set; }
         [StringLength(250)]
         public string Description { get; set; }
         [Required]
         public bool Availability { get; set; }
         public string Image { get; set; }
         public string SmallImage { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Slug { get; set; }
     }
 }
