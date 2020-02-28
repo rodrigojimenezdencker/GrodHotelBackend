@@ -67,7 +67,21 @@
         <h2>Results</h2>
         @foreach (var room in Model.Rooms)
         {
-            <p>@room.Description</p>
+        <div>
+            <h2>@room.Description</h2>
+            <figure>
+                <a asp-controller="Room" asp-action="@room.Id">
+                    <picture>
+                        <source media="(min-width: 700px)" srcset="@room.Image">
+                        <img src="@room.SmallImage" alt="Room @room.Id">
+                    </picture>
+                </a>
+            </figure>
+            <figcaption>
+                <cite>GROD Hotel suite</cite>. Photo from <a href="https://pixabay.com/es/photos/habitaci%C3%B3n-de-hotel-cama-almohadas-1447201/"
+                                                             title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Olichel</a>.
+            </figcaption>
+        </div>
         }
     </div>
 </main>

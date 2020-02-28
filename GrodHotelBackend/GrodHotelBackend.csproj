@@ -194,8 +194,8 @@
     <None Include="wwwroot\Content\img\favicon-32x32.png" />
     <None Include="wwwroot\Content\img\hotel-1831072_1280.jpg" />
     <None Include="wwwroot\Content\img\hotel-1831072_640.jpg" />
-    <None Include="wwwroot\Content\img\hotel-room-1280x853.jpg" />
-    <None Include="wwwroot\Content\img\hotel-room-640x426.jpg" />
+    <None Include="wwwroot\Content\img\room_1.jpg" />
+    <None Include="wwwroot\Content\img\room_1_small.jpg" />
     <None Include="wwwroot\Content\img\huan_user.png" />
     <None Include="wwwroot\Content\img\logo-150px.png" />
     <None Include="wwwroot\Content\img\logo-350px.png" />
