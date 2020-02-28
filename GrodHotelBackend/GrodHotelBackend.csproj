@@ -22,6 +22,8 @@
     <Compile Remove="Migrations\20200202174916_Testing string length.Designer.cs" />
     <Compile Remove="Migrations\20200202215242_Modified string length and decimal type of models.cs" />
     <Compile Remove="Migrations\20200202215242_Modified string length and decimal type of models.Designer.cs" />
+    <Compile Remove="Migrations\20200228173312_Modified RoomsId on Bookings.cs" />
+    <Compile Remove="Migrations\20200228173312_Modified RoomsId on Bookings.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

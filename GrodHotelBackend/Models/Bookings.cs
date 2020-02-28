@@ -13,8 +13,7 @@ namespace GrodHotelBackend.Models
         [Required]
         public int ClientsId { get; set; }
         public Clients Clients { get; set; }
-        [Required]
-        public int RoomsId { get; set; }
+        public int? RoomsId { get; set; }
         public Rooms Rooms { get; set; }
         public ICollection<BookingsAgr> BookingsAgrs{ get; set; }
         [Required]
