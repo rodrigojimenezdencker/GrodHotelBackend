@@ -19,22 +19,22 @@ namespace GrodHotelBackend.Models
         {
 
             
-            IQueryable<Rooms> rooms = from hotel in _context.Hotels
+            /* IQueryable<Rooms> rooms = from hotel in _context.Hotels
                         join room in _context.Rooms
                         on hotel.Id equals room.HotelsId
                         join booking in _context.Bookings
                         on room.Id equals booking.RoomsId
                         where hotel.CitiesId == filters.City 
                         && room.Availability
-                        select room;
+                        select room; */
 
             var rooms2 = _context.Bookings
             .Include(x => x.Rooms).ThenInclude(x => x.Hotels)
             .Where(x => x.Rooms.Hotels.CitiesId == filters.City && 
-                filters.EntryDate > x.EntryDate && 
-                x.EntryDate < filters.LeavingDate &&
-                x.EntryDate > filters.EntryDate && 
-                filters.EntryDate < x.EntryDate)
+                (filters.EntryDate < x.EntryDate && 
+                x.EntryDate > filters.LeavingDate) ||
+                (x.EntryDate < filters.EntryDate && 
+                filters.EntryDate > x.LeavingDate))
             .Select(x => x.Rooms);
 
             return rooms2.ToList();
