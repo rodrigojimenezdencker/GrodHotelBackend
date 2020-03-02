@@ -28,16 +28,19 @@ namespace GrodHotelBackend.Models
                         && room.Availability
                         select room; */
 
-            var rooms2 = _context.Bookings
+            var rooms = _context.Bookings
             .Include(x => x.Rooms).ThenInclude(x => x.Hotels)
             .Where(x => x.Rooms.Hotels.CitiesId == filters.City && 
                 (filters.EntryDate < x.EntryDate && 
                 x.EntryDate > filters.LeavingDate) ||
                 (x.EntryDate < filters.EntryDate && 
                 filters.EntryDate > x.LeavingDate))
-            .Select(x => x.Rooms);
+            .Select(x => x.Rooms).ToList();
 
-            return rooms2.ToList();
+            var roomsWithoutBookings = _context.Rooms.ToList().Except(_context.Bookings
+            .Include(x => x.Rooms).Select(x => x.Rooms)).ToList();
+
+            return rooms.Concat(roomsWithoutBookings).ToList();
         }
 
         
