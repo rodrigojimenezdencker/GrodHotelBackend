@@ -44,7 +44,7 @@ namespace GrodHotelBackend.Migrations
                     b.Property<int>("MinorNumbers")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoomsId")
+                    b.Property<int?>("RoomsId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalPrice")
@@ -378,9 +378,7 @@ namespace GrodHotelBackend.Migrations
 
                     b.HasOne("GrodHotelBackend.Models.Rooms", "Rooms")
                         .WithMany()
-                        .HasForeignKey("RoomsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoomsId");
                 });
 
             modelBuilder.Entity("GrodHotelBackend.Models.BookingsAgr", b =>
