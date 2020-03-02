@@ -29,5 +29,6 @@ namespace GrodHotelBackend.Models
         [Required]
         [StringLength(100)]
         public string Slug { get; set; }
+        public virtual ICollection<Bookings> Bookings { get; set; }
     }
 }
