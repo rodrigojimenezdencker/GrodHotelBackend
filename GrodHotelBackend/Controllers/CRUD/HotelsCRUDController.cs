@@ -58,7 +58,7 @@ namespace GrodHotelBackend.Controllers.CRUD
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability,Image,SmallImage")] Hotels hotels)
+        public async Task<IActionResult> Create([Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability,Image,SmallImage,Slug")] Hotels hotels)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace GrodHotelBackend.Controllers.CRUD
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability,Image,SmallImage")] Hotels hotels)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,HotelsChainId,CitiesId,Name,Description,Trending,Availability,Image,SmallImage,Slug")] Hotels hotels)
         {
             if (id != hotels.Id)
             {
