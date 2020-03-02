@@ -1,21 +1,23 @@
-﻿@{
+﻿@using GrodHotelBackend.Models;
+@model Rooms
+@{
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
 <main id="layout_main">
     <div>
-        <h2>Room</h2>
+        <h2>@Model.Name</h2>
         <blockquote>
             <p>
-                This room from <a asp-controller="Hotel" asp-action="Index">GROD Hotel</a> is especially bright and very spacious. From the
+                This room from <a asp-controller="Hotel" asp-action="@Model.HotelsId">GROD Hotel</a> is especially bright and very spacious. From the
                 bed you can enjoy a large arched window with original mouldings, and through it some fantastic views
                 of the city. Decorated with modern furniture that will cautivate the costumers of this room.
             </p>
         </blockquote>
         <figure>
             <picture>
-                <source media="(min-width: 700px)" srcset="~/Content/img/hotel-room-1280x853.jpg">
-                <img src="~/Content/img/hotel-room-640x426.jpg" alt="Hotel room">
+                <source media="(min-width: 700px)" srcset="@Model.Image">
+                <img src="@Model.SmallImage" alt="@Model.Name">
             </picture>
             <figcaption>
                 <cite>GROD Hotel suite</cite>. Photo from <a href="https://pixabay.com/es/photos/habitaci%C3%B3n-de-hotel-cama-almohadas-1447201/"
