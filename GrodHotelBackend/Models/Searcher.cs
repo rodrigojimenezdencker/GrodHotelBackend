@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 namespace GrodHotelBackend.Models
 {
@@ -17,33 +15,34 @@ namespace GrodHotelBackend.Models
 
         public List<Rooms> Run(Filters filters)
         {
+            var RoomsGeneralQuery = _context.Rooms
+                .Include(x => x.Bookings)
+                .Include(x => x.Hotels)
+                .Where(room => room.Bookings.All(booking => filters.EntryDate < booking.EntryDate &&
+                    booking.EntryDate > filters.LeavingDate ||
+                    booking.EntryDate < filters.EntryDate &&
+                    filters.EntryDate > booking.LeavingDate));
 
-            
-            /* IQueryable<Rooms> rooms = from hotel in _context.Hotels
-                        join room in _context.Rooms
-                        on hotel.Id equals room.HotelsId
-                        join booking in _context.Bookings
-                        on room.Id equals booking.RoomsId
-                        where hotel.CitiesId == filters.City 
-                        && room.Availability
-                        select room; */
 
-            var rooms = _context.Bookings
-            .Include(x => x.Rooms).ThenInclude(x => x.Hotels)
-            .Where(x => x.Rooms.Hotels.CitiesId == filters.City && 
-                (filters.EntryDate < x.EntryDate && 
-                x.EntryDate > filters.LeavingDate) ||
-                (x.EntryDate < filters.EntryDate && 
-                filters.EntryDate > x.LeavingDate))
-            .Select(x => x.Rooms).ToList();
+            //var RoomsGeneralQuery = _context.Bookings
+            //    .Include(booking => booking.Rooms)
+            //    .ThenInclude(room => room.Hotels)
+            //    .Where(booking => (filters.EntryDate < booking.EntryDate &&
+            //    booking.EntryDate > filters.LeavingDate) ||
+            //    (booking.EntryDate < filters.EntryDate &&
+            //    filters.EntryDate > booking.LeavingDate))
+            //    .Select(booking => booking.Rooms);
 
-            var roomsWithoutBookings = _context.Rooms.ToList().Except(_context.Bookings
-            .Include(x => x.Rooms).Select(x => x.Rooms)).ToList();
+            //List<Rooms> RoomsWithoutBookings = new List<Rooms>();
+            //List<Rooms> RoomsWithPrice = new List<Rooms>();
 
-            return rooms.Concat(roomsWithoutBookings).ToList();
+            if (filters.MinimumPrice.HasValue)
+            {
+                RoomsGeneralQuery = RoomsGeneralQuery.Where(room => room.Price < filters.MaximumPrice && room.Price > filters.MinimumPrice);
+            }
+
+            return RoomsGeneralQuery.Where(x => x.Hotels.CitiesId == filters.City).ToList();
         }
-
-        
     }
 
     /*public static class BookingExtension
