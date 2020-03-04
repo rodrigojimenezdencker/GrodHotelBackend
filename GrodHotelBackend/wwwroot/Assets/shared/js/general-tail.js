@@ -217,7 +217,6 @@ function validateMinPrice(minPrice) {
 }
 
 function validateMaxPrice(maxPrice, minPrice) {
-    console.log(maxPrice, minPrice);
     if(typeof maxPrice != 'number' 
     || maxPrice < 0
     || maxPrice < minPrice ) {
