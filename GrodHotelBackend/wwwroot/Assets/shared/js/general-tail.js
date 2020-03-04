@@ -203,6 +203,34 @@ function validateEmail(email) {
     return false;
 }
 
+function validateMinPrice(minPrice) {
+    if(typeof minPrice != 'number' 
+    || minPrice < 0 ) {
+        Swal.fire({
+            icon: 'error',
+            title: "Something is not right...",
+            text: 'Incorrect Minimum Price!'
+        });
+        return true;
+    }
+    return false;
+}
+
+function validateMaxPrice(maxPrice, minPrice) {
+    console.log(maxPrice, minPrice);
+    if(typeof maxPrice != 'number' 
+    || maxPrice < 0
+    || maxPrice < minPrice ) {
+        Swal.fire({
+            icon: 'error',
+            title: "Something is not right...",
+            text: 'Incorrect Maximum Price!'
+        });
+        return true;
+    }
+    return false;
+}
+
 var widget = document.querySelector('[data-widget="newsletter-form"]');
 widget.addEventListener("submit", function (event) {
     event.preventDefault();
