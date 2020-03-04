@@ -6,30 +6,43 @@
 
 <main id="layout_main">
     <div>
+        @if (!ViewBag.Available)
+        {
+            <div>
+                NOT AVAILABLE
+            </div>
+        }
         <h2>@Model.Name</h2>
         <blockquote>
-            <p>We are GROD Hotel, a <strong>5 star hotel company</strong> We are focused on all types of
-                <strong>high class customers</strong> and we offer all kind of luxuries.</p>
+            <p>
+                We are GROD Hotel, a <strong>5 star hotel company</strong> We are focused on all types of
+                <strong>high class customers</strong> and we offer all kind of luxuries.
+            </p>
 
-            <p>In our hotels frequent celebrities, including actors, musicians, football players and businessmen,
-                however, we accept all kind of people, not only “the famous ones”.</p>
+            <p>
+                In our hotels frequent celebrities, including actors, musicians, football players and businessmen,
+                however, we accept all kind of people, not only “the famous ones”.
+            </p>
 
-            <p>All our suites dispose of different installations like Jacuzzis, ambiental lights, views of the city
+            <p>
+                All our suites dispose of different installations like Jacuzzis, ambiental lights, views of the city
                 that cannot be seen anywhere else and other <strong>high luxury services</strong> such as massages
-                from expert chiropractors, catering with the best wine selection, indoor pools, and much more.</p>
+                from expert chiropractors, catering with the best wine selection, indoor pools, and much more.
+            </p>
 
-            <p>We would love to give you your best experience ever and make you feel very comfortable in each of our
-                hotels, so we invite you to come and have a good stay with us.</p>
+            <p>
+                We would love to give you your best experience ever and make you feel very comfortable in each of our
+                hotels, so we invite you to come and have a good stay with us.
+            </p>
         </blockquote>
         <figure>
             <picture>
-                <source media="(min-width: 700px)" srcset="~/Content/img/the-palm-962785_1280.jpg">
-                <img src="~/Content/img/the-palm-962785_640.jpg" alt="GROD Hotel">
+                <source media="(min-width: 700px)" srcset=@Model.Image>
+                <img src=@Model.SmallImage alt="GROD Hotel">
             </picture>
             <figcaption>
-                <cite>GROD Hotel</cite>. Photo from <a
-                    href="https://pixabay.com/es/photos/la-palma-atlantis-dubai-hotel-962785/"
-                    title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Free-Photos</a>.
+                <cite>GROD Hotel</cite>. Photo from <a href="https://pixabay.com/es/photos/la-palma-atlantis-dubai-hotel-962785/"
+                                                       title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Free-Photos</a>.
             </figcaption>
         </figure>
         <table class="custom_table">
