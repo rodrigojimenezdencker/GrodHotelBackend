@@ -105,11 +105,11 @@
                         <div class="user_info">
                             @if (client.Image == null)
                             {
-                            <img src="~/Content/img/default_user.png" alt="@client.Name" />
+                                <img src="~/Content/img/placeholder_user.png" alt="@client.Name" />
                             }
                             else
                             {
-                            <img src="@client.Image" alt="@client.Name" />
+                                <img src="@client.Image" alt="@client.Name" />
                             }
                             <p><strong>@client.Name</strong></p>
                         </div>
