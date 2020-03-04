@@ -104,6 +104,8 @@ function js(done) {
 			'../shared/js/moment.js',
 			'../shared/js/sweetalert2.all.js',
 			'../shared/js/general-head.js',
+			'../shared/js/Filters.js',
+			'../shared/js/Searcher.js',
 			'../page/about/js/script.js',
 			'../page/booking/js/script.js',
 			'../page/bookingInProcess/js/script.js',
