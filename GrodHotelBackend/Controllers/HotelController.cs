@@ -64,25 +64,30 @@ namespace GrodHotelBackend.Controllers
         public ActionResult Index(string name)
         {
             ViewBag.PageName = "hotel";
-            List<Hotels> hotelList = _context.Hotels.ToList();
-            foreach (var hotel in hotelList)
+            Hotels hotel = _context.Hotels.Where(hotel => hotel.Slug == name).FirstOrDefault();
+
+            if (hotel != null)
             {
                 string hotelName = hotel.Name.ToLower().Replace(" ", "_");
+
                 if (hotelName.Equals(name.ToLower()))
                 {
+                    ViewBag.Available = hotel.Availability;
                     ViewBag.Title = hotel.Name;
                     if (checkAvailability(hotel))
                     {
                         return View(hotel);
-                    } else
+                    }
+                    else
                     {
-                        return View("NotAvailable");
+                        return View(hotel);
                     }
                 }
             }
+
             ViewBag.Title = "Hotel not found";
             ViewBag.test = "No existe";
-            return View("NotAvailable");
+            return View("NotFound");
         }
 
         public bool checkAvailability(Hotels hotel)
