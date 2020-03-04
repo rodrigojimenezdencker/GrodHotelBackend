@@ -7645,6 +7645,266 @@ if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAle
 var window_onDomContentLoaded = function () {
 
     var setuppers = [];
+window.Filters = function ()
+    {
+        var EntryDate,
+        LeavingDate,
+        AdultNumbers,
+        MinorNumbers,
+        MinimumPrice,
+        MaximumPrice,
+        City;
+
+        this.hasEntryDate = function ()
+        {
+            return EntryDate !== undefined;
+        };
+
+        this.getEntryDateAfterHas = function ()
+        {
+            return EntryDate;
+        }
+
+        this.setEntryDate = function (v)
+        {
+            EntryDate = v;
+        }
+
+        this.unsetLeavingDate = function ()
+        {
+            LeavingDate = undefined;
+        }
+
+        this.hasLeavingDate = function ()
+        {
+            return LeavingDate !== undefined;
+        };
+
+        this.getLeavingDateAfterHas = function ()
+        {
+            return LeavingDate;
+        }
+
+        this.setLeavingDate = function (v)
+        {
+            LeavingDate = v;
+        }
+
+        this.unsetLeavingDate = function ()
+        {
+            LeavingDate = undefined;
+        }
+
+        this.hasAdultNumbers = function ()
+        {
+            return AdultNumbers !== undefined;
+        };
+
+        this.getAdultNumbersAfterHas = function ()
+        {
+            return AdultNumbers;
+        }
+
+        this.setAdultNumbers = function (v)
+        {
+            AdultNumbers = v;
+        }
+
+        this.unsetAdultNumbers = function ()
+        {
+            AdultNumbers = undefined;
+        }
+
+        this.hasMinorNumbers = function ()
+        {
+            return MinorNumbers !== undefined;
+        };
+
+        this.getMinorNumbersAfterHas = function ()
+        {
+            return MinorNumbers;
+        }
+
+        this.setMinorNumbers = function (v)
+        {
+            MinorNumbers = v;
+        }
+
+        this.unsetMinorNumbers = function ()
+        {
+            MinorNumbers = undefined;
+        }
+
+        this.hasMinimumPrice = function ()
+        {
+            return MinimumPrice !== undefined;
+        };
+
+        this.getMinimumPriceAfterHas = function ()
+        {
+            return MinimumPrice;
+        }
+
+        this.setMinimumPrice = function (v)
+        {
+            MinimumPrice = v;
+        }
+
+        this.unsetMinimumPrice = function ()
+        {
+            MinimumPrice = undefined;
+        }
+
+        this.hasMaximumPrice = function ()
+        {
+            return MaximumPrice !== undefined;
+        };
+
+        this.getMaximumPriceAfterHas = function ()
+        {
+            return MaximumPrice;
+        }
+
+        this.setMaximumPrice = function (v)
+        {
+            MaximumPrice = v;
+        }
+
+        this.unsetMaximumPrice = function ()
+        {
+            MaximumPrice = undefined;
+        }
+
+        this.hasCity = function ()
+        {
+            return City !== undefined;
+        };
+
+        this.getCityAfterHas = function ()
+        {
+            return City;
+        }
+
+        this.setCity = function (v)
+        {
+            City = v;
+        }
+
+        this.unsetCity = function ()
+        {
+            City = undefined;
+        }
+    }
+window.Searcher = function ()
+{
+    var
+        successCallback = function () {},
+        errorCallback = function () {},
+        alwaysCallback = function () {}
+    ;
+
+    this.setSuccessCallback = function (callback)
+    {
+        successCallback = callback;
+    }
+
+    this.setErrorCallback = function (callback)
+    {
+        errorCallback = callback;
+    }
+
+    this.setAlwaysCallback = function (callback)
+    {
+        alwaysCallback = callback;
+    }
+
+    this.search = function (filters)
+    {
+        var
+            url = '/ApiSearch',
+            options = {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: buildJsonByFilters(filters)
+            }
+        ;
+
+        fetch(
+            url,
+            options
+        )
+            .then(function(response) {
+//
+//                      Si necessiteu debuggejar el que vos torna el servidor:
+/* 
+                  var promise = response.text();
+                  promise.then(
+                      function (text)
+                      {
+                          console.dir(text);
+                      }
+                  );
+*/
+
+                var promise = response.json();
+                promise.then(
+                    function (json)
+                    {
+                        successCallback(json.rooms);
+                    }
+                );
+
+            })
+            .catch(function(error) {
+                errorCallback(error);
+            })
+            .finally(function() {
+                alwaysCallback();
+            })
+        ;
+    }
+
+    var buildJsonByFilters = function (filters)
+    {
+        var filtersPlain = {};
+
+        if (filters.hasEntryDate())
+        {
+            filtersPlain.EntryDate = filters.getEntryDateAfterHas();
+        }
+        if (filters.hasLeavingDate())
+        {
+            filtersPlain.LeavingDate = filters.getLeavingDateAfterHas();
+        }
+        if (filters.hasAdultNumbers())
+        {
+            filtersPlain.AdultNumbers = filters.getAdultNumbersAfterHas();
+        }
+        if (filters.hasMinorNumbers())
+        {
+            filtersPlain.MinorNumbers = filters.getMinorNumbersAfterHas();
+        }
+        if (filters.hasMinimumPrice())
+        {
+            filtersPlain.MinimumPrice = filters.getMinimumPriceAfterHas();
+        }
+        if (filters.hasMaximumPrice())
+        {
+            filtersPlain.MaximumPrice = filters.getMaximumPriceAfterHas();
+        }
+        if (filters.hasCity())
+        {
+            filtersPlain.City = filters.getCityAfterHas();
+        }
+
+        // Ací van la resta de camps...
+
+        return JSON.stringify(filtersPlain);
+    }
+
+};
 setuppers['about'] = function () {
     console.log('About');
 }
@@ -7727,6 +7987,115 @@ setuppers['room'] = function () {
     });
 }
 setuppers['search'] = function () {
+    var setupWidgetSearch = function () {
+        var
+            root2 = document.querySelector('[data-page="search"]'),
+            searchForm = root2.querySelector('[data-widget="search_form"]'),
+            EntryDate = searchForm.querySelector('[data-hook="entry_date"]'),
+            LeavingDate = searchForm.querySelector('[data-hook="leaving_date"]'),
+            MinimumPrice = searchForm.querySelector('[data-hook="min_price"]'),
+            MaximumPrice = searchForm.querySelector('[data-hook="max_price"]'),
+            AdultNumbers = searchForm.querySelector('[data-hook="numberAdults"]'),
+            MinorNumbers = searchForm.querySelector('[data-hook="numberMinors"]'),
+            City = searchForm.querySelector('[data-hook="city"]'),
+            // Ací van la resta de camps...
+
+            roomsList = root2.querySelector('[data-hook="rooms_list"]'),
+
+            roomTemplate = root2.querySelector('[data-hook="room_template"]')
+            ;
+
+        var searchForm_onSubmit = function (event) {
+            event.preventDefault();
+
+            var searcher = buildSearcher();
+
+            searcher.search(
+                buildFilters()
+            );
+        }
+
+        var buildSearcher = function () {
+            var searcher = new Searcher();
+
+            searcher.setSuccessCallback(updateRoomsList);
+
+            return searcher;
+        }
+
+        var updateRoomsList = function (rooms) {
+            roomsList.innerHTML = '';
+
+            for (var i = 0; i < rooms.length; i++) {
+                addRoom(rooms[i]);
+            }
+
+            if (rooms.length == 0){
+                roomsList.innerHTML = '<h1>Oops! No rooms available with your search parameters.</h1>';
+            }
+            roomsList.hidden = false;
+        }
+
+        var addRoom = function (room) {
+            var item = document.importNode(roomTemplate.content, true);
+
+            item.querySelector('[data-hook="room_id"]').textContent = room.id;
+            item.querySelector('[data-hook="room_name"]').textContent = room.name;
+
+            roomsList.appendChild(item);
+        }
+
+        var buildFilters = function () {
+            var filters = new Filters();
+
+            if (EntryDate.value != '') {
+                filters.setEntryDate(
+                    EntryDate.value
+                );
+            }
+            if (LeavingDate.value != '') {
+                filters.setLeavingDate(
+                    LeavingDate.value
+                );
+            }
+            if (AdultNumbers.value != '') {
+                filters.setAdultNumbers(
+                    AdultNumbers.value
+                );
+            }
+            if (MinorNumbers.value != '') {
+                filters.setMinorNumbers(
+                    MinorNumbers.value
+                );
+            }
+            if (MinimumPrice.value != '') {
+                filters.setMinimumPrice(
+                    MinimumPrice.value
+                );
+            }
+            if (MaximumPrice.value != '') {
+                filters.setMaximumPrice(
+                    MaximumPrice.value
+                );
+            }
+            if (City.value != '') {
+                filters.setCity(
+                    City.value
+                );
+            }
+
+            // Ací van la resta de camps...
+
+            return filters;
+        }
+
+        searchForm.addEventListener('submit', searchForm_onSubmit);
+    }
+
+    // Açò ho llançareu quan feu el setupPageSearch des de
+    // /Assets/page/search/js/script.js
+
+    setupWidgetSearch();
     console.log('Search');
 }
 setuppers['thanks-for-contacting-us'] = function () {
