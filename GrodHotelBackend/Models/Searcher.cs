@@ -28,7 +28,7 @@ namespace GrodHotelBackend.Models
                 RoomsGeneralQuery = RoomsGeneralQuery.Where(room => room.Price < filters.MaximumPrice && room.Price > filters.MinimumPrice);
             }
 
-            return RoomsGeneralQuery.Where(x => x.Hotels.CitiesId == filters.City).ToList();
+            return RoomsGeneralQuery.Where(x => x.Hotels.CitiesId == filters.City && x.Availability).ToList();
         }
     }
 }
