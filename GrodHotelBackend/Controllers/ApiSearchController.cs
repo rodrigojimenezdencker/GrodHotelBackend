@@ -38,6 +38,10 @@ namespace GrodHotelBackend.Controllers
             {
                 filters.MinorNumbers = int.Parse(jsonRequest["MinorNumbers"]);
             }
+            if (jsonRequest.ContainsKey("MinimumPrice"))
+            {
+                filters.MinimumPrice = decimal.Parse(jsonRequest["MinimumPrice"]);
+            }
             if (jsonRequest.ContainsKey("MaximumPrice"))
             {
                 filters.MaximumPrice = decimal.Parse(jsonRequest["MaximumPrice"]);
