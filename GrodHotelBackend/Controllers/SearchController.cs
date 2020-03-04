@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using GrodHotelBackend.Models;
 using Microsoft.AspNetCore.Http;
+using System.Globalization;
 
 namespace GrodHotelBackend.Controllers
 {
@@ -40,9 +41,12 @@ namespace GrodHotelBackend.Controllers
         {
             ViewModel mymodel = new ViewModel
             {
-
                 Cities = GetCities()
             };
+
+            
+            ViewData["min_price"] = _context.Rooms.Min(x => x.Price).ToString().Replace(",", ".");
+            ViewData["max_price"] = _context.Rooms.Max(x => x.Price).ToString().Replace(",", ".");
             return View(mymodel);
         }
 
