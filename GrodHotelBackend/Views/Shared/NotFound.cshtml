@@ -1,12 +1,11 @@
 ﻿
 @{
-    ViewData["Title"] = "NotFound";
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
     <main id="layout_main">
         <div>
-            <h1>Not Found</h1>
+            <h1>@ViewBag.Title</h1>
             <a asp-controller="Home">Back to home</a>
         </div>
     </main>
