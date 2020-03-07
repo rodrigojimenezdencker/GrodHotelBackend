@@ -7987,6 +7987,22 @@ setuppers['room'] = function () {
     });
 }
 setuppers['search'] = function () {
+
+    var widget = document.querySelector('[data-widget="search_form"]');
+    widget.addEventListener("submit", function validarDatos (event) {
+        event.preventDefault();
+        if (validateEntryDate(widget.querySelector('[data-hook="entry_date"]').value)
+            || validateLeavingDate(widget.querySelector('[data-hook="entry_date"]').value, widget.querySelector('[data-hook="leaving_date"]').value)
+            || validateMinPrice(parseFloat(widget.querySelector('[data-hook="min_price"]').value))
+            || validateMaxPrice(parseFloat(widget.querySelector('[data-hook="max_price"]').value), parseFloat(widget.querySelector('[data-hook="min_price"]').value))
+            || validateNumberAdults(parseInt(widget.querySelector('[data-hook="numberAdults"]').value))
+            || validateNumberMinors(parseInt(widget.querySelector('[data-hook="numberMinors"]').value))
+            || validateCity(widget.querySelector('[data-hook="city"]').value)) {
+                return;
+            }
+        setupWidgetSearch();
+    });
+
     var setupWidgetSearch = function () {
         var
             root2 = document.querySelector('[data-page="search"]'),
@@ -7998,7 +8014,6 @@ setuppers['search'] = function () {
             AdultNumbers = searchForm.querySelector('[data-hook="numberAdults"]'),
             MinorNumbers = searchForm.querySelector('[data-hook="numberMinors"]'),
             City = searchForm.querySelector('[data-hook="city"]'),
-            // Ací van la resta de camps...
 
             roomsList = root2.querySelector('[data-hook="rooms_list"]'),
 
@@ -8006,8 +8021,6 @@ setuppers['search'] = function () {
             ;
 
         var searchForm_onSubmit = function (event) {
-            event.preventDefault();
-
             var searcher = buildSearcher();
 
             searcher.search(
@@ -8084,18 +8097,12 @@ setuppers['search'] = function () {
                 );
             }
 
-            // Ací van la resta de camps...
-
             return filters;
         }
-
-        searchForm.addEventListener('submit', searchForm_onSubmit);
+        
+        searchForm_onSubmit();
     }
 
-    // Açò ho llançareu quan feu el setupPageSearch des de
-    // /Assets/page/search/js/script.js
-
-    setupWidgetSearch();
     console.log('Search');
 }
 setuppers['thanks-for-contacting-us'] = function () {
@@ -8303,6 +8310,33 @@ function validateEmail(email) {
             icon: 'error',
             title: "Something is not right...",
             text: 'Incorrect Email!'
+        });
+        return true;
+    }
+    return false;
+}
+
+function validateMinPrice(minPrice) {
+    if(typeof minPrice != 'number' 
+    || minPrice < 0 ) {
+        Swal.fire({
+            icon: 'error',
+            title: "Something is not right...",
+            text: 'Incorrect Minimum Price!'
+        });
+        return true;
+    }
+    return false;
+}
+
+function validateMaxPrice(maxPrice, minPrice) {
+    if(typeof maxPrice != 'number' 
+    || maxPrice < 0
+    || maxPrice < minPrice ) {
+        Swal.fire({
+            icon: 'error',
+            title: "Something is not right...",
+            text: 'Incorrect Maximum Price!'
         });
         return true;
     }
