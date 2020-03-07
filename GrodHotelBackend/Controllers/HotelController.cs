@@ -40,23 +40,21 @@ namespace GrodHotelBackend.Controllers
         [HttpGet("/Hotel/{id:int?}")]
         public ActionResult Index(int id)
         {
-            Hotels hotel = _context.Hotels.Find(id);
+            ViewBag.PageName = "hotel";
+            Hotels hotel = _context.Hotels
+                .Include(x => x.Rooms)
+                .FirstOrDefault(hotel => hotel.Id == id);
+
             if (hotel == null)
             {
                 ViewBag.Title = "Hotel not found";
-                ViewBag.test = "No existe";
-                return View("NotAvailable");
+                Response.StatusCode = 404;
+                return View("NotFound");
             }
 
+            ViewBag.Available = hotel.Availability;
             ViewBag.Title = hotel.Name;
-            if (checkAvailability(hotel))
-            {
-                ViewBag.PageName = "hotel";
-                return View(hotel);
-            } else
-            {
-                return View("NotAvailable");
-            }
+            return View(hotel);
         }
 
         // GET: Hotel
@@ -64,35 +62,21 @@ namespace GrodHotelBackend.Controllers
         public ActionResult Index(string name)
         {
             ViewBag.PageName = "hotel";
-            Hotels hotel = _context.Hotels.Where(hotel => hotel.Slug == name).FirstOrDefault();
+            Hotels hotel = _context.Hotels
+                .Include(x => x.Rooms)
+                .FirstOrDefault(hotel => hotel.Slug == name);
 
             if (hotel != null)
             {
-                string hotelName = hotel.Name.ToLower().Replace(" ", "_");
-
-                if (hotelName.Equals(name.ToLower()))
-                {
-                    ViewBag.Available = hotel.Availability;
-                    ViewBag.Title = hotel.Name;
-                    if (checkAvailability(hotel))
-                    {
-                        return View(hotel);
-                    }
-                    else
-                    {
-                        return View(hotel);
-                    }
-                }
+                ViewBag.Available = hotel.Availability;
+                ViewBag.Title = hotel.Name;
+                return View(hotel);
             }
 
             ViewBag.Title = "Hotel not found";
-            ViewBag.test = "No existe";
+            ViewBag.PageName = "hotel";
+            Response.StatusCode = 404;
             return View("NotFound");
-        }
-
-        public bool checkAvailability(Hotels hotel)
-        {
-            return hotel.Availability;
         }
     }
 }

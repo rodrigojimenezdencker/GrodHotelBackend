@@ -75,8 +75,11 @@
     <div>
         <h2>Rooms availables</h2>
         <ul class="unordered_list text_tab">
-            <li><a asp-controller="Room" asp-action="Index">Single Room</a></li>
-            <li><a asp-controller="Room" asp-action="Index">Double Room</a></li>
+            @foreach (var room in Model.Rooms)
+            {
+                <li><a asp-controller="Room" asp-action="Index" asp-route-id="@room.Id">@room.Description</a></li>
+            }
+
         </ul>
     </div>
 </main>
