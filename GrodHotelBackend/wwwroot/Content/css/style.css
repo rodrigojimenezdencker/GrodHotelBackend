@@ -972,21 +972,41 @@ input[type="number"] {
 }
 
 #most_liked_hotels_container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 #most_liked_hotels_container div img {
-    width: 50%;
+  width: 50%;
 }
 
 .page-index .user_info {
-    display: flex;
-    justify-content: space-between;
+  padding: 12px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  align-items: center;
 }
 
 .user_info img {
+  width: 100px;
   border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user_info .comments {
+  max-width: 520px;
 }
 
 @media (max-width: 699px) {
@@ -994,6 +1014,10 @@ input[type="number"] {
     width: 180px;
     top: 18%;
     opacity: 0.85;
+  }
+
+  .page-index .user_info {
+    width: 100%;
   }
 }
 
