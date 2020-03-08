@@ -207,7 +207,8 @@ function validateEmail(email) {
 
 function validateMinPrice(minPrice) {
     if(typeof minPrice != 'number' 
-    || minPrice < 0 ) {
+        || minPrice < 0
+        || !Number.isInteger(minPrice)) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -221,7 +222,8 @@ function validateMinPrice(minPrice) {
 function validateMaxPrice(maxPrice, minPrice) {
     if(typeof maxPrice != 'number' 
     || maxPrice < 0
-    || maxPrice < minPrice ) {
+        || maxPrice < minPrice
+        || !Number.isInteger(maxPrice)) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",

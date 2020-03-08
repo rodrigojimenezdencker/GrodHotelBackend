@@ -45,8 +45,8 @@ namespace GrodHotelBackend.Controllers
             };
 
             
-            ViewData["min_price"] = _context.Rooms.Min(x => x.Price).ToString().Replace(",", ".");
-            ViewData["max_price"] = _context.Rooms.Max(x => x.Price).ToString().Replace(",", ".");
+            ViewData["min_price"] = _context.Rooms.Min(x => x.Price).ToString();
+            ViewData["max_price"] = _context.Rooms.Max(x => x.Price).ToString();
             return View(mymodel);
         }
 
@@ -60,8 +60,8 @@ namespace GrodHotelBackend.Controllers
             filters.MinorNumbers = int.Parse(form["numberMinors"]);
             try
             {
-                filters.MinimumPrice = Decimal.Parse(form["min_price"]);
-                filters.MaximumPrice = Decimal.Parse(form["max_price"]);
+                filters.MinimumPrice = int.Parse(form["min_price"]);
+                filters.MaximumPrice = int.Parse(form["max_price"]);
             } catch(Exception)
             {
 
