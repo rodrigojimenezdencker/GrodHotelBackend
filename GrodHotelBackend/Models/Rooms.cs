@@ -15,7 +15,7 @@ namespace GrodHotelBackend.Models
         public Hotels Hotels { get; set; }
         public decimal Dimensions { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
