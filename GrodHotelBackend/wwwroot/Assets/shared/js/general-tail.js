@@ -67,7 +67,8 @@ function validateNumberAdults(numberAdults) {
     if (typeof numberAdults != 'number'
         || numberAdults < 0
         || numberAdults > 10
-        || isNaN(numberAdults)) {
+        || isNaN(numberAdults)
+        || !Number.isInteger(numberAdults)) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",
@@ -81,7 +82,8 @@ function validateNumberAdults(numberAdults) {
 function validateNumberMinors(numberMinors) {
     if (typeof numberMinors != 'number'
         || numberMinors < 0
-        || numberMinors > 10) {
+        || numberMinors > 10
+        || !Number.isInteger(numberMinors)) {
         Swal.fire({
             icon: 'error',
             title: "Something is not right...",

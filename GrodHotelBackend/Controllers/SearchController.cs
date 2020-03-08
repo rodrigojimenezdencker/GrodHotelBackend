@@ -24,6 +24,12 @@ namespace GrodHotelBackend.Controllers
             public IEnumerable<Cities> Cities { get; set; }
         }
 
+        //private List<Rooms> GetRooms()
+        //{
+        //    List<Rooms> rooms = _context.Rooms.ToList();
+        //    return rooms;
+        //} 
+
         private List<Cities> GetCities()
         {
             List<Cities> cities = _context.Cities.ToList();
@@ -38,6 +44,7 @@ namespace GrodHotelBackend.Controllers
                 Cities = GetCities()
             };
 
+            
             ViewData["min_price"] = _context.Rooms.Min(x => x.Price).ToString().Replace(",", ".");
             ViewData["max_price"] = _context.Rooms.Max(x => x.Price).ToString().Replace(",", ".");
             return View(mymodel);
@@ -53,8 +60,8 @@ namespace GrodHotelBackend.Controllers
             filters.MinorNumbers = int.Parse(form["numberMinors"]);
             try
             {
-                filters.MinimumPrice = decimal.Parse(form["min_price"]);
-                filters.MaximumPrice = decimal.Parse(form["max_price"]);
+                filters.MinimumPrice = Decimal.Parse(form["min_price"]);
+                filters.MaximumPrice = Decimal.Parse(form["max_price"]);
             } catch(Exception)
             {
 

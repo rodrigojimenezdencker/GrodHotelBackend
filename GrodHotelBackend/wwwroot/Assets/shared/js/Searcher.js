@@ -102,8 +102,6 @@ window.Searcher = function ()
             filtersPlain.City = filters.getCityAfterHas();
         }
 
-        // Ací van la resta de camps...
-
         return JSON.stringify(filtersPlain);
     }
 

@@ -100,7 +100,7 @@ setuppers['search'] = function () {
             }
             if (MaximumPrice.value != '') {
                 filters.setMaximumPrice(
-                    MaximumPrice.value
+                   MaximumPrice.value
                 );
             }
             if (City.value != '') {
