@@ -31,5 +31,17 @@ namespace GrodHotelBackend.Models
 
             return RoomsGeneralQuery.Where(room => room.Hotels.CitiesId == filters.City && room.Availability).ToList();
         }
+
+        public bool isAvailable(Filters filters, Rooms roomBooking)
+        {
+            var available = _context.Rooms
+                .Include(room => room.Bookings)
+                .Where(room => room.Bookings.All(booking => filters.EntryDate < booking.EntryDate &&
+                   booking.EntryDate > filters.LeavingDate ||
+                   booking.EntryDate < filters.EntryDate &&
+                   filters.EntryDate > booking.LeavingDate) &&
+                   room.Id == roomBooking.Id).Select(room => room.Availability).FirstOrDefault();
+            return available;
+        }
     }
 }
