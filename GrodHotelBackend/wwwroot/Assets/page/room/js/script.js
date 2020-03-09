@@ -6,7 +6,7 @@ setuppers['room'] = function () {
         widget.addEventListener("submit", function (event) {
             event.preventDefault();
             if (validateEntryDate(widget.querySelector('[data-hook="entry_date"]').value)
-                || validateLeavingDate(widget.querySelector('[data-hook="leaving_date"]').value)
+                || validateLeavingDate(widget.querySelector('[data-hook="entry_date"]').value, widget.querySelector('[data-hook="leaving_date"]').value)
                 || validateNumberAdults(parseInt(widget.querySelector('[data-hook="numberAdults"]').value))
                 || validateNumberMinors(parseInt(widget.querySelector('[data-hook="numberMinors"]').value))) {
                 return;
