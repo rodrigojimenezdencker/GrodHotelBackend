@@ -36,7 +36,7 @@ namespace GrodHotelBackend.Controllers
             return clients;
         }
 
-        // GET: Hotel
+        // GET: Hotel by ID
         [HttpGet("/Hotel/{id:int?}")]
         public ActionResult Index(int id)
         {
@@ -47,7 +47,7 @@ namespace GrodHotelBackend.Controllers
 
             if (hotel == null)
             {
-                ViewBag.Title = "Hotel not found";
+                ViewBag.NotFoundMessage = "Hotel not found";
                 Response.StatusCode = 404;
                 return View("NotFound");
             }
@@ -57,7 +57,7 @@ namespace GrodHotelBackend.Controllers
             return View(hotel);
         }
 
-        // GET: Hotel
+        // GET: Hotel by slug
         [HttpGet("/Hotel/{name?}")]
         public ActionResult Index(string name)
         {
@@ -66,17 +66,16 @@ namespace GrodHotelBackend.Controllers
                 .Include(x => x.Rooms)
                 .FirstOrDefault(hotel => hotel.Slug == name);
 
-            if (hotel != null)
+            if (hotel == null)
             {
-                ViewBag.Available = hotel.Availability;
-                ViewBag.Title = hotel.Name;
-                return View(hotel);
+                ViewBag.NotFoundMessage = "Hotel not found";
+                Response.StatusCode = 404;
+                return View("NotFound");
             }
 
-            ViewBag.Title = "Hotel not found";
-            ViewBag.PageName = "hotel";
-            Response.StatusCode = 404;
-            return View("NotFound");
+            ViewBag.Available = hotel.Availability;
+            ViewBag.Title = hotel.Name;
+            return View(hotel);
         }
     }
 }

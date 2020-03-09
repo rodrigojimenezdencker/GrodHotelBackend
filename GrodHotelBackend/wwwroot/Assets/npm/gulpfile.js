@@ -26,6 +26,7 @@ function css(done) {
 			'../page/search/css/style.css',
 			'../page/thanksForContactingUs/css/style.css',
 			'../page/thanksForSubscribing/css/style.css',
+			'../page/notFound/css/style.css',
 			'../shared/css/sweetalert2.css'
 		])
 		.pipe(concat('style.css'))
@@ -119,6 +120,7 @@ function js(done) {
 			'../page/search/js/script.js',
 			'../page/thanksForContactingUs/js/script.js',
 			'../page/thanksForSubscribing/js/script.js',
+			'../page/notFound/js/script.js',
 			'../shared/js/general-tail.js'
 		])
 		.pipe(concat('script.js'))

@@ -1,13 +1,11 @@
-﻿
-@{
+﻿@{
+    ViewBag.Title = ViewBag.Title ?? "Not Found";
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
     <main id="layout_main">
         <div>
-            <h1>@ViewBag.Title</h1>
+            <h1>ERROR 404 - @(ViewBag.NotFoundMessage ?? "Page requested not found")</h1>
             <a asp-controller="Home">Back to home</a>
         </div>
     </main>
-
-
