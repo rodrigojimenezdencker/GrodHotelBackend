@@ -68,7 +68,7 @@ setuppers['search'] = function () {
         var addRoom = function (room) {
             var item = document.importNode(roomTemplate.content, true);
             item.querySelector('[data-hook="room_name"]').textContent = room.name;
-            item.querySelector('[data-hook="room_link"]').href = location.href + "/" + room.slug;
+            item.querySelector('[data-hook="room_link"]').href = "/Room/" + room.slug;
             item.querySelector('[data-hook="room_image"]').srcset = room.image;
             item.querySelector('[data-hook="room_small_image"]').src = room.smallImage;
             item.querySelector('[data-hook="room_small_image"]').alt = "Image of " + room.name;
