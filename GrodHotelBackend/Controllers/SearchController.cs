@@ -22,12 +22,6 @@ namespace GrodHotelBackend.Controllers
             public IEnumerable<Cities> Cities { get; set; }
         }
 
-        //private List<Rooms> GetRooms()
-        //{
-        //    List<Rooms> rooms = _context.Rooms.ToList();
-        //    return rooms;
-        //}
-
         private List<Cities> GetCities()
         {
             List<Cities> cities = _context.Cities.ToList();
