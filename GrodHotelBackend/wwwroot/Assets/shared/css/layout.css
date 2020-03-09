@@ -138,6 +138,20 @@ header nav {
         width: 100%;
     }
 
+.rooms_list, .hotels_list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .rooms_list li, .hotels_list li {
+        box-sizing: border-box;
+    }
+
+    .rooms_list img, .hotels_list img {
+        width: 100%;
+        height: 350px;
+    }
+
 footer {
     color: #fad860;
 }
@@ -357,6 +371,14 @@ footer form .send_button,
         z-index: 999;
     }
 
+    .rooms_list, .hotels_list {
+        flex-direction: column;
+    }
+
+    .rooms_list li, .hotels_list li {
+        width: 100%;
+    }
+
     .footer_container {
         flex-direction: column;
         align-items: center;
@@ -407,6 +429,15 @@ footer form .send_button,
     #nav_links {
         justify-content: center;
         align-items: center;
+    }
+
+    .rooms_list, .hotels_list {
+        justify-content: space-between;
+    }
+
+    .rooms_list li, .hotels_list li {
+        width: 50%;
+        padding: 10px;
     }
 
     .footer_container {

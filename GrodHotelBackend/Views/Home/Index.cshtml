@@ -58,7 +58,7 @@
             <div class="select">
                 <select name="city" data-hook="city" id="city" required>
                     <option value="" disabled selected>Select a city</option>
-                    @foreach (var city in Model.Cities.OrderBy(el => el.Name))
+                    @foreach (var city in Model.Cities.OrderBy(city => city.Name))
                     {
                         <option value="@city.Id">@city.Name</option>
                     }
@@ -71,31 +71,40 @@
 </header>
 
 <main id="layout_main">
-    <div>
-        <h2>Most Liked</h2>
-        <div id="most_liked_hotels_container">
-            @foreach (var hotel in Model.Hotels)
-            {
-                if (hotel.Trending)
+    @if (Model.Hotels.Where(hotel => hotel.Trending).Count() > 0)
+    {
+        <div>
+            <h2>Most Liked</h2>
+            <ul class="hotels_list">
+                @foreach (var hotel in Model.Hotels)
                 {
-                    <div>
-                        <h2>@hotel.Name</h2>
-                        <figure>
-                            <a asp-controller="Hotel" asp-action="@hotel.Id">
-                                <picture>
-                                    <source media="(min-width: 700px)" srcset="@hotel.Image">
-                                    <img src="@hotel.SmallImage" alt="@hotel.Name">
-                                </picture>
-                            </a>
-                        </figure>
-                    </div>
+                    if (hotel.Trending)
+                    {
+                        <li>
+                            <h3>@hotel.Name</h3>
+                            <figure>
+                                <a asp-controller="Hotel" asp-action="@hotel.Slug">
+                                    <picture>
+                                        <source media="(min-width: 700px)" srcset="@hotel.Image">
+                                        <img src="@hotel.SmallImage" alt="@hotel.Name">
+                                    </picture>
+                                </a>
+                            </figure>
+                        </li>
+                    }
                 }
-            }
+            </ul>
         </div>
-    </div>
+    }
 
-    <div>
-        <h2>Customer reviews</h2>
+<div>
+    <h2>Customer reviews</h2>
+    @if (Model.Hotels.Where(hotel => hotel.Trending).Count() == 0)
+    {
+        <p>No comments yet.</p>
+    }
+    else
+    {
         <ul>
             @foreach (var client in Model.Clients)
             {
@@ -118,5 +127,7 @@
                 }
             }
         </ul>
-    </div>
+    }
+
+</div>
 </main>

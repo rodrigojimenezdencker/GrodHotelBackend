@@ -79,13 +79,13 @@
             {
                 <h2>Results</h2>
 
-                <ul id="rooms_list">
+                <ul class="rooms_list">
                     @foreach (var room in Model.Rooms)
                     {
                         <li>
                             <h3>@room.Name</h3>
                             <figure>
-                                <a asp-controller="Room" asp-action="@room.Id">
+                                <a asp-controller="Room" asp-action="@room.Slug">
                                     <picture>
                                         <source media="(min-width: 700px)" srcset="@room.Image">
                                         <img src="@room.SmallImage" alt="Image of room '@room.Name'">

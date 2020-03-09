@@ -15,24 +15,20 @@
         <h2>@Model.Name</h2>
         <blockquote>
             <p>
-                We are GROD Hotel, a <strong>5 star hotel company</strong> We are focused on all types of
-                <strong>high class customers</strong> and we offer all kind of luxuries.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, fugit perspiciatis. 
+                Voluptate blanditiis impedit quod minima facilis laudantium quasi quia reprehenderit 
+                temporibus magni velit tenetur repellat cumque id voluptatibus, delectus in nisi amet ipsa possimus nihil ullam!
             </p>
-
             <p>
-                In our hotels frequent celebrities, including actors, musicians, football players and businessmen,
-                however, we accept all kind of people, not only “the famous ones”.
+                Voluptates culpa recusandae exercitationem sint pariatur ipsum harum corporis suscipit quo cupiditate. 
+                Odio laudantium itaque nesciunt recusandae in officiis voluptate alias vero beatae, cupiditate labore maxime esse, 
+                ea quasi mollitia aspernatur est explicabo, culpa illo magni reprehenderit doloremque facilis pariatur.
             </p>
-
             <p>
-                All our suites dispose of different installations like Jacuzzis, ambiental lights, views of the city
-                that cannot be seen anywhere else and other <strong>high luxury services</strong> such as massages
-                from expert chiropractors, catering with the best wine selection, indoor pools, and much more.
-            </p>
-
-            <p>
-                We would love to give you your best experience ever and make you feel very comfortable in each of our
-                hotels, so we invite you to come and have a good stay with us.
+                Officiis pariatur ut a temporibus qui impedit recusandae, numquam voluptates saepe incidunt tempore dolore facere expedita itaque, 
+                inventore vero repellat eligendi suscipit quaerat. Temporibus voluptates veritatis nisi quisquam quis iure aliquid quia porro soluta sit, 
+                culpa eius libero ex ullam voluptate reiciendis ipsum corrupti officia, autem facilis tenetur. Maxime iste tenetur cupiditate, 
+                assumenda asperiores nostrum excepturi error cumque nobis totam beatae commodi?
             </p>
         </blockquote>
         <figure>
@@ -40,10 +36,6 @@
                 <source media="(min-width: 700px)" srcset="@Model.Image">
                 <img src="@Model.SmallImage" alt="GROD Hotel">
             </picture>
-            <figcaption>
-                <cite>GROD Hotel</cite>. Photo from <a href="https://pixabay.com/es/photos/la-palma-atlantis-dubai-hotel-962785/"
-                                                       title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Free-Photos</a>.
-            </figcaption>
         </figure>
         <table class="custom_table">
             <thead>
@@ -74,16 +66,23 @@
     </div>
     <div>
         <h2>Rooms availables</h2>
-        <ul id="rooms_list">
-            @foreach (var room in Model.Rooms)
-            {
-                <li>
-                    <img src="@room.SmallImage" alt="@room.Name" />
-                    <h3>
-                        <a role="button" asp-controller="Room" asp-action="Index" asp-route-id="@room.Id">@room.Name</a>
-                    </h3>
-                </li>
-            }
-        </ul>
+        @if (Model.Rooms.Count() == 0)
+        {
+            <p>We are sorry! There are no rooms available in this hotel at the moment.</p>
+        }
+        else
+        {
+            <ul class="rooms_list">
+                @foreach (var room in Model.Rooms)
+                {
+                    <li>
+                        <img src="@room.SmallImage" alt="@room.Name" />
+                        <h3>
+                            <a role="button" asp-controller="Room" asp-action="Index" asp-route-id="@room.Id">@room.Name</a>
+                        </h3>
+                    </li>
+                }
+            </ul>
+        }
     </div>
 </main>
