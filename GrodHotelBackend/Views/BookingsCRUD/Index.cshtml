@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Clients)
+                DNI Client
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rooms)
+                Room
             </th>
             <th>
                 Entry Date
@@ -29,10 +29,10 @@
                 Total Price
             </th>
             <th>
-                Adult Number
+                Adult Numbers
             </th>
             <th>
-                Minor Number
+                Minor Numbers
             </th>
             <th>
                 Confirmation Date
@@ -69,9 +69,9 @@
                     @Html.DisplayFor(modelItem => item.ConfirmationDate)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

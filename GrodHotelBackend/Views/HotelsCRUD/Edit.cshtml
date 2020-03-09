@@ -1,13 +1,14 @@
 ﻿@model GrodHotelBackend.Models.Hotels
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit hotel";
     Layout = "~/Views/Shared/_LayoutBack.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Hotels</h4>
+<p class="display-4">@ViewData["Title"]</p>
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,12 +16,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="HotelsChainId" class="control-label"></label>
+                <label asp-for="HotelsChainId" class="control-label">Hotel Chain</label>
                 <select asp-for="HotelsChainId" class="form-control" asp-items="ViewBag.HotelsChainId"></select>
                 <span asp-validation-for="HotelsChainId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CitiesId" class="control-label"></label>
+                <label asp-for="CitiesId" class="control-label">City</label>
                 <select asp-for="CitiesId" class="form-control" asp-items="ViewBag.CitiesId"></select>
                 <span asp-validation-for="CitiesId" class="text-danger"></span>
             </div>
@@ -50,7 +51,7 @@
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SmallImage" class="control-label"></label>
+                <label asp-for="SmallImage" class="control-label">Small Image</label>
                 <input asp-for="SmallImage" class="form-control" />
                 <span asp-validation-for="SmallImage" class="text-danger"></span>
             </div>
@@ -64,8 +65,4 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>

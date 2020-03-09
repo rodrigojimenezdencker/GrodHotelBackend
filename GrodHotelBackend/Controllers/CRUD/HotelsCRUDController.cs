@@ -34,6 +34,7 @@ namespace GrodHotelBackend.Controllers.CRUD
             var hotels = await _context.Hotels
                 .Include(h => h.Cities)
                 .Include(h => h.HotelsChain)
+                .Include(h => h.Rooms)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (hotels == null)
             {

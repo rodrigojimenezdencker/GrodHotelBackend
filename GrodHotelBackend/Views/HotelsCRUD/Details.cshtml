@@ -1,33 +1,31 @@
 ﻿@model GrodHotelBackend.Models.Hotels
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Hotel details";
     Layout = "~/Views/Shared/_LayoutBack.cshtml";
 }
 
-<h1>Details</h1>
-
+<p class="display-4">@ViewData["Title"]</p>
+<hr />
 <div>
-    <h4>Hotels</h4>
-    <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HotelsChain)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HotelsChain.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cities)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cities.Name)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            City
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cities.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Hotel Chain
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HotelsChain.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
@@ -65,9 +63,23 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Slug)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rooms)
+        </dt>
+        <dd class="col-sm-10">
+            <ul>
+                @foreach (var room in Model.Rooms)
+                {
+                    <li>
+                        <a asp-controller="RoomsCRUD" asp-action="Details" asp-route-id="@room.Id">@room.Name</a>
+                    </li>
+                }
+            </ul>
+
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
 </div>
