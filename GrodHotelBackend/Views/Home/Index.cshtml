@@ -97,37 +97,37 @@
         </div>
     }
 
-<div>
-    <h2>Customer reviews</h2>
-    @if (Model.Hotels.Where(hotel => hotel.Trending).Count() == 0)
-    {
-        <p>No comments yet.</p>
-    }
-    else
-    {
-        <ul>
-            @foreach (var client in Model.Clients)
-            {
-                if (client.Comments != null)
+    <div>
+        <h2>Customer reviews</h2>
+        @if (Model.Hotels.Where(hotel => hotel.Trending).Count() == 0)
+        {
+            <p>No comments yet.</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var client in Model.Clients)
                 {
-                    <li class="user_info">
-                        @if (client.Image == null)
-                        {
-                            <img src="~/Content/img/placeholder_user.png" alt="@client.Name" />
-                        }
-                        else
-                        {
-                            <img src=@client.Image alt=@client.Name />
-                        }
-                        <div class="comments">
-                            <p><em>"@client.Comments"</em></p>
-                            <p><strong>- @client.Name</strong></p>
-                        </div>
-                    </li>
+                    if (client.Comments != null)
+                    {
+                        <li class="user_info">
+                            @if (client.Image == null)
+                            {
+                                <img src="~/Content/img/placeholder_user.png" alt="@client.Name" />
+                            }
+                            else
+                            {
+                                <img src=@client.Image alt=@client.Name />
+                            }
+                            <div class="comments">
+                                <p><em>"@client.Comments"</em></p>
+                                <p><strong>- @client.Name</strong></p>
+                            </div>
+                        </li>
+                    }
                 }
-            }
-        </ul>
-    }
+            </ul>
+        }
 
-</div>
+    </div>
 </main>
