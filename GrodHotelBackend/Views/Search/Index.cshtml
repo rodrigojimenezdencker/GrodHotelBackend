@@ -24,12 +24,12 @@
             <div class="input_group_container">
                 <fieldset>
                     <label for="min_price">Min price</label>
-                    <input type="number" data-hook="min_price" id="min_price" name="min_price" value=@ViewData["min_price"] min="0" required />
+                    <input type="number" data-hook="min_price" id="min_price" name="min_price" value="@ViewData["min_price"]" min="0" required />
                     <img src="~/Content/svg/coin-euro.svg" class="form_icon" alt="Min Price" />
                 </fieldset>
                 <fieldset>
                     <label for="max_price">Max price</label>
-                    <input type="number" data-hook="max_price" id="max_price" name="max_price" value=@ViewData["max_price"] min="0" step="1" required />
+                    <input type="number" data-hook="max_price" id="max_price" name="max_price" value="@ViewData["max_price"]" min="0" step="1" required />
                     <img src="~/Content/svg/coin-euro.svg" class="form_icon" alt="Max Price" />
                 </fieldset>
             </div>
@@ -87,7 +87,7 @@
                             <a asp-controller="Room" asp-action="@room.Id">
                                 <picture>
                                     <source media="(min-width: 700px)" srcset="@room.Image">
-                                    <img src="@room.SmallImage" alt="Room @room.Name">
+                                    <img src="@room.SmallImage" alt="Image of room '@room.Name'">
                                 </picture>
                             </a>
                         </figure>
