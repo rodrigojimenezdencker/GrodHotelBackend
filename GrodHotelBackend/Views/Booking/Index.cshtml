@@ -1,4 +1,6 @@
-﻿@{
+﻿@using GrodHotelBackend.Models;
+@model Rooms
+@{
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
@@ -6,7 +8,7 @@
     <div>
         <div class="table_responsive">
             <table class="custom_table">
-                <caption>Services and Room</caption>
+                <caption>@Model.Name</caption>
                 <thead>
                     <tr>
                         <th scope="col">Services</th>

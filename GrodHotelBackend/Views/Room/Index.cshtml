@@ -19,72 +19,11 @@
                 <source media="(min-width: 700px)" srcset="@Model.Image">
                 <img src="@Model.SmallImage" alt="@Model.Name">
             </picture>
-            <figcaption>
-                <cite>GROD Hotel suite</cite>. Photo from <a href="https://pixabay.com/es/photos/habitaci%C3%B3n-de-hotel-cama-almohadas-1447201/"
-                                                             title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Olichel</a>.
-            </figcaption>
         </figure>
-        <table class="custom_table">
-            <thead>
-                <tr>
-                    <th scope="col" colspan="2">
-                        <p>It contains...</p>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>24 m² bedroom</td>
-                    <td>350€</td>
-                </tr>
-                <tr>
-                    <td>Room service</td>
-                    <td>45€</td>
-                </tr>
-                <tr>
-                    <td>Bathroom containing a bathtub as well as a shower</td>
-                    <td>FREE</td>
-                </tr>
-                <tr>
-                    <td>Hairdryer</td>
-                    <td>FREE</td>
-                </tr>
-                <tr>
-                    <td>Free Wi-Fi</td>
-                    <td>FREE</td>
-                </tr>
-                <tr>
-                    <td>King-size double bed (180 x 200 cm) with Egyptian cotton sheets</td>
-                    <td>FREE</td>
-                </tr>
-                <tr>
-                    <td>Satellite television</td>
-                    <td>FREE</td>
-                </tr>
-                <tr>
-                    <td>Minibar</td>
-                    <td>25€</td>
-                </tr>
-                <tr>
-                    <td>Toiletry supplies by L’Occitane</td>
-                    <td>FREE</td>
-                </tr>
-                <tr>
-                    <td>Bathrobe and slippers</td>
-                    <td>FREE</td>
-                </tr>
-                <tr>
-                    <th scope="col">
-                        <p>TOTAL</p>
-                    </th>
-                    <td>420€</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        </div>
     <div>
         <h2>Reserve this room</h2>
-        <form action="Booking" data-widget="room_form" method="POST">
+        <form asp-controller="Booking" asp-action="@Model.Slug" data-widget="room_form" method="POST">
             <div class="input_group_container">
                 <fieldset>
                     <label for="entry_date">Entry date</label>
