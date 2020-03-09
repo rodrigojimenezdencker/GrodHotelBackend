@@ -14,43 +14,44 @@ namespace GrodHotelBackend.Controllers
         public RoomController(Context context)
         {
             _context = context;
-        }
-
-        // GET: Room
-        [HttpGet("/Room")]
-        public ActionResult Index()
-        {
-            ViewBag.Title = "Room";
-            ViewBag.PageName = "room";
-            return View();
         } 
 
-        // GET: Room
+        // GET: Room by ID
         [HttpGet("/Room/{id:int?}")]
         public ActionResult Index(int id)
         {
+            ViewBag.PageName = "room";
             Rooms room = _context.Rooms.Find(id);
+
             if (room == null)
             {
-                ViewBag.Title = "Room not found";
-                ViewBag.test = "No existe";
-                return View("NotAvailable");
+                ViewBag.NotFoundMessage = "Room not found";
+                Response.StatusCode = 404;
+                return View("NotFound");
             }
 
-            if (checkAvailability(room))
-            {
-                ViewBag.PageName = "room";
-                return View(room);
-            }
-            else
-            {
-                return View("NotAvailable");
-            }
+            ViewBag.Available = room.Availability;
+            ViewBag.Title = room.Name;
+            return View(room);
         }
 
-        public bool checkAvailability(Rooms room)
+        // GET: Room by slug
+        [HttpGet("/Room/{name?}")]
+        public ActionResult Index(string name)
         {
-            return room.Availability;
+            ViewBag.PageName = "room";
+            Rooms room = _context.Rooms.Where(room => room.Slug.Equals(name)).FirstOrDefault();
+
+            if (room == null)
+            {
+                ViewBag.NotFoundMessage = "Room not found";
+                Response.StatusCode = 404;
+                return View("NotFound");
+            }
+
+            ViewBag.Available = room.Availability;
+            ViewBag.Title = room.Name;
+            return View(room);
         }
     }
 }
