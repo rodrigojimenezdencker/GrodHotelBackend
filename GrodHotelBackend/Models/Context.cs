@@ -7,9 +7,11 @@ namespace GrodHotelBackend.Models
         public Context()
         {
         }
+
         public Context(DbContextOptions options) : base(options)
         {
         }
+
         public virtual DbSet<Hotels> Hotels { get; set; }
         public virtual DbSet<HotelsChain> HotelsChain { get; set; }
         public virtual DbSet<Cities> Cities { get; set; }

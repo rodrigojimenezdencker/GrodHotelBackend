@@ -1,7 +1,6 @@
 setuppers['search'] = function () {
-
     var widget = document.querySelector('[data-widget="search_form"]');
-    widget.addEventListener("submit", function validarDatos (event) {
+    widget.addEventListener("submit", function validarDatos(event) {
         event.preventDefault();
         if (validateEntryDate(widget.querySelector('[data-hook="entry_date"]').value)
             || validateLeavingDate(widget.querySelector('[data-hook="entry_date"]').value, widget.querySelector('[data-hook="leaving_date"]').value)
@@ -10,8 +9,8 @@ setuppers['search'] = function () {
             || validateNumberAdults(parseInt(widget.querySelector('[data-hook="numberAdults"]').value))
             || validateNumberMinors(parseInt(widget.querySelector('[data-hook="numberMinors"]').value))
             || validateCity(widget.querySelector('[data-hook="city"]').value)) {
-                return;
-            }
+            return;
+        }
         setupWidgetSearch();
     });
 
@@ -55,7 +54,7 @@ setuppers['search'] = function () {
                 addRoom(rooms[i]);
             }
 
-            if (rooms.length == 0){
+            if (rooms.length == 0) {
                 roomsList.innerHTML = '<h1>Oops! No rooms available with your search parameters.</h1>';
             }
             roomsList.hidden = false;
@@ -100,7 +99,7 @@ setuppers['search'] = function () {
             }
             if (MaximumPrice.value != '') {
                 filters.setMaximumPrice(
-                   MaximumPrice.value
+                    MaximumPrice.value
                 );
             }
             if (City.value != '') {
@@ -111,7 +110,7 @@ setuppers['search'] = function () {
 
             return filters;
         }
-        
+
         searchForm_onSubmit();
     }
 

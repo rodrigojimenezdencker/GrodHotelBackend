@@ -1,5 +1,3 @@
-using System;
-
 namespace GrodHotelBackend.Models
 {
     public class ErrorViewModel

@@ -52,7 +52,7 @@ namespace GrodHotelBackend.Controllers
             }
             Searcher searcher = new Searcher(_context);
             var queryResponse = searcher.Run(filters);
-            
+
             var jsonResponse = new
             {
                 rooms = queryResponse

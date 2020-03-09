@@ -78,7 +78,7 @@
         }
 
         let momentBirthdate = moment(birthdate, "YYYY-MM-DD");
-        
+
         if (momentBirthdate.isAfter(moment().format("YYYY-MM-DD"))) {
             Swal.fire({
                 icon: 'error',
@@ -113,7 +113,7 @@
         let char;
         let chars = 'TRWAGMYFPDXBNJZSQVHLCKET';
         let regex = /^\d{8}[a-zA-Z]$/;
-        
+
         if (dni == '') {
             Swal.fire({
                 icon: 'error',
@@ -166,7 +166,7 @@
             });
             return true;
         }
-        if(!re.test(String(email).toLowerCase())) {
+        if (!re.test(String(email).toLowerCase())) {
             Swal.fire({
                 icon: 'error',
                 title: "Incorrect Email!",

@@ -5,106 +5,103 @@
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
-    <main id="layout_main">
-        <div>
-            <h2>Search</h2>
-            <form action="Search" data-widget="search_form" method="POST">
-                <div class="input_group_container">
-                    <fieldset>
-                        <label for="entry_date">Entry date</label>
-                        <input type="date" data-hook="entry_date" id="entry_date" name="entry_date" required />
-                        <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Entry Date" />
-                    </fieldset>
-                    <fieldset>
-                        <label for="leaving_date">Leaving date</label>
-                        <input type="date" data-hook="leaving_date" id="leaving_date" name="leaving_date" required />
-                        <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Leaving Date" />
-                    </fieldset>
-                </div>
-                    <div class="input_group_container">
-                        <fieldset>
-                            <label for="min_price">Min price</label>
-                            <input type="number" data-hook="min_price" id="min_price" name="min_price" value=@ViewData["min_price"] min="0" required />
-                            <img src="~/Content/svg/coin-euro.svg" class="form_icon" alt="Min Price" />
-                        </fieldset>
-                        <fieldset>
-                            <label for="max_price">Max price</label>
-                            <input type="number" data-hook="max_price" id="max_price" name="max_price" value=@ViewData["max_price"] min="0" step="1" required />
-                            <img src="~/Content/svg/coin-euro.svg" class="form_icon" alt="Max Price" />
-                        </fieldset>
-                    </div>
-                <div class="input_group_container">
-                    <fieldset>
-                        <label for="numberAdults">Number of adults</label>
-                        <input type="number" id="numberAdults"  data-hook="numberAdults" min="1" max="10" name="numberAdults"
-                               value="2" />
-                        <img src="~/Content/svg/man.svg" class="form_icon" alt="Number of Adults" />
-                    </fieldset>
-                    <fieldset>
-                        <label for="numberMinors">Number of minors</label>
-                        <input type="number" id="numberMinors" data-hook="numberMinors" min="0" max="10" name="numberMinors"
-                               value="0">
-                        <img src="~/Content/svg/child.svg" class="form_icon" alt="Number of Minors" />
-                    </fieldset>
-                </div>
+<main id="layout_main">
+    <div>
+        <h2>Search</h2>
+        <form action="Search" data-widget="search_form" method="POST">
+            <div class="input_group_container">
                 <fieldset>
-                    <label for="city">City</label>
-                    <div class="select">
-                        <select data-hook="city" id="city" name="city" required>
-                            <option value="" disabled selected>Select a city</option>
-                            @foreach (var city in Model.Cities.OrderBy(el => el.Name))
-                            {
-                                <option value="@city.Id">@city.Name</option>
-                            }
-                        </select>
-                        <div class="select_arrow"></div>
-                    </div>
+                    <label for="entry_date">Entry date</label>
+                    <input type="date" data-hook="entry_date" id="entry_date" name="entry_date" required />
+                    <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Entry Date" />
                 </fieldset>
-                <button type="submit" class="send_button">Send</button>
-            </form>
-        </div>
+                <fieldset>
+                    <label for="leaving_date">Leaving date</label>
+                    <input type="date" data-hook="leaving_date" id="leaving_date" name="leaving_date" required />
+                    <img src="~/Content/svg/calendar.svg" class="form_icon" alt="Leaving Date" />
+                </fieldset>
+            </div>
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="min_price">Min price</label>
+                    <input type="number" data-hook="min_price" id="min_price" name="min_price" value=@ViewData["min_price"] min="0" required />
+                    <img src="~/Content/svg/coin-euro.svg" class="form_icon" alt="Min Price" />
+                </fieldset>
+                <fieldset>
+                    <label for="max_price">Max price</label>
+                    <input type="number" data-hook="max_price" id="max_price" name="max_price" value=@ViewData["max_price"] min="0" step="1" required />
+                    <img src="~/Content/svg/coin-euro.svg" class="form_icon" alt="Max Price" />
+                </fieldset>
+            </div>
+            <div class="input_group_container">
+                <fieldset>
+                    <label for="numberAdults">Number of adults</label>
+                    <input type="number" id="numberAdults" data-hook="numberAdults" min="1" max="10" name="numberAdults"
+                           value="2" />
+                    <img src="~/Content/svg/man.svg" class="form_icon" alt="Number of Adults" />
+                </fieldset>
+                <fieldset>
+                    <label for="numberMinors">Number of minors</label>
+                    <input type="number" id="numberMinors" data-hook="numberMinors" min="0" max="10" name="numberMinors"
+                           value="0">
+                    <img src="~/Content/svg/child.svg" class="form_icon" alt="Number of Minors" />
+                </fieldset>
+            </div>
+            <fieldset>
+                <label for="city">City</label>
+                <div class="select">
+                    <select data-hook="city" id="city" name="city" required>
+                        <option value="" disabled selected>Select a city</option>
+                        @foreach (var city in Model.Cities.OrderBy(el => el.Name))
+                        {
+                            <option value="@city.Id">@city.Name</option>
+                        }
+                    </select>
+                    <div class="select_arrow"></div>
+                </div>
+            </fieldset>
+            <button type="submit" class="send_button">Send</button>
+        </form>
+    </div>
 
-        <div data-hook="rooms_list" @(Model.Rooms == null ? "hidden" : "")>
+    <div data-hook="rooms_list" @(Model.Rooms == null ? "hidden" : "")>
 
-            @if (Model.Rooms != null)
+        @if (Model.Rooms != null)
+        {
+
+            if (Model.Rooms.Count() == 0)
             {
+                <div>
+                    <h1>Oops! No rooms available with your search parameters.</h1>
+                </div>
+            }
+            else
+            {
+                <h2>Results</h2>
 
-                if (Model.Rooms.Count() == 0)
+                @foreach (var room in Model.Rooms)
                 {
                     <div>
-                        <h1>Oops! No rooms available with your search parameters.</h1>
+                        <h2>@room.Name</h2>
+                        <figure>
+                            <a asp-controller="Room" asp-action="@room.Id">
+                                <picture>
+                                    <source media="(min-width: 700px)" srcset="@room.Image">
+                                    <img src="@room.SmallImage" alt="Room @room.Name">
+                                </picture>
+                            </a>
+                        </figure>
+                        <figcaption>
+                            <cite>GROD Hotel suite</cite>. Photo from <a href="https://pixabay.com/es/photos/habitaci%C3%B3n-de-hotel-cama-almohadas-1447201/"
+                                                                         title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Olichel</a>.
+                        </figcaption>
                     </div>
                 }
-                else
-                {
-                    <h2>Results</h2>
-
-                    @foreach (var room in Model.Rooms)
-                    {
-                        <div>
-                            <h2>@room.Name</h2>
-                            <figure>
-                                <a asp-controller="Room" asp-action="@room.Id">
-                                    <picture>
-                                        <source media="(min-width: 700px)" srcset="@room.Image">
-                                        <img src="@room.SmallImage" alt="Room @room.Name">
-                                    </picture>
-                                </a>
-                            </figure>
-                            <figcaption>
-                                <cite>GROD Hotel suite</cite>. Photo from <a href="https://pixabay.com/es/photos/habitaci%C3%B3n-de-hotel-cama-almohadas-1447201/"
-                                                                             title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Olichel</a>.
-                            </figcaption>
-                        </div>
-                    }
-                }
             }
-        </div>
+        }
+    </div>
 
-        <template data-hook="room_template">
-            <p><span data-hook="room_id"></span> - <span data-hook="room_name"></span></p>
-        </template>
-        
-
-    </main>
-
+    <template data-hook="room_template">
+        <p><span data-hook="room_id"></span> - <span data-hook="room_name"></span></p>
+    </template>
+</main>

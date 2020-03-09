@@ -1,9 +1,7 @@
-﻿using System;
+﻿using GrodHotelBackend.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Microsoft.AspNetCore.Mvc;
-using GrodHotelBackend.Models;
 
 namespace GrodHotelBackend.Controllers
 {
@@ -34,6 +32,7 @@ namespace GrodHotelBackend.Controllers
             List<Clients> clients = _context.Clients.ToList();
             return clients;
         }
+
         private List<Cities> GetCities()
         {
             List<Cities> cities = _context.Cities.ToList();

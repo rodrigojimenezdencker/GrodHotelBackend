@@ -1,84 +1,83 @@
 ﻿<!DOCTYPE html>
-    <html lang="en" data-page="@ViewBag.PageName" class="page-@ViewBag.PageName">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>@ViewBag.Title | GROD Hotel Dashboard</title>
-        <link rel="shortcut icon" href="~/Content/img/favicon-32x32.png" type="image/png" />
-        <link rel="stylesheet" href="~/Content/css/style_back.min.css">
-    </head>
-    <body>
-        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-            <a asp-controller="Dashboard" asp-action="Index" class="navbar-brand col-sm-3 col-md-2 mr-0">GROD Hotel Dashboard</a>
-            <a asp-controller="Home" asp-action="Index" class="col-sm-3 col-md-2 text-light">Back to website</a>
-       
-        </nav>
+<html lang="en" data-page="@ViewBag.PageName" class="page-@ViewBag.PageName">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>@ViewBag.Title | GROD Hotel Dashboard</title>
+    <link rel="shortcut icon" href="~/Content/img/favicon-32x32.png" type="image/png" />
+    <link rel="stylesheet" href="~/Content/css/style_back.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a asp-controller="Dashboard" asp-action="Index" class="navbar-brand col-sm-3 col-md-2 mr-0">GROD Hotel Dashboard</a>
+        <a asp-controller="Home" asp-action="Index" class="col-sm-3 col-md-2 text-light">Back to website</a>
+    </nav>
 
-        <div class="container-fluid">
-            <div class="main_content row">
-                <nav class="col-md-2 mt-3 col-sm-12 d-sm-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <ul class="nav flex-md-column">
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="Dashboard" asp-action="Index">
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="BookingsCRUD" asp-action="Index">
-                                    Bookings
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="ClientsCRUD" asp-action="Index">
-                                    Clients
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="ComoditiesCRUD" asp-action="Index">
-                                    Comodities
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="HotelsCRUD" asp-action="Index">
-                                    Hotels
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="HotelsChainCRUD" asp-action="Index">
-                                    Hotels Chain
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="RoomsCRUD" asp-action="Index">
-                                    Rooms
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="ServicesCRUD" asp-action="Index">
-                                    Services
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="CountriesCRUD" asp-action="Index">
-                                    Countries
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" asp-controller="CitiesCRUD" asp-action="Index">
-                                    Cities
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+    <div class="container-fluid">
+        <div class="main_content row">
+            <nav class="col-md-2 mt-3 col-sm-12 d-sm-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-md-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="Dashboard" asp-action="Index">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="BookingsCRUD" asp-action="Index">
+                                Bookings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="ClientsCRUD" asp-action="Index">
+                                Clients
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="ComoditiesCRUD" asp-action="Index">
+                                Comodities
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="HotelsCRUD" asp-action="Index">
+                                Hotels
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="HotelsChainCRUD" asp-action="Index">
+                                Hotels Chain
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="RoomsCRUD" asp-action="Index">
+                                Rooms
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="ServicesCRUD" asp-action="Index">
+                                Services
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="CountriesCRUD" asp-action="Index">
+                                Countries
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="CitiesCRUD" asp-action="Index">
+                                Cities
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-3">
-                    @RenderBody()
-                </main>
-            </div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-3">
+                @RenderBody()
+            </main>
         </div>
-        <script src="~/Content/js/script_back.min.js"></script>
-    </body>
+    </div>
+    <script src="~/Content/js/script_back.min.js"></script>
+</body>
 </html>

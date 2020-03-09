@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GrodHotelBackend.Models;
 using Microsoft.AspNetCore.Mvc;
-using GrodHotelBackend.Models;
+using System.Linq;
 
 namespace GrodHotelBackend.Controllers
 {
@@ -14,7 +11,7 @@ namespace GrodHotelBackend.Controllers
         public RoomController(Context context)
         {
             _context = context;
-        } 
+        }
 
         // GET: Room by ID
         [HttpGet("/Room/{id:int?}")]

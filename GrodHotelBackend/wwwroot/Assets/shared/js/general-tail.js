@@ -4,7 +4,6 @@ var route = function () {
     if (typeof routing == 'string') {
         setuppers[routing]();
     }
-
 }
 
 route();
@@ -206,7 +205,7 @@ function validateEmail(email) {
 }
 
 function validateMinPrice(minPrice) {
-    if(typeof minPrice != 'number' 
+    if (typeof minPrice != 'number'
         || minPrice < 0
         || !Number.isInteger(minPrice)) {
         Swal.fire({
@@ -220,8 +219,8 @@ function validateMinPrice(minPrice) {
 }
 
 function validateMaxPrice(maxPrice, minPrice) {
-    if(typeof maxPrice != 'number' 
-    || maxPrice < 0
+    if (typeof maxPrice != 'number'
+        || maxPrice < 0
         || maxPrice < minPrice
         || !Number.isInteger(maxPrice)) {
         Swal.fire({

@@ -1,11 +1,9 @@
-﻿using System;
+﻿using GrodHotelBackend.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Microsoft.AspNetCore.Mvc;
-using GrodHotelBackend.Models;
-using Microsoft.AspNetCore.Http;
-using System.Globalization;
 
 namespace GrodHotelBackend.Controllers
 {
@@ -28,7 +26,7 @@ namespace GrodHotelBackend.Controllers
         //{
         //    List<Rooms> rooms = _context.Rooms.ToList();
         //    return rooms;
-        //} 
+        //}
 
         private List<Cities> GetCities()
         {
@@ -44,7 +42,6 @@ namespace GrodHotelBackend.Controllers
                 Cities = GetCities()
             };
 
-            
             ViewData["min_price"] = _context.Rooms.Min(x => x.Price).ToString();
             ViewData["max_price"] = _context.Rooms.Max(x => x.Price).ToString();
             return View(mymodel);
@@ -55,16 +52,16 @@ namespace GrodHotelBackend.Controllers
         {
             Filters filters = new Filters();
             filters.EntryDate = DateTime.Parse(form["entry_date"]);
-            filters.LeavingDate = DateTime.Parse(form["leaving_date"]);            
+            filters.LeavingDate = DateTime.Parse(form["leaving_date"]);
             filters.AdultNumbers = int.Parse(form["numberAdults"]);
             filters.MinorNumbers = int.Parse(form["numberMinors"]);
             try
             {
                 filters.MinimumPrice = int.Parse(form["min_price"]);
                 filters.MaximumPrice = int.Parse(form["max_price"]);
-            } catch(Exception)
+            }
+            catch (Exception)
             {
-
             }
             filters.City = int.Parse(form["city"]);
             Searcher searcher = new Searcher(_context);
@@ -75,6 +72,5 @@ namespace GrodHotelBackend.Controllers
             };
             return View(mymodel);
         }
-        
     }
 }
