@@ -7972,17 +7972,20 @@ setuppers['personal-data-usage'] = function () {
 }
 setuppers['room'] = function () {
     console.log('Room');
+
     var widget = document.querySelector('[data-widget="room_form"]');
-    widget.addEventListener("submit", function (event) {
-        event.preventDefault();
-        if (validateEntryDate(widget.querySelector('[data-hook="entry_date"]').value)
-            || validateLeavingDate(widget.querySelector('[data-hook="leaving_date"]').value)
-            || validateNumberAdults(parseInt(widget.querySelector('[data-hook="numberAdults"]').value))
-            || validateNumberMinors(parseInt(widget.querySelector('[data-hook="numberMinors"]').value))) {
-            return;
-        }
-        widget.submit();
-    });
+    if (widget != null) {
+        widget.addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (validateEntryDate(widget.querySelector('[data-hook="entry_date"]').value)
+                || validateLeavingDate(widget.querySelector('[data-hook="leaving_date"]').value)
+                || validateNumberAdults(parseInt(widget.querySelector('[data-hook="numberAdults"]').value))
+                || validateNumberMinors(parseInt(widget.querySelector('[data-hook="numberMinors"]').value))) {
+                return;
+            }
+            widget.submit();
+        });
+    }
 }
 setuppers['search'] = function () {
 
@@ -8108,6 +8111,9 @@ setuppers['thanks-for-contacting-us'] = function () {
 }
 setuppers['thanks-for-subscribing'] = function () {
     console.log('Thanks for subscribing');
+}
+setuppers['not-found'] = function () {
+    console.log('Not Found');
 }
 var route = function () {
     var routing = document.querySelector('[data-page]').getAttribute('data-page');

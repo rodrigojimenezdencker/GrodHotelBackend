@@ -533,7 +533,6 @@ figure img {
 .custom_table td,
 .custom_table th {
   padding: 8px;
-  border: 1px solid #010116;
 }
 
 .custom_table {
@@ -1030,6 +1029,7 @@ input[type="number"] {
     width: 100%;
   }
 }
+
 
 
 
