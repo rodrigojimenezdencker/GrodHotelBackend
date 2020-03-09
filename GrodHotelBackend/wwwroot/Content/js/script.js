@@ -7916,8 +7916,8 @@ setuppers['search'] = function () {
 
     var setupWidgetSearch = function () {
         var
-            root2 = document.querySelector('[data-page="search"]'),
-            searchForm = root2.querySelector('[data-widget="search_form"]'),
+            searchPage = document.querySelector('[data-page="search"]'),
+            searchForm = searchPage.querySelector('[data-widget="search_form"]'),
             EntryDate = searchForm.querySelector('[data-hook="entry_date"]'),
             LeavingDate = searchForm.querySelector('[data-hook="leaving_date"]'),
             MinimumPrice = searchForm.querySelector('[data-hook="min_price"]'),
@@ -7926,9 +7926,11 @@ setuppers['search'] = function () {
             MinorNumbers = searchForm.querySelector('[data-hook="numberMinors"]'),
             City = searchForm.querySelector('[data-hook="city"]'),
 
-            roomsList = root2.querySelector('[data-hook="rooms_list"]'),
+            containerRoomsList = searchPage.querySelector('[data-hook="rooms_list"]'),
+            containerRoomsListController = searchPage.querySelector('[data-hook="rooms_list_controller"]'),
+            roomsList = document.createElement("ul"),
 
-            roomTemplate = root2.querySelector('[data-hook="room_template"]')
+            roomTemplate = searchPage.querySelector('[data-hook="room_template"]')
             ;
 
         var searchForm_onSubmit = function (event) {
@@ -7948,23 +7950,28 @@ setuppers['search'] = function () {
         }
 
         var updateRoomsList = function (rooms) {
-            roomsList.innerHTML = '';
+            containerRoomsList.innerHTML = '<h2>Results</h2>';
+            roomsList.className = "rooms_list";
+            containerRoomsList.appendChild(roomsList);
+            if (rooms.length == 0) {
+                containerRoomsList.innerHTML = '<p>We are sorry! No rooms available with your search parameters.</p>';
+            }
 
             for (var i = 0; i < rooms.length; i++) {
                 addRoom(rooms[i]);
             }
 
-            if (rooms.length == 0) {
-                roomsList.innerHTML = '<h1>Oops! No rooms available with your search parameters.</h1>';
-            }
-            roomsList.hidden = false;
+            containerRoomsListController.hidden = true;
+            containerRoomsList.hidden = false;
         }
 
         var addRoom = function (room) {
             var item = document.importNode(roomTemplate.content, true);
-
-            item.querySelector('[data-hook="room_id"]').textContent = room.id;
             item.querySelector('[data-hook="room_name"]').textContent = room.name;
+            item.querySelector('[data-hook="room_link"]').href = location.href + "/" + room.slug;
+            item.querySelector('[data-hook="room_image"]').srcset = room.image;
+            item.querySelector('[data-hook="room_small_image"]').src = room.smallImage;
+            item.querySelector('[data-hook="room_small_image"]').alt = "Image of " + room.name;
 
             roomsList.appendChild(item);
         }

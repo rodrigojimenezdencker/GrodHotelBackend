@@ -64,7 +64,9 @@
         </form>
     </div>
 
-    <div data-hook="rooms_list" @(Model.Rooms == null ? "hidden" : "")>
+    <div data-hook="rooms_list" hidden></div>
+
+    <div data-hook="rooms_list_controller" @(Model.Rooms == null ? "hidden" : "")>
 
         @if (Model.Rooms != null)
         {
@@ -72,7 +74,7 @@
             if (Model.Rooms.Count() == 0)
             {
                 <div>
-                    <h1>Oops! No rooms available with your search parameters.</h1>
+                    <p>We are sorry! No rooms available with your search parameters.</p>
                 </div>
             }
             else
@@ -99,7 +101,17 @@
         }
         </div>
 
-        <template data-hook="room_template">
-            <p><span data-hook="room_id"></span> - <span data-hook="room_name"></span></p>
-        </template>
+    <template data-hook="room_template">
+        <li>
+            <h3 data-hook="room_name"></h3>
+            <figure>
+                <a asp-controller="Room" data-hook="room_link">
+                    <picture>
+                        <source media="(min-width: 700px)" data-hook="room_image">
+                        <img data-hook="room_small_image">
+                    </picture>
+                </a>
+            </figure>
+        </li>
+    </template>
     </main>
