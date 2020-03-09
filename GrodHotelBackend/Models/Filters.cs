@@ -15,6 +15,6 @@ namespace GrodHotelBackend.Models
         public int MinorNumbers { get; set; }
         public decimal? MinimumPrice { get; set; }
         public decimal? MaximumPrice { get; set; }
-        public int City { get; set; }
+        public int? City { get; set; }
     }
 }

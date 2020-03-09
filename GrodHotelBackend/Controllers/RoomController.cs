@@ -1,5 +1,7 @@
 ﻿using GrodHotelBackend.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 
 namespace GrodHotelBackend.Controllers
@@ -48,6 +50,20 @@ namespace GrodHotelBackend.Controllers
 
             ViewBag.Available = room.Availability;
             ViewBag.Title = room.Name;
+            return View(room);
+        }
+
+        [HttpPost]
+        public ActionResult Index(IFormCollection form, int id)
+        {
+            Filters filters = new Filters();
+            filters.EntryDate = DateTime.Parse(form["entry_date"]);
+            filters.LeavingDate = DateTime.Parse(form["leaving_date"]);
+            filters.AdultNumbers = int.Parse(form["numberAdults"]);
+            filters.MinorNumbers = int.Parse(form["numberMinors"]);
+            Rooms room = _context.Rooms.Find(id);
+            Searcher searcher = new Searcher(_context);
+            var roomBooking = searcher.isAvailable(filters, room);
             return View(room);
         }
     }
