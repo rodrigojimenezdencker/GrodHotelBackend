@@ -79,29 +79,27 @@
             {
                 <h2>Results</h2>
 
-                @foreach (var room in Model.Rooms)
-                {
-                    <div>
-                        <h2>@room.Name</h2>
-                        <figure>
-                            <a asp-controller="Room" asp-action="@room.Id">
-                                <picture>
-                                    <source media="(min-width: 700px)" srcset="@room.Image">
-                                    <img src="@room.SmallImage" alt="Image of room '@room.Name'">
-                                </picture>
-                            </a>
-                        </figure>
-                        <figcaption>
-                            <cite>GROD Hotel suite</cite>. Photo from <a href="https://pixabay.com/es/photos/habitaci%C3%B3n-de-hotel-cama-almohadas-1447201/"
-                                                                         title="Go to &quot;Olichel&quot; profile from &quot;Pixabay&quot;">Olichel</a>.
-                        </figcaption>
-                    </div>
-                }
+                <ul id="rooms_list">
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <li>
+                            <h3>@room.Name</h3>
+                            <figure>
+                                <a asp-controller="Room" asp-action="@room.Id">
+                                    <picture>
+                                        <source media="(min-width: 700px)" srcset="@room.Image">
+                                        <img src="@room.SmallImage" alt="Image of room '@room.Name'">
+                                    </picture>
+                                </a>
+                            </figure>
+                        </li>
+                    }
+                </ul>
             }
         }
-    </div>
+        </div>
 
-    <template data-hook="room_template">
-        <p><span data-hook="room_id"></span> - <span data-hook="room_name"></span></p>
-    </template>
-</main>
+        <template data-hook="room_template">
+            <p><span data-hook="room_id"></span> - <span data-hook="room_name"></span></p>
+        </template>
+    </main>
