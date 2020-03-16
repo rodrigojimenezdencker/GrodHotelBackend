@@ -36,18 +36,16 @@ namespace GrodHotelBackend
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddControllers().ConfigureApiBehaviorOptions(options =>
-    {
-        options.InvalidModelStateResponseFactory = context =>
-        {
-            var result = new BadRequestObjectResult(context.ModelState);
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    var result = new BadRequestObjectResult(context.ModelState);
+                    result.ContentTypes.Add(MediaTypeNames.Application.Json);
+                    result.ContentTypes.Add(MediaTypeNames.Application.Xml);
 
-            // TODO: add `using using System.Net.Mime;` to resolve MediaTypeNames
-            result.ContentTypes.Add(MediaTypeNames.Application.Json);
-            result.ContentTypes.Add(MediaTypeNames.Application.Xml);
-
-            return result;
-        };
-    });
+                    return result;
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

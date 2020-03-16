@@ -375,9 +375,9 @@ footer form .send_button,
         flex-direction: column;
     }
 
-    .rooms_list li, .hotels_list li {
-        width: 100%;
-    }
+        .rooms_list li, .hotels_list li {
+            width: 100%;
+        }
 
     .footer_container {
         flex-direction: column;
@@ -435,10 +435,10 @@ footer form .send_button,
         justify-content: space-between;
     }
 
-    .rooms_list li, .hotels_list li {
-        width: 50%;
-        padding: 10px;
-    }
+        .rooms_list li, .hotels_list li {
+            width: 50%;
+            padding: 10px;
+        }
 
     .footer_container {
         justify-content: space-around;
