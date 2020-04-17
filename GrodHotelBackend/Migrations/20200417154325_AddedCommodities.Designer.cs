@@ -4,14 +4,16 @@ using GrodHotelBackend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrodHotelBackend.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200417154325_AddedCommodities")]
+    partial class AddedCommodities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,7 +162,12 @@ namespace GrodHotelBackend.Migrations
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 
+                    b.Property<int?>("RoomComoditiesId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RoomComoditiesId");
 
                     b.ToTable("Comodities");
                 });
@@ -291,15 +298,13 @@ namespace GrodHotelBackend.Migrations
                     b.Property<int>("ComoditiesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("Money");
 
                     b.Property<int>("RoomsId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ComoditiesId");
 
                     b.HasIndex("RoomsId");
 
@@ -402,6 +407,13 @@ namespace GrodHotelBackend.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GrodHotelBackend.Models.Comodities", b =>
+                {
+                    b.HasOne("GrodHotelBackend.Models.RoomComodities", null)
+                        .WithMany("Comodities")
+                        .HasForeignKey("RoomComoditiesId");
+                });
+
             modelBuilder.Entity("GrodHotelBackend.Models.HotelServices", b =>
                 {
                     b.HasOne("GrodHotelBackend.Models.Hotels", "Hotels")
@@ -434,12 +446,6 @@ namespace GrodHotelBackend.Migrations
 
             modelBuilder.Entity("GrodHotelBackend.Models.RoomComodities", b =>
                 {
-                    b.HasOne("GrodHotelBackend.Models.Comodities", "Comodities")
-                        .WithMany()
-                        .HasForeignKey("ComoditiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("GrodHotelBackend.Models.Rooms", "Rooms")
                         .WithMany("RoomComodities")
                         .HasForeignKey("RoomsId")

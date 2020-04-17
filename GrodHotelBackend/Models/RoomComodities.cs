@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GrodHotelBackend.Models
@@ -15,11 +16,10 @@ namespace GrodHotelBackend.Models
         [Required]
         public int ComoditiesId { get; set; }
 
-        public Comodities Comodities { get; set; }
+        public Comodities Comodities { get; set; }  
 
         [Required]
-        [Column(TypeName = "Money")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [Required]
         public bool Availability { get; set; }

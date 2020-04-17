@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace GrodHotelBackend.Controllers
 {
@@ -20,7 +21,10 @@ namespace GrodHotelBackend.Controllers
         public ActionResult Index(int id)
         {
             ViewBag.PageName = "room";
-            Rooms room = _context.Rooms.Find(id);
+            Rooms room = _context.Rooms
+                .Include(x => x.RoomComodities)
+                .ThenInclude(roomComodities => roomComodities.Comodities)
+                .FirstOrDefault(room => room.Id == id);
 
             if (room == null)
             {

@@ -1,6 +1,8 @@
 ﻿using GrodHotelBackend.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GROD_Hotel_Backend.Controllers
 {
@@ -49,6 +51,25 @@ namespace GROD_Hotel_Backend.Controllers
             ViewBag.Available = room.Availability;
             ViewBag.Title = "Booking-" + room.Name;
             return View(room);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("RoomsId,EntryDate,LeavingDate,TotalPrice,AdultNumbers,MinorNumbers")] Bookings bookings)
+        {
+            ViewBag.PageName = "booking-completed";
+            ViewBag.Title = "Booking Completed!";
+
+            if (ModelState.IsValid)
+            {
+                DateTime confirmationDate = DateTime.Now;
+                bookings.ClientsId = 1;
+                bookings.ConfirmationDate = confirmationDate;
+                _context.Add(bookings);
+                await _context.SaveChangesAsync();
+                return View("~/Views/BookingCompleted/Index.cshtml");
+            }
+            return View("~/Views/BookingCompleted/Index.cshtml");
         }
     }
 }

@@ -36,5 +36,6 @@ namespace GrodHotelBackend.Models
         public string Slug { get; set; }
 
         public virtual ICollection<Bookings> Bookings { get; set; }
+        public virtual ICollection<RoomComodities> RoomComodities { get; set; }
     }
 }
