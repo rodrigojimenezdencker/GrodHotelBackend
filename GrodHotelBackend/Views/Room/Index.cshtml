@@ -6,7 +6,7 @@
 
 <main id="layout_main">
     <div>
-        <h2>@Model.Name</h2>
+        <h2>@Model.Name - @Model.Price€/night</h2>
         <blockquote>
             <p>@Model.Description</p>
         </blockquote>
@@ -49,9 +49,11 @@
                     <label class="">Additional services</label>
                     @foreach (var commodity in Model.RoomComodities)
                     {
-                        <input type="checkbox" value="@commodity.Comodities.Id" name="@commodity.Comodities.Id" />
-                        <label for="@commodity.Comodities.Id">@commodity.Comodities.Name</label>
-                        <p>Precio: @commodity.Price</p>
+                        <label for="@commodity.Comodities.Id" class="control_input_checkbox_radio control-checkbox">
+                            @commodity.Comodities.Name
+                            <input type="checkbox" id="@commodity.Comodities.Id" value="@commodity.Comodities.Id" name="@commodity.Comodities.Id" />
+                            <span class="input_checkbox_radio_indicator"></span>
+                        </label>
                     }
                 </fieldset>
             </div>

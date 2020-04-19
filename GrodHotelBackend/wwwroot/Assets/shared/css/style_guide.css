@@ -287,10 +287,10 @@ textarea {
     }
 
 .control_input_checkbox_radio {
-    display: block;
+    display: inline;
     position: relative;
     padding-left: 30px;
-    margin-bottom: 15px;
+    margin-right: 1.8rem;
     cursor: pointer;
     font-size: 18px;
 }
@@ -383,6 +383,7 @@ input[type="number"] {
     font-weight: 700;
     color: #010116;
     background: transparent;
+    margin-top: 2rem;
 }
 
     .send_button:hover {
