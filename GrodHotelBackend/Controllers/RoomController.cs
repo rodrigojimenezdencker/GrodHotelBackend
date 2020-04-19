@@ -23,7 +23,7 @@ namespace GrodHotelBackend.Controllers
             ViewBag.PageName = "room";
             Rooms room = _context.Rooms
                 .Include(x => x.RoomComodities)
-                .ThenInclude(roomComodities => roomComodities.Comodities)
+                    .ThenInclude(roomComodities => roomComodities.Comodities)
                 .FirstOrDefault(room => room.Id == id);
 
             if (room == null)
@@ -43,7 +43,10 @@ namespace GrodHotelBackend.Controllers
         public ActionResult Index(string name)
         {
             ViewBag.PageName = "room";
-            Rooms room = _context.Rooms.Where(room => room.Slug.Equals(name)).FirstOrDefault();
+            Rooms room = _context.Rooms.Where(room => room.Slug.Equals(name))
+                .Include(x => x.RoomComodities)
+                    .ThenInclude(roomComodities => roomComodities.Comodities)
+                .FirstOrDefault();
 
             if (room == null)
             {

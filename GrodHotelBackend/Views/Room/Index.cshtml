@@ -44,24 +44,27 @@
                     <img src="~/Content/svg/child.svg" class="form_icon" alt="Number of minors" />
                 </fieldset>
             </div>
-            <div class="input_group_container">
+            @if (Model.RoomComodities.Count != 0)
+            {
+                <div class="input_group_container">
+                    <fieldset>
+                        <h2 class="">Additional services</h2>
+                        @foreach (var commodity in Model.RoomComodities)
+                        {
+                            <label for="@commodity.Comodities.Id" class="control_input_checkbox_radio control-checkbox">
+                                @commodity.Comodities.Name
+                                <input type="checkbox" id="@commodity.Comodities.Id" value="@commodity.Comodities.Id" name="@commodity.Comodities.Id" />
+                                <span class="input_checkbox_radio_indicator"></span>
+                            </label>
+                        }
+                    </fieldset>
+                </div>
+            }
+                <input type="hidden" name="RoomsId" value="@Model.Id" />
+                <input type="hidden" name="TotalPrice" value="@Model.Price" />
                 <fieldset>
-                    <label class="">Additional services</label>
-                    @foreach (var commodity in Model.RoomComodities)
-                    {
-                        <label for="@commodity.Comodities.Id" class="control_input_checkbox_radio control-checkbox">
-                            @commodity.Comodities.Name
-                            <input type="checkbox" id="@commodity.Comodities.Id" value="@commodity.Comodities.Id" name="@commodity.Comodities.Id" />
-                            <span class="input_checkbox_radio_indicator"></span>
-                        </label>
-                    }
+                    <button class="send_button">Book this room</button>
                 </fieldset>
-            </div>
-            <input type="hidden" name="RoomsId" value="@Model.Id" />
-            <input type="hidden" name="TotalPrice" value="@Model.Price" />
-            <fieldset>
-                <button class="send_button">Book this room</button>
-            </fieldset>
-        </form>
+            </form>
     </div>
 </main>
